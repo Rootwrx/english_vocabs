@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Word Lists</title>
+<style>
+:root{--bg:#f4f1ea;--card:#fff;--tx:#1f2937;--mut:#6b7280;--ac:#4f46e5;--ok:#16a34a;--no:#dc2626;--soft:#eef2ff;--ar:#065f46;--bd:#e5e7eb}
+@media(prefers-color-scheme:dark){:root{--bg:#111827;--card:#1f2937;--tx:#e5e7eb;--mut:#9ca3af;--ac:#a5b4fc;--soft:#1e293b;--ar:#a7f3d0;--bd:#374151}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:18px/1.5 'Segoe UI',Helvetica,Arial,sans-serif}
+header{max-width:720px;margin:0 auto;padding:14px 16px;display:flex;gap:12px;align-items:center}
+header a{color:var(--ac);text-decoration:none;font-weight:700}
+main{max-width:720px;margin:0 auto;padding:0 16px 60px}
+.card{background:var(--card);border-radius:18px;padding:22px 20px;margin:12px 0;box-shadow:0 6px 22px rgba(0,0,0,.08)}
+h1{font-size:26px;margin:8px 0}h2{font-size:20px;margin:0 0 8px}
+.btn{display:inline-block;border:0;border-radius:12px;padding:10px 16px;margin:4px 4px 4px 0;font:inherit;font-weight:700;background:var(--ac);color:#fff;cursor:pointer;text-decoration:none}
+.btn.alt{background:var(--soft);color:var(--ac)}.btn[disabled]{opacity:.4}
+.mut{color:var(--mut);font-size:15px}.ar{direction:rtl;text-align:right;font-size:21px;color:var(--ar);line-height:1.7}
+.big{font-size:42px;font-weight:800;color:var(--ac)}.emo{font-size:54px}
+.pos{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;background:var(--ac);color:var(--bg);border-radius:20px;padding:1px 10px}
+.tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mut);margin:16px 0 4px}
+.box{padding:8px 12px;margin:6px 0;border-left:5px solid var(--ac);background:var(--soft);border-radius:10px}
+.box b{color:var(--ac)}.note{border-color:#3b82f6}
+.chip{display:inline-block;margin:3px;padding:3px 12px;border-radius:14px;background:var(--soft);color:var(--ac);text-decoration:none;font-size:16px}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.bar{height:6px;background:var(--bd);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+.text p{margin:0 0 14px;line-height:1.8}.tw{border-bottom:2px solid var(--ac);color:var(--ac);font-weight:700;cursor:pointer}
+.blank{display:inline-block;min-width:90px;border-bottom:3px solid var(--ac)}
+input.ans{width:100%;font:inherit;font-size:22px;padding:8px 12px;border-radius:10px;border:2px solid var(--bd);background:var(--bg);color:var(--tx);text-align:center;margin:10px 0}
+.rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.rate .btn{margin:0;padding:10px 4px}
+.good{color:var(--ok);font-weight:700}.bad{color:var(--no);font-weight:700}.hl{outline:3px solid var(--ok)}
+</style></head><body>
+<header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb"></span></header>
+<main id="app">Loading…</main>
+<script>
+const app=document.getElementById('app');
+const esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const fm=s=>esc(s).replace(/\*([^*]+)\*/g,'<b>$1</b>');
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+let S={};try{S=JSON.parse(localStorage.getItem('wordlists.v1')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('wordlists.v1',JSON.stringify(S))}catch(e){}};
+const cache={};let INDEX=null;
+async function J(u){const r=await fetch(u);if(!r.ok)throw new Error('Cannot load '+u);return r.json()}
+async function getIndex(){return INDEX=INDEX||await J('data/index.json')}
+async function getList(id){if(cache[id])return cache[id];const e=(await getIndex()).find(x=>x.id===id);if(!e)throw new Error('Unknown list '+id);const l=await J('data/'+e.file);l.id=id;return cache[id]=l}
+const speak=t=>{try{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}};
+window.speak=speak;
+
+/* ---------- spaced repetition (SM-2 style) ---------- */
+const key=(l,w)=>l.id+'::'+w.w;
+const st=(l,w)=>S[key(l,w)];
+const isDue=(l,w)=>{const s=st(l,w);return !s||s.due<=Date.now()};
+function grade(l,w,g){ // g: 0 again, 1 hard, 2 good, 3 easy
+  const s=st(l,w)||{reps:0,ease:2.3,iv:0,lapses:0};
+  if(g===0){s.reps=0;s.lapses++;s.iv=0;s.ease=Math.max(1.3,s.ease-.2);s.due=Date.now()+10*60000}
+  else{s.reps++;s.iv=s.reps===1?[0,1,2,4][g]:Math.max(s.iv+1,Math.round(s.iv*s.ease*[0,.8,1,1.35][g]));
+    s.ease=Math.max(1.3,s.ease+[0,-.15,0,.1][g]);s.due=Date.now()+s.iv*864e5}
+  S[key(l,w)]=s;save();
+}
+
+/* ---------- content helpers ---------- */
+const MARK=/\*([^*|]+)(?:\|([^*]+))?\*/g;
+function textSentences(l,w){const out=[];
+  for(const t of l.texts||[])for(const s of (t.en||'').split(/(?<=[.!?])\s+/)){let hit=0;
+    const x=s.replace(MARK,(m,f,h)=>{if(!hit&&(h||f).toLowerCase()===w.w.toLowerCase()){hit=1;return'*'+f+'*'}return f});
+    if(hit)out.push(x)}
+  return out}
+const sentences=(l,w)=>[...(w.ex||[]).map(x=>x.en),...(w.col||[]).map(x=>x.en),...textSentences(l,w)].filter(s=>s&&(s.match(/\*/g)||[]).length===2);
+function wordCard(l,w,full){
+  let h=`<div style="text-align:center"><div class="emo">${esc(w.emoji)}</div><div class="big">${esc(w.w)}</div>
+  <span class="pos">${esc(w.pos)}</span> <span class="mut">${esc(w.ipa||'')}</span> <span style="cursor:pointer" onclick="speak('${esc(w.w)}')">🔊</span>
+  <div class="ar" style="text-align:center;font-size:30px;font-weight:700">${esc(w.ar)}</div></div>
+  <p>${fm(w.def)}</p>`;
+  if(w.note)h+=`<div class="box note">${esc(w.note)}</div>`;
+  if(!full)return h;
+  if((w.ex||[]).length)h+='<div class="tag">Examples</div>'+w.ex.map(x=>`<div class="box">${fm(x.en)}<div class="ar">${esc(x.ar||'')}</div></div>`).join('');
+  if((w.col||[]).length)h+='<div class="tag">Collocations</div>'+w.col.map(c=>`<div class="box"><div><b style="font-weight:700">${fm(c.p)}</b></div>${c.p_ar?`<div class="ar" style="font-size:18px">${esc(c.p_ar)}</div>`:''}${c.en?`<div class="mut" style="font-style:italic">${fm(c.en)}</div>`:''}${c.ar?`<div class="ar" style="font-size:18px">${esc(c.ar)}</div>`:''}</div>`).join('');
+  const ts=textSentences(l,w);
+  if(ts.length)h+='<div class="tag">In the texts</div>'+ts.map(s=>`<div class="box">${fm(s)}</div>`).join('');
+  if((w.family||[]).length)h+='<div class="tag">Word family</div>'+w.family.map(f=>`<span class="chip">${esc(f)}</span>`).join('');
+  return h}
+
+/* ---------- views ---------- */
+async function home(){
+  document.getElementById('crumb').textContent='';
+  const idx=await getIndex();
+  app.innerHTML='<h1>Your lists</h1><input class="ans" id="q" placeholder="Search lists…" style="text-align:left"><div id="lists"></div>';
+  const draw=()=>{const q=document.getElementById('q').value.trim().toLowerCase(),keys=Object.keys(S),g={};
+    idx.filter(e=>!q||(e.title+' '+(e.group||'')).toLowerCase().includes(q)).forEach(e=>(g[e.group||'']=g[e.group||'']||[]).push(e));
+    document.getElementById('lists').innerHTML=Object.keys(g).sort((x,y)=>x.localeCompare(y,undefined,{numeric:true})).map(k=>(k?`<div class="tag">${esc(k)}</div>`:'')+
+      g[k].sort((x,y)=>x.title.localeCompare(y.title,undefined,{numeric:true})).map(e=>{const mine=keys.filter(x=>x.startsWith(e.id+'::')),due=mine.filter(x=>S[x].due<=Date.now()).length,nw=Math.max(0,(e.count||0)-mine.length);
+        return `<a class="card" style="display:block;color:inherit;text-decoration:none;padding:14px 18px" href="#/l/${e.id}"><h2 style="margin:0">${esc(e.title)}</h2><div class="mut">${e.count} words${e.texts?' · '+e.texts+' text'+(e.texts>1?'s':''):''} · <span class="${due?'good':''}">${due} due</span> · ${nw} new</div></a>`}).join('')).join('')||'<p class="mut">No lists found.</p>'};
+  document.getElementById('q').oninput=draw;draw()}
+async function listMenu(id){
+  const l=await getList(id);document.getElementById('crumb').textContent='/ '+l.title;
+  const due=l.words.filter(w=>isDue(l,w)).length,seen=l.words.filter(w=>st(l,w)).length;
+  app.innerHTML=`<h1>${esc(l.title)}</h1><div class="ar" style="text-align:left;direction:ltr;margin-bottom:8px">${esc(l.title_ar||'')}</div>
+  <div class="card"><h2>1 · Learn the list</h2><p class="mut">Go through every word with meaning, examples, collocations and the texts it appears in.</p><a class="btn" href="#/l/${id}/study/0">Start learning</a></div>
+  ${(l.texts||[]).length?`<div class="card"><h2>2 · Read in context</h2>${l.texts.map((t,i)=>`<a class="btn alt" href="#/l/${id}/text/${i}">${esc(t.title||'Text '+(i+1))}</a>`).join('')}</div>`:''}
+  <div class="card"><h2>3 · Flashcards (active recall)</h2><p class="mut">Type the missing word before you see it. Spaced repetition schedules each word. ${due} due · ${seen}/${l.words.length} started.</p><a class="btn" href="#/l/${id}/review">Review now</a></div>
+  <div class="card"><h2>Words</h2>${l.words.map((w,i)=>`<a class="chip" href="#/l/${id}/study/${i}">${esc(w.w)}</a>`).join('')}
+  <p><button class="btn alt" onclick="if(confirm('Reset progress for this list?')){Object.keys(S).filter(k=>k.startsWith('${id}::')).forEach(k=>delete S[k]);save();route()}">Reset progress</button></p></div>`}
+async function study(id,i){
+  const l=await getList(id),n=l.words.length;i=Math.max(0,Math.min(n-1,i));const w=l.words[i];
+  document.getElementById('crumb').textContent='/ '+l.title;
+  app.innerHTML=`<div class="bar"><i style="width:${(i+1)/n*100}%"></i></div><div class="mut" style="margin-top:6px">${i+1} / ${n}</div>
+  <div class="card">${wordCard(l,w,true)}</div>
+  <div class="nav"><a class="btn alt" ${i?`href="#/l/${id}/study/${i-1}"`:'style="visibility:hidden"'}>← Back</a>
+  ${i<n-1?`<a class="btn" href="#/l/${id}/study/${i+1}">Next →</a>`:`<a class="btn" href="#/l/${id}/review">Start flashcards →</a>`}</div>`}
+async function textView(id,ti){
+  const l=await getList(id),t=l.texts[ti];document.getElementById('crumb').textContent='/ '+l.title;
+  const para=s=>(s||'').split(/\n\s*\n/).map(p=>`<p>${esc(p).replace(/\*([^*|]+)(?:\|([^*]+))?\*/g,(m,f,h)=>`<span class="tw" data-w="${esc((h||f).toLowerCase())}">${f}</span>`)}</p>`).join('');
+  app.innerHTML=`<h1>${esc(t.title||'Text '+(ti+1))}</h1>
+  <div class="card text">${para(t.en)}</div>
+  ${t.ar?`<button class="btn alt" onclick="document.getElementById('tr').style.display=document.getElementById('tr').style.display==='none'?'block':'none'">Show / hide Arabic</button><div id="tr" class="card ar" style="display:none">${esc(t.ar).replace(/\n\s*\n/g,'<br><br>')}</div>`:''}
+  <p class="mut">Tap an underlined word to see it.</p><div id="pop"></div>
+  <div class="nav">${ti?`<a class="btn alt" href="#/l/${id}/text/${ti-1}">← Previous</a>`:'<span></span>'}${ti<l.texts.length-1?`<a class="btn" href="#/l/${id}/text/${ti+1}">Next text →</a>`:`<a class="btn" href="#/l/${id}/review">Flashcards →</a>`}</div>`;
+  app.querySelectorAll('.tw').forEach(el=>el.onclick=()=>{const w=l.words.find(x=>x.w.toLowerCase()===el.dataset.w);
+    if(w)document.getElementById('pop').innerHTML='<div class="card">'+wordCard(l,w,false)+'</div>'})}
+
+/* ---------- review: retrieval first, then reveal, then self-grade ---------- */
+let Q=null;
+async function review(id){
+  const l=await getList(id);document.getElementById('crumb').textContent='/ '+l.title;
+  if(!Q||Q.id!==id)Q={id,q:l.words.filter(w=>isDue(l,w)).sort(()=>Math.random()-.5),done:0,total:0},Q.total=Q.q.length;
+  if(!Q.q.length){const next=Math.min(...l.words.map(w=>(st(l,w)||{due:Infinity}).due));Q=null;
+    app.innerHTML=`<div class="card" style="text-align:center"><h1>🎉 All done</h1><p class="mut">${isFinite(next)?'Next card due '+new Date(next).toLocaleString():''}</p><a class="btn" href="#/l/${id}">Back to list</a></div>`;return}
+  const w=Q.q[0],ss=sentences(l,w),s=ss.length&&Math.random()<.8?rnd(ss):null;
+  let cue,target;
+  if(s){const m=s.match(/\*([^*]+)\*/);target=m[1];cue=`<div class="tag">Fill in the blank</div><div style="font-size:23px">${esc(s).replace(/\*[^*]+\*/,'<span class="blank"></span>')}</div>`}
+  else{target=w.w;cue=`<div class="tag">Which word?</div><div style="font-size:21px">${esc(w.def).replace(/\*[^*]+\*/g,'<span class="blank"></span>').replace(new RegExp('\\b'+w.w+'\\w*','gi'),'<span class="blank"></span>')}</div>`}
+  app.innerHTML=`<div class="bar"><i style="width:${Q.done/Math.max(1,Q.total)*100}%"></i></div><div class="mut" style="margin:6px 0">${Q.q.length} left</div>
+  <div class="card" style="text-align:center">${cue}<span class="pos" style="margin-top:8px">${esc(w.pos)}</span>
+  <div id="hintbox"><button class="btn alt" id="hint">Hint: Arabic</button></div>
+  <input class="ans" id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the word (leave empty if you don’t know)">
+  <button class="btn" id="chk">Check</button><div id="back"></div></div>`;
+  const inp=document.getElementById('ans');inp.focus();
+  document.getElementById('hint').onclick=()=>{document.getElementById('hintbox').innerHTML='<div class="ar" style="text-align:center">'+esc(w.ar)+'</div>'};
+  const check=()=>{const ok=inp.value.trim().toLowerCase()===target.toLowerCase();inp.disabled=true;document.getElementById('chk').remove();
+    const sug=ok?2:0;
+    document.getElementById('back').innerHTML=`<p class="${ok?'good':'bad'}">${ok?'✓ Correct':'✗ The answer: '+esc(target)}</p>${wordCard(l,w,true)}
+    <div class="rate">${['Again','Hard','Good','Easy'].map((n,g)=>`<button class="btn ${g===sug?'':'alt'}" data-g="${g}">${n}</button>`).join('')}</div>
+    <p class="mut">Be honest: hesitated or peeked = Hard/Again.</p>`;
+    speak(target);
+    document.querySelectorAll('.rate .btn').forEach(b=>b.onclick=()=>{const g=+b.dataset.g;grade(l,w,g);Q.q.shift();if(g===0)Q.q.push(w);else Q.done++;review(id)})};
+  document.getElementById('chk').onclick=check;inp.onkeydown=e=>{if(e.key==='Enter')check()}}
+
+/* ---------- router ---------- */
+async function route(){
+  const p=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean);
+  try{
+    if(!p.length)await home();
+    else if(p[0]==='l'&&p.length===2)await listMenu(p[1]);
+    else if(p[0]==='l'&&p[2]==='study')await study(p[1],+p[3]||0);
+    else if(p[0]==='l'&&p[2]==='text')await textView(p[1],+p[3]||0);
+    else if(p[0]==='l'&&p[2]==='review')await review(p[1]);
+    else await home();
+    window.scrollTo(0,0);
+  }catch(e){app.innerHTML='<div class="card bad">'+esc(e.message)+'<br><span class="mut">If you opened the file directly, serve it over http (e.g. <code>python -m http.server</code>) or via GitHub Pages.</span></div>'}
+}
+addEventListener('hashchange',()=>{if(!location.hash.endsWith('/review'))Q=null;route()});route();
+</script></body></html>

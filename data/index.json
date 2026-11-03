@@ -1,0 +1,18 @@
+[
+    {
+        "id": "oxford3000-01",
+        "file": "oxford3000-01.json",
+        "title": "Oxford 3000 – List 1 (abandon → accept)",
+        "group": "",
+        "count": 10,
+        "texts": 2
+    },
+    {
+        "id": "Reverso-A1_2-01",
+        "file": "c.json",
+        "title": "Reverso A1_2 part 1",
+        "group": "",
+        "count": 10,
+        "texts": 1
+    }
+]

@@ -1,0 +1,365 @@
+{
+  "title": "Oxford 3000 – List 1 (abandon → accept)",
+  "words": [
+    {
+      "w": "abandon",
+      "pos": "v.",
+      "ipa": "/əˈbændən/",
+      "emoji": "🚪",
+      "ar": "تخلى على / حبس",
+      "def": "To stop doing something or leave something behind.",
+      "note": "Say abandon a plan, not abandon from a plan. The verb doesn't need a preposition.",
+      "col": [
+        {
+          "p": "*abandon* a plan",
+          "p_ar": "يتخلى على شي خطة",
+          "en": "We had to *abandon* the plan because it was too expensive."
+        },
+        {
+          "p": "*abandon* the idea",
+          "p_ar": "يتخلى على الفكرة",
+          "en": "Don't *abandon* the idea just because it's difficult."
+        },
+        {
+          "p": "*abandon* hope",
+          "p_ar": "يفقد الأمل",
+          "en": "Don't *abandon* hope. Things can still change."
+        },
+        {
+          "p": "*abandon* a project",
+          "p_ar": "يتخلى على مشروع",
+          "en": "They decided to *abandon* the project."
+        }
+      ],
+      "family": [
+        "abandoned (adj.)",
+        "abandonment (n.)"
+      ]
+    },
+    {
+      "w": "ability",
+      "pos": "n.",
+      "ipa": "/əˈbɪləti/",
+      "emoji": "💪",
+      "ar": "القدرة / المقدرة",
+      "def": "The skill or power to do something.",
+      "col": [
+        {
+          "p": "have the *ability* to do something",
+          "p_ar": "تكون عندك القدرة باش دير شي حاجة",
+          "en": "She has the *ability* to solve problems quickly."
+        },
+        {
+          "p": "the *ability* to learn",
+          "p_ar": "القدرة على التعلم",
+          "en": "The job requires the *ability* to learn quickly."
+        },
+        {
+          "p": "natural *ability*",
+          "p_ar": "موهبة طبيعية",
+          "en": "He has a natural *ability* to communicate with people."
+        },
+        {
+          "p": "develop your *abilities*",
+          "p_ar": "تطور القدرات ديالك",
+          "en": "This course will help you develop your *abilities*."
+        }
+      ],
+      "family": [
+        "able (adj.)",
+        "unable (adj.)",
+        "disability (n.)"
+      ]
+    },
+    {
+      "w": "able",
+      "pos": "adj.",
+      "ipa": "/ˈeɪbl/",
+      "emoji": "✅",
+      "ar": "قادر / تقدر",
+      "def": "Having the skill, knowledge or opportunity to do something.",
+      "note": "Say I can help you or I'm able to help you, not I am can help you. Don't combine can and able to.",
+      "col": [
+        {
+          "p": "be *able* to do something",
+          "p_ar": "تكون قادر تدير شي حاجة",
+          "en": "I'll be *able* to help you tomorrow."
+        },
+        {
+          "p": "not be *able* to",
+          "p_ar": "ما تكونش قادر",
+          "en": "I'm not *able* to access my account."
+        },
+        {
+          "p": "will be *able* to",
+          "p_ar": "غادي تكون قادر",
+          "en": "After the update, you'll be *able* to use the new features."
+        },
+        {
+          "p": "be *able* to afford something",
+          "p_ar": "تكون قادر مادياً تشري شي حاجة",
+          "en": "She isn't *able* to afford a new laptop right now."
+        }
+      ],
+      "family": [
+        "ability (n.)",
+        "unable (adj.)"
+      ]
+    },
+    {
+      "w": "about",
+      "pos": "prep./adv./adj.",
+      "ipa": "/əˈbaʊt/",
+      "emoji": "💬",
+      "ar": "على / تقريباً / غادي دابا",
+      "def": "Connected to a subject; approximately; nearly ready to do something.",
+      "note": "Say talk about something, not talk on something when discussing a general topic.",
+      "col": [
+        {
+          "p": "talk *about* something",
+          "p_ar": "تهضر على شي حاجة",
+          "en": "We need to talk *about* your problem."
+        },
+        {
+          "p": "know *about* something",
+          "p_ar": "تكون عارف شي حاجة عليها",
+          "en": "I don't know much *about* computers."
+        },
+        {
+          "p": "be *about* to do something",
+          "p_ar": "غادي دابا تدير شي حاجة",
+          "en": "I'm *about* to leave."
+        },
+        {
+          "p": "what *about*...?",
+          "p_ar": "وشنو بالنسبة لـ...؟",
+          "en": "What *about* the other option?"
+        },
+        {
+          "p": "*about* 20 minutes",
+          "p_ar": "تقريباً 20 دقيقة",
+          "en": "The update will take *about* 20 minutes."
+        }
+      ]
+    },
+    {
+      "w": "above",
+      "pos": "prep./adv.",
+      "ipa": "/əˈbʌv/",
+      "emoji": "⬆️",
+      "ar": "فوق / أكثر من",
+      "def": "At a higher level or position; more than a particular amount.",
+      "note": "Say above the table, not on above the table. Don't use both prepositions together.",
+      "col": [
+        {
+          "p": "*above* average",
+          "p_ar": "فوق المتوسط",
+          "en": "His English is *above* average."
+        },
+        {
+          "p": "*above* all",
+          "p_ar": "والأهم من هادشي كامل",
+          "en": "*Above* all, be patient with customers."
+        },
+        {
+          "p": "as mentioned *above*",
+          "p_ar": "كيفما ذكرنا من قبل",
+          "en": "As mentioned *above*, the system needs an update."
+        },
+        {
+          "p": "*above* the limit",
+          "p_ar": "فوق الحد المسموح",
+          "en": "Your internet usage is *above* the limit."
+        }
+      ]
+    },
+    {
+      "w": "abroad",
+      "pos": "adv.",
+      "ipa": "/əˈbrɔːd/",
+      "emoji": "✈️",
+      "ar": "لبلاد أخرى / خارج البلاد",
+      "def": "In or to another country.",
+      "note": "Say go abroad, not go to abroad. Abroad doesn't need to.",
+      "col": [
+        {
+          "p": "go *abroad*",
+          "p_ar": "يمشي لبلاد أخرى",
+          "en": "I want to go *abroad* to study."
+        },
+        {
+          "p": "study *abroad*",
+          "p_ar": "يقرا فبلاد أخرى",
+          "en": "She's planning to study *abroad* next year."
+        },
+        {
+          "p": "work *abroad*",
+          "p_ar": "يخدم خارج البلاد",
+          "en": "Many people want to work *abroad*."
+        },
+        {
+          "p": "live *abroad*",
+          "p_ar": "يعيش خارج البلاد",
+          "en": "My cousin lives *abroad*."
+        }
+      ]
+    },
+    {
+      "w": "absolute",
+      "pos": "adj.",
+      "ipa": "/ˈæbsəluːt/",
+      "emoji": "💯",
+      "ar": "تام / مطلق / كامل",
+      "def": "Complete or total; with no limits or exceptions.",
+      "note": "This word is less common in casual conversation than words like complete or total.",
+      "col": [
+        {
+          "p": "*absolute* beginner",
+          "p_ar": "مبتدئ تماماً",
+          "en": "I'm an *absolute* beginner in French."
+        },
+        {
+          "p": "*absolute* certainty",
+          "p_ar": "يقين تام",
+          "en": "Nobody can say that with *absolute* certainty."
+        },
+        {
+          "p": "*absolute* silence",
+          "p_ar": "سكات تام",
+          "en": "There was *absolute* silence in the room."
+        },
+        {
+          "p": "*absolute* mess",
+          "p_ar": "فوضى كاملة",
+          "en": "My desk is an *absolute* mess."
+        }
+      ],
+      "family": [
+        "absolutely (adv.)"
+      ]
+    },
+    {
+      "w": "absolutely",
+      "pos": "adv.",
+      "ipa": "/ˌæbsəˈluːtli/",
+      "emoji": "👍",
+      "ar": "تماماً / أكيد / طبعاً",
+      "def": "Completely; used to strongly agree or say yes.",
+      "note": "Say absolutely sure, not very absolutely sure. Absolutely already makes the meaning stronger.",
+      "col": [
+        {
+          "p": "*absolutely* right",
+          "p_ar": "عندك الحق تماماً",
+          "en": "You're *absolutely* right about that."
+        },
+        {
+          "p": "*absolutely* sure",
+          "p_ar": "متأكد مية بالمية",
+          "en": "Are you *absolutely* sure?"
+        },
+        {
+          "p": "*absolutely* fine",
+          "p_ar": "مزيان تماماً / ما كاين حتى مشكل",
+          "en": "That's *absolutely* fine with me."
+        },
+        {
+          "p": "*absolutely* not",
+          "p_ar": "لا، نهائياً",
+          "en": "Would you share your password? *Absolutely* not!"
+        }
+      ],
+      "family": [
+        "absolute (adj.)"
+      ]
+    },
+    {
+      "w": "academic",
+      "pos": "adj./n.",
+      "ipa": "/ˌækəˈdemɪk/",
+      "emoji": "🎓",
+      "ar": "أكاديمي / جامعي",
+      "def": "Related to education, schools or universities; an academic is someone who teaches or researches at a university.",
+      "note": "Academic is common in education and formal writing. In everyday conversation, people often say university or school instead.",
+      "col": [
+        {
+          "p": "*academic* year",
+          "p_ar": "السنة الجامعية",
+          "en": "The *academic* year starts in September."
+        },
+        {
+          "p": "*academic* performance",
+          "p_ar": "المستوى الدراسي",
+          "en": "Regular practice can improve your *academic* performance."
+        },
+        {
+          "p": "*academic* background",
+          "p_ar": "المسار الدراسي",
+          "en": "What's your *academic* background?"
+        },
+        {
+          "p": "*academic* research",
+          "p_ar": "البحث الأكاديمي",
+          "en": "She's interested in *academic* research."
+        },
+        {
+          "p": "an *academic*",
+          "p_ar": "أستاذ أو باحث جامعي",
+          "en": "He's an *academic* at a British university."
+        }
+      ],
+      "family": [
+        "academy (n.)",
+        "academically (adv.)"
+      ]
+    },
+    {
+      "w": "accept",
+      "pos": "v.",
+      "ipa": "/əkˈsept/",
+      "emoji": "🤝",
+      "ar": "يقبل / يوافق على",
+      "def": "To say yes to something offered or suggested; to agree to receive or take something.",
+      "col": [
+        {
+          "p": "*accept* an offer",
+          "p_ar": "يقبل عرض",
+          "en": "She decided to *accept* the job offer."
+        },
+        {
+          "p": "*accept* responsibility",
+          "p_ar": "يتحمل المسؤولية",
+          "en": "You should *accept* responsibility for your mistakes."
+        },
+        {
+          "p": "*accept* a request",
+          "p_ar": "يقبل طلب",
+          "en": "The manager *accepted* my request."
+        },
+        {
+          "p": "*accept* the fact that...",
+          "p_ar": "يتقبل حقيقة أن...",
+          "en": "You need to *accept* the fact that learning takes time."
+        },
+        {
+          "p": "*accept* an apology",
+          "p_ar": "يقبل الاعتذار",
+          "en": "I hope she'll *accept* my apology."
+        }
+      ],
+      "family": [
+        "acceptable (adj.)",
+        "acceptance (n.)"
+      ]
+    }
+  ],
+  "texts": [
+    {
+      "title": "Text 1 – A hard decision",
+      "en": "Sara had a big plan: she wanted to open a small shop. She talked *about* it with her family for weeks. But the rent was *above* her budget, so she had to *abandon* the plan. At first she felt sad.\n\nThen her brother said, \"You have the *ability* to learn fast. You will be *able* to try again.\" In the end, Sara decided to *accept* a job in a bookshop. \"I will never *abandon* hope,\" she said."
+    },
+    {
+      "title": "Text 2 – Studying abroad",
+      "en": "Omar is an *absolute* beginner in German, but he wants to study *abroad* next year. His *academic* record is good, and his teacher says he is *absolutely* ready.\n\n\"Are you *absolutely* sure?\" his mother asked. \"Yes,\" said Omar. \"The *academic* year starts in September, and I will be *able* to learn the language fast. Let's talk *about* it tonight.\""
+    }
+  ]
+}
