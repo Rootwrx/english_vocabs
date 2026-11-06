@@ -1,0 +1,347 @@
+{
+  "title": "Chunks – Unit 2",
+  "title_ar": "الوحدة الثانية",
+  "group": "By Level",
+  "set": "Basic Vocabulary (A1A2)",
+  "part": 1,
+  "words": [
+    {
+      "w": "bring",
+      "pos": "v.",
+      "ipa": "/brɪŋ/",
+      "emoji": "🎒",
+      "ar": "جيب",
+      "def": "To take something or someone with you to a place.",
+      "note": "Say Take this file to the office (away from here), not Bring this file to the office. Bring = toward you or the listener, take = away from you. In Darija جيب is used for both.",
+      "col": [
+        {
+          "p": "*bring* something with you",
+          "p_ar": "جيب شي حاجة معاك",
+          "en": "Don't forget to *bring* your ID with you."
+        },
+        {
+          "p": "*bring* someone along",
+          "p_ar": "جيب معاك شي واحد",
+          "en": "You can *bring* a friend along if you want."
+        },
+        {
+          "p": "*bring* something up",
+          "p_ar": "يفتح موضوع / يذكر شي حاجة",
+          "en": "I didn't want to *bring* it up in the meeting."
+        },
+        {
+          "p": "*bring* something back",
+          "p_ar": "يرجع شي حاجة",
+          "en": "Can you *bring* my charger back tomorrow?"
+        }
+      ],
+      "family": [
+        "brought (past)"
+      ]
+    },
+    {
+      "w": "almost",
+      "pos": "adv.",
+      "ipa": "/ˈɔːlməʊst/",
+      "emoji": "🤏",
+      "ar": "تقريباً / شوية وكان",
+      "def": "Very close to something, but not completely.",
+      "note": "Say almost everyone, not almost of the people. Almost goes directly before the word, with no \"of\".",
+      "col": [
+        {
+          "p": "*almost* everyone",
+          "p_ar": "تقريباً الناس كاملين",
+          "en": "*Almost* everyone in my class has a laptop."
+        },
+        {
+          "p": "*almost* always",
+          "p_ar": "تقريباً ديما",
+          "en": "I *almost* always take the bus to work."
+        },
+        {
+          "p": "*almost* ready",
+          "p_ar": "تقريباً واجد",
+          "en": "Wait a minute, I'm *almost* ready."
+        },
+        {
+          "p": "*almost* forgot",
+          "p_ar": "شوية وكنت نسيت",
+          "en": "I *almost* forgot your birthday!"
+        }
+      ]
+    },
+    {
+      "w": "have fun",
+      "pos": "exp.",
+      "ipa": "/hæv fʌn/",
+      "emoji": "🎉",
+      "ar": "تسلى / تهنا",
+      "def": "To enjoy yourself and have a good time.",
+      "note": "Say have fun, not make fun. Make fun of someone means to laugh at them in a mean way.",
+      "col": [
+        {
+          "p": "*Have fun*!",
+          "p_ar": "تسلى! / الله يعطيك التسلية",
+          "en": "*Have fun* at the party!"
+        },
+        {
+          "p": "Did you *have fun*?",
+          "p_ar": "واش تسليتي؟",
+          "en": "Did you *have fun* at the wedding?"
+        },
+        {
+          "p": "*have fun* doing something",
+          "p_ar": "تسلى فاش كيدير شي حاجة",
+          "en": "We *had fun* playing football on the beach."
+        },
+        {
+          "p": "*have fun* with someone",
+          "p_ar": "تسلى مع شي واحد",
+          "en": "The kids *have fun* with their cousins."
+        }
+      ]
+    },
+    {
+      "w": "behind",
+      "pos": "prep./adv.",
+      "ipa": "/bɪˈhaɪnd/",
+      "emoji": "🔙",
+      "ar": "من ورا / مورا",
+      "def": "At the back of something; later or slower than planned.",
+      "note": "Say behind the house, not behind of the house. Don't add \"of\" after behind.",
+      "col": [
+        {
+          "p": "*behind* the door",
+          "p_ar": "من ورا الباب",
+          "en": "Your jacket is *behind* the door."
+        },
+        {
+          "p": "*behind* schedule",
+          "p_ar": "متأخرين على الوقت المحدد",
+          "en": "We're *behind* schedule on this project."
+        },
+        {
+          "p": "fall *behind*",
+          "p_ar": "يتأخر / يبقى من ورا",
+          "en": "Don't fall *behind* with your homework."
+        },
+        {
+          "p": "leave something *behind*",
+          "p_ar": "يخلي شي حاجة / ينساها",
+          "en": "I left my phone *behind* at the office."
+        }
+      ]
+    },
+    {
+      "w": "move",
+      "pos": "v./n.",
+      "ipa": "/muːv/",
+      "emoji": "🚚",
+      "ar": "تنقل / حرك",
+      "def": "To go to a new place or position; to change where you live.",
+      "note": "Say move to Rabat, not move in Rabat. In Darija we say تنقل ل / ف, but in English use to for the new place.",
+      "col": [
+        {
+          "p": "*move* to a new city",
+          "p_ar": "تنقل لمدينة جديدة",
+          "en": "We *moved* to Casablanca last year."
+        },
+        {
+          "p": "*move* out",
+          "p_ar": "يخرج من الدار / يخلي الكراء",
+          "en": "My brother *moved* out last month."
+        },
+        {
+          "p": "*move* on to something",
+          "p_ar": "يدوز لحاجة أخرى",
+          "en": "Let's *move* on to the next question."
+        },
+        {
+          "p": "*move* your car",
+          "p_ar": "حرك الطوموبيل ديالك",
+          "en": "Can you *move* your car, please?"
+        }
+      ],
+      "family": [
+        "movement (n.)",
+        "moving (adj.)"
+      ]
+    },
+    {
+      "w": "find",
+      "pos": "v.",
+      "ipa": "/faɪnd/",
+      "emoji": "🔍",
+      "ar": "لقى",
+      "def": "To see or get something you were looking for; to discover something.",
+      "note": "Say I found it difficult to understand, not I found difficult to understand. You need \"it\" after find. The past form is found, not finded.",
+      "col": [
+        {
+          "p": "*find* out",
+          "p_ar": "يعرف / يكتاشف",
+          "en": "I'll *find* out and call you back."
+        },
+        {
+          "p": "*find* it hard to do something",
+          "p_ar": "كيلقاها صعيبة باش يدير شي حاجة",
+          "en": "I *find* it hard to speak English on the phone."
+        },
+        {
+          "p": "*find* a job",
+          "p_ar": "يلقى خدمة",
+          "en": "It's not easy to *find* a job here."
+        },
+        {
+          "p": "*find* time to do something",
+          "p_ar": "يلقى الوقت باش يدير شي حاجة",
+          "en": "I can't *find* time to study this week."
+        }
+      ],
+      "family": [
+        "found (past)"
+      ]
+    },
+    {
+      "w": "people",
+      "pos": "n.",
+      "ipa": "/ˈpiːpl/",
+      "emoji": "👥",
+      "ar": "الناس",
+      "def": "More than one person.",
+      "note": "Say people are, not people is. Also say a lot of people, not a lot of peoples. People is already plural.",
+      "col": [
+        {
+          "p": "*people* say",
+          "p_ar": "كيقولو الناس",
+          "en": "*People* say it's going to rain tomorrow."
+        },
+        {
+          "p": "a lot of *people*",
+          "p_ar": "بزاف د الناس",
+          "en": "A lot of *people* use this app."
+        },
+        {
+          "p": "most *people*",
+          "p_ar": "أغلب الناس",
+          "en": "Most *people* start work at nine."
+        },
+        {
+          "p": "young *people*",
+          "p_ar": "الشباب",
+          "en": "Young *people* spend a lot of time on their phones."
+        }
+      ]
+    },
+    {
+      "w": "make a mistake",
+      "pos": "exp.",
+      "ipa": "/meɪk ə mɪˈsteɪk/",
+      "emoji": "❌",
+      "ar": "يغلط / دير غلطة",
+      "def": "To do something wrong without wanting to.",
+      "note": "Say make a mistake, not do a mistake. In Darija we say دار غلطة (do), but English uses make.",
+      "col": [
+        {
+          "p": "*make a mistake*",
+          "p_ar": "يغلط",
+          "en": "Everyone *makes a mistake* sometimes."
+        },
+        {
+          "p": "*make mistakes*",
+          "p_ar": "يغلط (بزاف د المرات)",
+          "en": "Don't be afraid to *make mistakes* when you speak English."
+        },
+        {
+          "p": "*make a mistake* in something",
+          "p_ar": "يغلط ف شي حاجة",
+          "en": "I *made a mistake* in the email."
+        },
+        {
+          "p": "Sorry, my *mistake*",
+          "p_ar": "سمح ليا، غلطتي",
+          "en": "Sorry, my *mistake*! I sent you the wrong file."
+        }
+      ],
+      "family": [
+        "mistake (n.)",
+        "mistaken (adj.)"
+      ]
+    },
+    {
+      "w": "begin",
+      "pos": "v.",
+      "ipa": "/bɪˈɡɪn/",
+      "emoji": "🏁",
+      "ar": "بدا",
+      "def": "To start to do something, or to start happening.",
+      "note": "Say begin to learn or begin learning, not begin learn. In daily talk start is more common; begin is a bit more formal.",
+      "col": [
+        {
+          "p": "*begin* with something",
+          "p_ar": "يبدا ب شي حاجة",
+          "en": "The meeting *begins* with a short presentation."
+        },
+        {
+          "p": "*begin* to do something",
+          "p_ar": "يبدا كيدير شي حاجة",
+          "en": "I *began* to learn English two years ago."
+        },
+        {
+          "p": "to *begin* with",
+          "p_ar": "فالأول / أول حاجة",
+          "en": "To *begin* with, I don't have enough time."
+        },
+        {
+          "p": "What time does it *begin*?",
+          "p_ar": "فأنهي ساعة غادي يبدا؟",
+          "en": "What time does it *begin*? I don't want to be late."
+        }
+      ],
+      "family": [
+        "beginning (n.)",
+        "beginner (n.)"
+      ]
+    },
+    {
+      "w": "outside",
+      "pos": "adv./prep.",
+      "ipa": "/ˌaʊtˈsaɪd/",
+      "emoji": "🌳",
+      "ar": "برا",
+      "def": "Not inside a building or place.",
+      "note": "Say I'm outside, not I'm in outside or I'm at outside. In Darija we say فبرا, but English doesn't need a preposition before outside.",
+      "col": [
+        {
+          "p": "go *outside*",
+          "p_ar": "خرج لبرا",
+          "en": "Let's go *outside*, it's a nice day."
+        },
+        {
+          "p": "*outside* the building",
+          "p_ar": "برا البناية",
+          "en": "Someone is waiting for you *outside* the building."
+        },
+        {
+          "p": "*outside* office hours",
+          "p_ar": "برا أوقات الخدمة",
+          "en": "I don't check my emails *outside* office hours."
+        },
+        {
+          "p": "It's cold *outside*",
+          "p_ar": "الجو بارد برا",
+          "en": "It's cold *outside*, so take a jacket."
+        }
+      ]
+    }
+  ],
+  "texts": [
+    {
+      "title": "Text 1 – Moving day",
+      "en": "Last Saturday, my cousin Yassine *moved|move* to a new apartment in Rabat. He asked me to help, so I *brought|bring* a friend along.\n\nWhen we arrived, a lot of *people|people* were standing *outside|outside* the building. *Almost|almost* everyone from his family was there. We *began|begin* with the heavy things, like the fridge and the sofa. Then I *made a mistake|make a mistake*: I put the kitchen boxes in the bedroom. Yassine just laughed and said it was fine.\n\nBy the afternoon, we were *behind|behind* schedule, so we ordered pizza. While we were eating, Yassine *found|find* out that his new neighbor is from my city. In the end, we all *had fun|have fun* playing cards on the floor. I *almost|almost* always say yes when a friend needs help."
+    },
+    {
+      "title": "Text 2 – A day at the call center",
+      "en": "To *begin|begin* with, I work in a call center. Most *people|people* think it's easy, but it isn't. Many customers *find|find* it hard to explain their problem on the phone.\n\nSometimes I *make mistakes|make a mistake* too, and I say, \"Sorry, my mistake!\" When a problem is big, I *bring|bring* it up with my manager. I don't want to fall *behind|behind* with my tasks, but I also need a break. At lunch, I go *outside|outside* for some fresh air. It's cold *outside|outside* today, so I only stay five minutes.\n\nAfter the break, I *move|move* on to the next task. At five o'clock, I'm *almost|almost* ready to go home, but one more customer calls. I like my team, and we *have fun|have fun* together even on busy days."
+    }
+  ]
+}

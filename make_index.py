@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
-"""Scans data/*.json and writes data/index.json and data/search.json (run locally or by the GitHub Action).
-Lists are flat files (data/unit1.json, data/unit2.json ...). An optional "group" field in a file groups lists on the home page.
+"""Scans data/**/*.json and writes data/index.json and data/search.json (run locally or by the GitHub Action).
+Lists can be flat files (data/unit1.json) or live in subfolders (data/by_level/Basic Vocabulary (A1A2)/part1.json).
+The folders are only for organising: the group / set / part fields inside each file decide where it shows on the home page.
+The list id is the path without .json, folders joined with "__" and unsafe characters replaced by "_"
+(keep listId() in js/manage.js identical).
 search.json = one compact entry per word: w, pos, ar, def, l (list id), i (word index), c (collocations [[phrase, arabic], ...]).
 
 Invalid files are SKIPPED (the other lists still get indexed) and reported as GitHub annotations
 (::error file=...::message). The script then exits 1 so the Action run is marked red.
-Keep check() in sync with validateList() in js/upload.js."""
+Keep check() in sync with validateList() in js/manage.js."""
 import json, re, sys, pathlib
 DATA = pathlib.Path(__file__).parent / "data"
-SKIP = {"index.json", "search.json", "catalog.json"}
+SKIP = {"index.json", "search.json", "catalog.json"}   # generated files; only skipped at the top level of data/
 strip = lambda s: (s or "").replace("*", "")
 stars = lambda s: str(s).count("*")
 
@@ -34,7 +37,7 @@ def check(d):
     return errs
 
 entries, search, failed = [], [], 0
-for f in sorted(DATA.glob("*.json")):
+for f in sorted(DATA.rglob("*.json")):
     rel = f.relative_to(DATA)
     if rel.name in SKIP and len(rel.parts) == 1: continue
     try:

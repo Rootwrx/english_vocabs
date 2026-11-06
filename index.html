@@ -70,7 +70,8 @@ const cache={};let INDEX=null,SEARCH=null,EDITMODE=false;
 async function J(u){const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw new Error('Cannot load '+u);return r.json()}
 async function getIndex(){return INDEX=INDEX||await J('data/index.json')}
 async function getSearch(){if(!SEARCH){try{SEARCH=await J('data/search.json')}catch(e){SEARCH=[]}}return SEARCH}
-async function getList(id){if(cache[id])return cache[id];const e=(await getIndex()).find(x=>x.id===id);if(!e)throw new Error('Unknown list '+id);const l=await J('data/'+e.file);l.id=id;return cache[id]=l}
+/* e.file is a path relative to data/ and may contain subfolders (spaces, parentheses): encode each segment */
+async function getList(id){if(cache[id])return cache[id];const e=(await getIndex()).find(x=>x.id===id);if(!e)throw new Error('Unknown list '+id);const l=await J('data/'+e.file.split('/').map(encodeURIComponent).join('/'));l.id=id;return cache[id]=l}
 
 let CAT=null;
 async function getCatalog(){if(!CAT){try{CAT=await J('data/catalog.json')}catch(e){CAT=[]}}return CAT}

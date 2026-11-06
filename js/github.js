@@ -1,9 +1,11 @@
 /* github.js — the ONLY file that talks to GitHub.
  * Everything the app changes in the repo goes through ghCommit(): one atomic commit per action
  * (add/replace/delete/rename any number of files). A rename is therefore a single commit, and the
- * build-index Action runs once and rebuilds index.json + search.json from whatever is in data/. */
+ * build-index Action runs once and rebuilds index.json + search.json from whatever is in data/.
+ * List files may live in subfolders of data/ (e.g. data/by_level/Basic Vocabulary (A1A2)/part1.json);
+ * every "name" below is the path relative to data/ ("by_level/Basic Vocabulary (A1A2)/part1.json"). */
 const GH_KEY = 'wordlists.gh.v1';
-const RESERVED = ['index', 'search', 'catalog'];            // generated files, never edited by the app
+const RESERVED = ['index', 'search', 'catalog'];            // generated files at the top of data/, never edited by the app
 
 function ghCfg() {
   let c = { repo: '', branch: 'main', token: '' };
@@ -31,15 +33,18 @@ async function ghApi(cfg, method, path, body) {
   return j;
 }
 
-/** JSON files in data/ (except generated ones): [{name, sha}] */
+/** JSON files under data/ including subfolders (except generated ones): [{name: "sub/file.json", sha}] */
 async function ghList(cfg) {
-  const a = await ghApi(cfg, 'GET', `contents/data?ref=${encodeURIComponent(cfg.branch)}`);
-  return (a || []).filter(f => f.type === 'file' && /\.json$/i.test(f.name) && !RESERVED.includes(f.name.slice(0, -5)))
-    .map(f => ({ name: f.name, sha: f.sha }));
+  const t = await ghApi(cfg, 'GET', `git/trees/${encodeURIComponent(cfg.branch)}?recursive=1`);
+  return ((t && t.tree) || [])
+    .filter(f => f.type === 'blob' && /^data\/.+\.json$/i.test(f.path))
+    .map(f => ({ name: f.path.slice(5), sha: f.sha }))
+    .filter(f => !RESERVED.includes(f.name.slice(0, -5)));   // only top-level names can match, nested ones contain "/"
 }
-/** One data file: {text, sha} or null */
+/** One data file (name relative to data/): {text, sha} or null */
 async function ghFile(cfg, name) {
-  const j = await ghApi(cfg, 'GET', `contents/data/${encodeURIComponent(name)}?ref=${encodeURIComponent(cfg.branch)}`);
+  const p = name.split('/').map(encodeURIComponent).join('/');
+  const j = await ghApi(cfg, 'GET', `contents/data/${p}?ref=${encodeURIComponent(cfg.branch)}`);
   return j && { text: b64dec(j.content), sha: j.sha };
 }
 /** Atomic commit. changes: [{path, content}] to add/replace, [{path, del:true}] to remove. */

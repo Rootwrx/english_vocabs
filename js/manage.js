@@ -3,11 +3,19 @@
  * All repo writes go through ghCommit() in github.js; the build-index Action rebuilds index.json/search.json.
  * After each commit the in-memory INDEX is patched so the home page updates instantly.
  * validateList() mirrors check() in make_index.py — keep both in sync.
+ * Lists may live in subfolders of data/; a file name below is always the path relative to data/
+ * (e.g. "by_level/Basic Vocabulary (A1A2)/part1.json").
  * Uses globals from index.html at call time: app, esc, S, save, cache, INDEX, J, route. */
 
 /* ---------- helpers ---------- */
 const slug = s => String(s).replace(/\.json$/i, '').toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
-const listId = file => file.replace(/\.json$/i, '').replace(/[^A-Za-z0-9_-]+/g, '_');   // same rule as make_index.py
+/* same rule as make_index.py: path without .json, folders joined with "__", unsafe characters -> "_" */
+const listId = file => file.replace(/\.json$/i, '').split('/').join('__').replace(/[^A-Za-z0-9_-]+/g, '_');
+/* where an uploaded list is saved: data/<group>/<set>/part<N>.json when it has group + set, else a flat data/<name>.json */
+const dirName = s => String(s).replace(/[\\/:*?"<>|#%]+/g, '-').replace(/\s+/g, ' ').trim();
+const gDir = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '') || 'other';
+const listPath = (d, name) => d && d.group && d.set
+  ? `${gDir(d.group)}/${dirName(d.set) || 'set'}/${d.part ? 'part' + d.part : name}.json` : name + '.json';
 const idxEntry = (file, d) => ({ id: listId(file), file, title: d.title || file.replace(/\.json$/i, ''), group: d.group || '',
   set: d.set || '', part: d.part || 0,
   count: (d.words || []).length, texts: (d.texts || []).length });
@@ -60,7 +68,7 @@ document.addEventListener('click', e => {
   ({ edit: editList, details: detailsList, dup: dupList, dl: dlList, del: delList })[b.dataset.act](b.dataset.file);
 });
 
-/** Files in data/ that are not in index.json (invalid lists, or a build that has not run yet) */
+/** Files in data/ (any subfolder) that are not in index.json (invalid lists, or a build that has not run yet) */
 async function orphanCards() {
   const cfg = ghReady();
   if (!cfg) return '<p class="mut">Connect GitHub (⬆️ Upload) to edit lists.</p>';
@@ -102,20 +110,21 @@ async function detailsList(f) {
   let file; try { file = await ghFile(cfg, f); } catch (e) { return alert(e.message); }
   if (!file) return alert(`data/${f} was not found in ${cfg.repo}`);
   let d; try { d = JSON.parse(file.text); } catch (e) { return alert('This file is not valid JSON. Use ✏️ Edit to fix it first.'); }
-  const base = f.replace(/\.json$/i, ''), groups = [...new Set((INDEX || []).map(e => e.group).filter(Boolean))];
+  const dir = f.slice(0, f.lastIndexOf('/') + 1),               // the folder stays; only the file name changes
+    base = f.slice(dir.length).replace(/\.json$/i, ''), groups = [...new Set((INDEX || []).map(e => e.group).filter(Boolean))];
   const inp = (id, label, val, extra = '') => `<div class="tag">${label}</div><input class="ans" id="${id}" value="${esc(val)}" style="text-align:left;margin:4px 0" ${extra}>`;
   const m = modal(`<h2>Rename / details</h2>
     ${inp('d-title', 'Title', d.title || base)}${inp('d-ar', 'Arabic title (optional)', d.title_ar || '')}
     ${inp('d-group', 'Group (optional, lists with the same group are shown together)', d.group || '', 'list="d-groups"')}
     <datalist id="d-groups">${groups.map(g => `<option value="${esc(g)}">`).join('')}</datalist>
     ${inp('d-file', 'File name (changing it renames data/' + esc(f) + ')', base)}
-    <p class="mut">Renaming the file keeps your learning progress on this device.</p>
+    <p class="mut">Renaming the file keeps your learning progress on this device. The folder stays the same.</p>
     <div id="d-st"></div><button class="btn" id="d-save">Save to repo</button><button class="btn alt" data-close>Cancel</button>`);
   const v = id => m.querySelector('#' + id).value.trim(), st = m.querySelector('#d-st');
   m.querySelector('#d-save').onclick = async () => {
-    const nf = slug(v('d-file')), newFile = nf + '.json';
+    const nf = slug(v('d-file')), newFile = dir + nf + '.json';
     if (!nf) return st.innerHTML = '<span class="bad">File name is empty.</span>';
-    if (RESERVED.includes(nf)) return st.innerHTML = `<span class="bad">"${nf}" is reserved.</span>`;
+    if (!dir && RESERVED.includes(nf)) return st.innerHTML = `<span class="bad">"${nf}" is reserved.</span>`;
     d.title = v('d-title') || d.title || base;
     v('d-ar') ? d.title_ar = v('d-ar') : delete d.title_ar;
     v('d-group') ? d.group = v('d-group') : delete d.group;
@@ -135,24 +144,25 @@ async function detailsList(f) {
   };
 }
 
-/* ---------- duplicate ---------- */
+/* ---------- duplicate (the copy is created in the same folder) ---------- */
 async function dupList(f) {
   const cfg = need(); if (!cfg) return;
-  const base = f.replace(/\.json$/i, ''), nf = slug(prompt('File name for the copy:', base + '-copy') || '');
-  if (!nf || RESERVED.includes(nf)) return;
+  const dir = f.slice(0, f.lastIndexOf('/') + 1), base = f.slice(dir.length).replace(/\.json$/i, ''),
+    nf = slug(prompt('File name for the copy:', base + '-copy') || '');
+  if (!nf || (!dir && RESERVED.includes(nf))) return;
   try {
-    if ((await ghList(cfg)).some(x => x.name === nf + '.json')) return alert(`data/${nf}.json already exists.`);
+    if ((await ghList(cfg)).some(x => x.name === dir + nf + '.json')) return alert(`data/${dir}${nf}.json already exists.`);
     const file = await ghFile(cfg, f), d = JSON.parse(file.text); d.title = (d.title || base) + ' (copy)';
-    await ghCommit(cfg, `duplicate list: ${base} → ${nf}`, [{ path: `data/${nf}.json`, content: pretty(d) }]);
-    idxSet(nf + '.json', d); toast(DONE); route();
+    await ghCommit(cfg, `duplicate list: ${base} → ${nf}`, [{ path: `data/${dir}${nf}.json`, content: pretty(d) }]);
+    idxSet(dir + nf + '.json', d); toast(DONE); route();
   } catch (e) { alert(e.message); }
 }
 
 /* ---------- download (no token needed) ---------- */
 async function dlList(f) {
   try {
-    const r = await fetch('data/' + f, { cache: 'no-cache' }); if (!r.ok) throw new Error('Cannot load data/' + f);
-    const a = document.createElement('a'); a.href = URL.createObjectURL(await r.blob()); a.download = f; a.click(); URL.revokeObjectURL(a.href);
+    const r = await fetch('data/' + f.split('/').map(encodeURIComponent).join('/'), { cache: 'no-cache' }); if (!r.ok) throw new Error('Cannot load data/' + f);
+    const a = document.createElement('a'); a.href = URL.createObjectURL(await r.blob()); a.download = f.split('/').pop(); a.click(); URL.revokeObjectURL(a.href);
   } catch (e) { alert(e.message); }
 }
 
@@ -184,7 +194,7 @@ async function cleanProgress() {
 let UP = [];
 function renderUp() {
   const ready = UP.filter(r => !r.errs.length && !/✓/.test(r.st || ''));
-  document.getElementById('up-rows').innerHTML = UP.map(r => `<div class="box"><b>${esc(r.name)}.json</b>
+  document.getElementById('up-rows').innerHTML = UP.map(r => `<div class="box"><b>data/${esc(r.path)}</b>
     <span class="mut">${esc(r.data?.title || '')} · ${r.data?.words?.length || 0} words</span>
     <span class="${r.errs.length || /failed/.test(r.st) ? 'bad' : 'good'}"> ${r.errs.length ? '' : esc(r.st || '✓ valid')}</span>${r.errs.length ? '<div>' + errHtml(r.errs) + '</div>' : ''}</div>`).join('');
   const act = document.getElementById('up-act');
@@ -193,11 +203,11 @@ function renderUp() {
   go.onclick = async () => {
     const cfg = need(); if (!cfg) return; go.disabled = true;
     try {
-      const have = new Set((await ghList(cfg)).map(f => f.name)), over = ready.filter(r => have.has(r.name + '.json'));
-      if (over.length && !confirm(`Overwrite existing: ${over.map(r => r.name + '.json').join(', ')}?`)) { go.disabled = false; return; }
+      const have = new Set((await ghList(cfg)).map(f => f.name)), over = ready.filter(r => have.has(r.path));
+      if (over.length && !confirm(`Overwrite existing: ${over.map(r => r.path).join(', ')}?`)) { go.disabled = false; return; }
       await ghCommit(cfg, `${ready.length > 1 ? 'add lists' : 'add list'}: ${ready.map(r => r.name).join(', ')}`,
-        ready.map(r => ({ path: `data/${r.name}.json`, content: pretty(r.data) })));
-      ready.forEach(r => { r.st = (have.has(r.name + '.json') ? 'updated' : 'uploaded') + ' ✓'; idxSet(r.name + '.json', r.data); delete cache[listId(r.name)]; });
+        ready.map(r => ({ path: `data/${r.path}`, content: pretty(r.data) })));
+      ready.forEach(r => { r.st = (have.has(r.path) ? 'updated' : 'uploaded') + ' ✓'; idxSet(r.path, r.data); delete cache[listId(r.path)]; });
       renderUp(); toast(DONE);
       document.getElementById('up-act').innerHTML = '<a class="btn" href="#/">← Back to lists</a>';
     } catch (e) { ready.forEach(r => r.st = 'failed: ' + e.message); renderUp(); }
@@ -214,7 +224,8 @@ function uploadView() {
     <input class="ans" id="gh-token" type="password" placeholder="GitHub token" value="${esc(c.token)}" style="text-align:left">
     <button class="btn alt" id="gh-save">Save</button> <span class="mut" id="gh-msg"></span></div>
   <div class="card"><h2>2 · Choose list files (.json)</h2>
-    <p class="mut">Same format as <a href="data/example.json">example.json</a>. Every file is checked before upload, and all files go in one commit.</p>
+    <p class="mut">Same format as <a href="data/example.json">example.json</a>. Every file is checked before upload, and all files go in one commit.
+    A list with <code>group</code> and <code>set</code> is saved to <code>data/&lt;group&gt;/&lt;set&gt;/part&lt;N&gt;.json</code>; otherwise to <code>data/&lt;file name&gt;.json</code>.</p>
     <input type="file" id="up-files" accept=".json,application/json" multiple><div id="up-rows"></div><div id="up-act"></div></div>`;
   document.getElementById('gh-save').onclick = () => {
     const v = id => document.getElementById(id).value.trim();
@@ -226,7 +237,8 @@ function uploadView() {
     for (const f of ev.target.files) {
       const row = { name: slug(f.name) || 'list', data: null, errs: [], st: '' };
       try { row.data = JSON.parse(await f.text()); row.errs = validateList(row.data); } catch (e) { row.errs = ['Invalid JSON: ' + e.message]; }
-      if (RESERVED.includes(row.name)) row.errs.push(`"${row.name}" is a reserved name; rename the file`);
+      row.path = listPath(row.data, row.name);
+      if (!row.path.includes('/') && RESERVED.includes(row.name)) row.errs.push(`"${row.name}" is a reserved name; rename the file`);
       UP.push(row);
     }
     renderUp();
