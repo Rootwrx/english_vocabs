@@ -1,10 +1,18 @@
 [
-    {
-        "id": "oxford3000-01",
-        "file": "oxford3000-01.json",
-        "title": "Oxford 3000 – List 1 (abandon → accept)",
-        "group": "",
-        "count": 10,
-        "texts": 2
-    }
+ {
+  "id": "example",
+  "file": "example.json",
+  "title": "Chunks – Unit 1",
+  "group": "",
+  "count": 4,
+  "texts": 1
+ },
+ {
+  "id": "oxford3000-01",
+  "file": "oxford3000-01.json",
+  "title": "Oxford 3000 – List 1 (abandon → accept)",
+  "group": "",
+  "count": 10,
+  "texts": 2
+ }
 ]
