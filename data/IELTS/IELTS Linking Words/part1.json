@@ -8,6 +8,16 @@
       "ar": "علاوة على ذلك",
       "def": "Used to add more information that supports what you have already said.",
       "note": "Furthermore is used to add another important point. It is more formal than also.",
+      "ex": [
+        {
+          "en": "The hotel is close to the beach. *Furthermore*, the price includes breakfast.",
+          "ar": "الفندق قريب من الشاطئ. علاوة على ذلك، السعر يشمل الفطور."
+        },
+        {
+          "en": "The new phone is fast. *Furthermore*, its battery lasts two days.",
+          "ar": "الهاتف الجديد سريع. علاوة على ذلك، تدوم بطاريته يومين."
+        }
+      ],
       "col": [
         {
           "p": "*furthermore*, it is important to",
@@ -34,6 +44,16 @@
       "ar": "من ناحية أخرى",
       "def": "Used to introduce a different or opposite point of view.",
       "note": "On the other hand is commonly used to compare two different sides of a situation.",
+      "ex": [
+        {
+          "en": "Cities offer more jobs. *On the other hand*, life there is more expensive.",
+          "ar": "المدن توفر وظائف أكثر. من ناحية أخرى، الحياة فيها أغلى."
+        },
+        {
+          "en": "Online classes are flexible. *On the other hand*, students get less speaking practice.",
+          "ar": "الدروس عبر الإنترنت مرنة. من ناحية أخرى، يحصل الطلاب على ممارسة أقل للتحدث."
+        }
+      ],
       "col": [
         {
           "p": "on the one hand ... *on the other hand*",
@@ -60,6 +80,16 @@
       "ar": "وبالتالي",
       "def": "Used to introduce a result or consequence of something.",
       "note": "Consequently is more formal than so. It connects a cause with its result.",
+      "ex": [
+        {
+          "en": "It rained all week. *Consequently*, the match was cancelled.",
+          "ar": "أمطرت طوال الأسبوع. وبالتالي، أُلغيت المباراة."
+        },
+        {
+          "en": "He didn't study. *Consequently*, he failed the exam.",
+          "ar": "لم يدرس. وبالتالي، رسب في الامتحان."
+        }
+      ],
       "col": [
         {
           "p": "*consequently*, we had to",
@@ -86,6 +116,16 @@
       "ar": "على سبيل المثال",
       "def": "Used to give a specific example of something.",
       "note": "For instance and for example have almost the same meaning and are commonly used in everyday English.",
+      "ex": [
+        {
+          "en": "Some jobs are growing fast. *For instance*, jobs in renewable energy.",
+          "ar": "بعض الوظائف تنمو بسرعة. على سبيل المثال، الوظائف في الطاقة المتجددة."
+        },
+        {
+          "en": "Many things affect health. *For instance*, sleep and diet.",
+          "ar": "أشياء كثيرة تؤثر على الصحة. على سبيل المثال، النوم والغذاء."
+        }
+      ],
       "col": [
         {
           "p": "*for instance*, you can",
@@ -112,6 +152,16 @@
       "ar": "في هذه الأثناء",
       "def": "Used to describe something happening while another thing is happening.",
       "note": "Meanwhile connects two activities happening around the same time.",
+      "ex": [
+        {
+          "en": "I cooked dinner. *Meanwhile*, my brother cleaned the living room.",
+          "ar": "طبخت العشاء. في هذه الأثناء، نظف أخي غرفة المعيشة."
+        },
+        {
+          "en": "The engineers fixed the server. *Meanwhile*, customers waited for news.",
+          "ar": "أصلح المهندسون الخادم. في هذه الأثناء، انتظر العملاء الأخبار."
+        }
+      ],
       "col": [
         {
           "p": "*meanwhile*, I'm going to",
@@ -138,6 +188,16 @@
       "ar": "بالإضافة إلى ذلك",
       "def": "Used to add another piece of information.",
       "note": "Additionally is commonly used in formal writing and presentations. In everyday conversation, also or plus is often more natural.",
+      "ex": [
+        {
+          "en": "The report explains the problem. *Additionally*, it suggests three solutions.",
+          "ar": "يشرح التقرير المشكلة. بالإضافة إلى ذلك، يقترح ثلاثة حلول."
+        },
+        {
+          "en": "The gym is open daily. *Additionally*, it offers free classes on Fridays.",
+          "ar": "النادي مفتوح يوميًا. بالإضافة إلى ذلك، يقدم حصصًا مجانية يوم الجمعة."
+        }
+      ],
       "col": [
         {
           "p": "*additionally*, we need",
@@ -164,6 +224,16 @@
       "ar": "في الوقت نفسه",
       "def": "Used when two or more things happen together or when two ideas are true together.",
       "note": "At the same time can describe simultaneous actions or introduce a contrasting point.",
+      "ex": [
+        {
+          "en": "Technology makes life easier. *At the same time*, it can make us lazy.",
+          "ar": "التكنولوجيا تجعل الحياة أسهل. في الوقت نفسه، قد تجعلنا كسالى."
+        },
+        {
+          "en": "They arrived *at the same time*.",
+          "ar": "وصلوا في الوقت نفسه."
+        }
+      ],
       "col": [
         {
           "p": "do two things *at the same time*",
@@ -190,6 +260,16 @@
       "ar": "في النهاية",
       "def": "Used to describe the final result or the most important point after considering everything.",
       "note": "Ultimately is often used when explaining the final outcome of a process or decision.",
+      "ex": [
+        {
+          "en": "*Ultimately*, students are responsible for their own learning.",
+          "ar": "في النهاية، الطلاب مسؤولون عن تعلمهم."
+        },
+        {
+          "en": "There were many options, but *ultimately* she chose the cheapest one.",
+          "ar": "كانت هناك خيارات كثيرة، لكنها في النهاية اختارت الأرخص."
+        }
+      ],
       "col": [
         {
           "p": "*ultimately*, it depends on",
@@ -216,6 +296,16 @@
       "ar": "نتيجة لذلك",
       "def": "Used to introduce the result of an action or situation.",
       "note": "As a result is commonly used to explain what happened because of something else.",
+      "ex": [
+        {
+          "en": "Prices went up. *As a result*, fewer people bought the product.",
+          "ar": "ارتفعت الأسعار. نتيجة لذلك، قلّ عدد من اشتروا المنتج."
+        },
+        {
+          "en": "The road was closed. *As a result*, we were late.",
+          "ar": "كان الطريق مغلقًا. نتيجة لذلك، تأخرنا."
+        }
+      ],
       "col": [
         {
           "p": "*as a result*, I had to",
@@ -242,6 +332,16 @@
       "ar": "بالإضافة إلى",
       "def": "Used to add another person, thing, or activity to what has already been mentioned.",
       "note": "As well as means in addition to. It is often used to connect two things in the same sentence.",
+      "ex": [
+        {
+          "en": "The course teaches grammar *as well as* vocabulary.",
+          "ar": "تُدرّس الدورة القواعد بالإضافة إلى المفردات."
+        },
+        {
+          "en": "He speaks Arabic and French *as well as* English.",
+          "ar": "يتحدث العربية والفرنسية بالإضافة إلى الإنجليزية."
+        }
+      ],
       "col": [
         {
           "p": "something *as well as* something",

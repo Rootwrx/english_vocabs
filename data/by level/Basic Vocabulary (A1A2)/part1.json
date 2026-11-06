@@ -8,6 +8,16 @@
       "ar": "جيب",
       "def": "To take something or someone with you to a place.",
       "note": "Say Take this file to the office (away from here), not Bring this file to the office. Bring = toward you or the listener, take = away from you. In Darija جيب is used for both.",
+      "ex": [
+        {
+          "en": "Can you *bring* some water, please?",
+          "ar": "واش تقدر تجيب شوية د الما، عافاك؟"
+        },
+        {
+          "en": "She *brought* her laptop to the meeting.",
+          "ar": "جابت الحاسوب ديالها للاجتماع."
+        }
+      ],
       "col": [
         {
           "p": "*bring* something with you",
@@ -42,6 +52,16 @@
       "ar": "تقريباً / شوية وكان",
       "def": "Very close to something, but not completely.",
       "note": "Say almost everyone, not almost of the people. Almost goes directly before the word, with no \"of\".",
+      "ex": [
+        {
+          "en": "It's *almost* midnight. I need to sleep.",
+          "ar": "تقريباً نص الليل. خاصني نعس."
+        },
+        {
+          "en": "We're *almost* there.",
+          "ar": "تقريباً وصلنا."
+        }
+      ],
       "col": [
         {
           "p": "*almost* everyone",
@@ -73,6 +93,16 @@
       "ar": "تسلى / تهنا",
       "def": "To enjoy yourself and have a good time.",
       "note": "Say have fun, not make fun. Make fun of someone means to laugh at them in a mean way.",
+      "ex": [
+        {
+          "en": "I hope you *have fun* on your trip.",
+          "ar": "نتمنى تتسلى فالسفر ديالك."
+        },
+        {
+          "en": "We *had fun* at the beach yesterday.",
+          "ar": "تسلينا البارح فالبحر."
+        }
+      ],
       "col": [
         {
           "p": "*Have fun*!",
@@ -104,6 +134,16 @@
       "ar": "من ورا / مورا",
       "def": "At the back of something; later or slower than planned.",
       "note": "Say behind the house, not behind of the house. Don't add \"of\" after behind.",
+      "ex": [
+        {
+          "en": "The cat is hiding *behind* the sofa.",
+          "ar": "القطوسة مخبية من ورا الكنبة."
+        },
+        {
+          "en": "Our team is two points *behind*.",
+          "ar": "الفريق ديالنا متأخر ب جوج نقط."
+        }
+      ],
       "col": [
         {
           "p": "*behind* the door",
@@ -135,6 +175,16 @@
       "ar": "تنقل / حرك",
       "def": "To go to a new place or position; to change where you live.",
       "note": "Say move to Rabat, not move in Rabat. In Darija we say تنقل ل / ف, but in English use to for the new place.",
+      "ex": [
+        {
+          "en": "Please *move* a little. I can't see the screen.",
+          "ar": "عافاك زحزح شوية. ما كنشوفش الشاشة."
+        },
+        {
+          "en": "They want to *move* to Spain.",
+          "ar": "بغاو يتنقلو لإسبانيا."
+        }
+      ],
       "col": [
         {
           "p": "*move* to a new city",
@@ -170,6 +220,16 @@
       "ar": "لقى",
       "def": "To see or get something you were looking for; to discover something.",
       "note": "Say I found it difficult to understand, not I found difficult to understand. You need \"it\" after find. The past form is found, not finded.",
+      "ex": [
+        {
+          "en": "I can't *find* my keys.",
+          "ar": "ما قادرش نلقى المفاتيح ديالي."
+        },
+        {
+          "en": "Did you *find* the answer?",
+          "ar": "واش لقيتي الجواب؟"
+        }
+      ],
       "col": [
         {
           "p": "*find* out",
@@ -204,6 +264,16 @@
       "ar": "الناس",
       "def": "More than one person.",
       "note": "Say people are, not people is. Also say a lot of people, not a lot of peoples. People is already plural.",
+      "ex": [
+        {
+          "en": "The *people* in my neighborhood are very kind.",
+          "ar": "الناس فالحومة ديالي مزيانين بزاف."
+        },
+        {
+          "en": "How many *people* are coming to the party?",
+          "ar": "شحال د الناس غادي يجيو للحفلة؟"
+        }
+      ],
       "col": [
         {
           "p": "*people* say",
@@ -235,6 +305,16 @@
       "ar": "يغلط / دير غلطة",
       "def": "To do something wrong without wanting to.",
       "note": "Say make a mistake, not do a mistake. In Darija we say دار غلطة (do), but English uses make.",
+      "ex": [
+        {
+          "en": "I *made a mistake* and sent the email to the wrong person.",
+          "ar": "غلطت وصيفطت الإيميل لشخص غلط."
+        },
+        {
+          "en": "Be careful, or you'll *make a mistake*.",
+          "ar": "رد بالك، ولا غادي تغلط."
+        }
+      ],
       "col": [
         {
           "p": "*make a mistake*",
@@ -270,6 +350,16 @@
       "ar": "بدا",
       "def": "To start to do something, or to start happening.",
       "note": "Say begin to learn or begin learning, not begin learn. In daily talk start is more common; begin is a bit more formal.",
+      "ex": [
+        {
+          "en": "The movie *begins* at eight.",
+          "ar": "الفيلم كيبدا فالثامنة."
+        },
+        {
+          "en": "Let's *begin* with the first question.",
+          "ar": "يالله نبداو بالسؤال الأول."
+        }
+      ],
       "col": [
         {
           "p": "*begin* with something",
@@ -305,6 +395,16 @@
       "ar": "برا",
       "def": "Not inside a building or place.",
       "note": "Say I'm outside, not I'm in outside or I'm at outside. In Darija we say فبرا, but English doesn't need a preposition before outside.",
+      "ex": [
+        {
+          "en": "The kids are playing *outside*.",
+          "ar": "الدراري كيلعبو برا."
+        },
+        {
+          "en": "I'll wait for you *outside*.",
+          "ar": "غادي نتسناك برا."
+        }
+      ],
       "col": [
         {
           "p": "go *outside*",
