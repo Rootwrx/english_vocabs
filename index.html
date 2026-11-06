@@ -28,12 +28,17 @@ input.ans,select.ans{width:100%;font:inherit;font-size:22px;padding:8px 12px;bor
 select.ans{font-size:18px;text-align:left}
 .rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.rate .btn{margin:0;padding:10px 4px}
 .good{color:var(--ok);font-weight:700}.bad{color:var(--no);font-weight:700}.hl{outline:3px solid var(--ok)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:12px;z-index:50}
+.dlg{background:var(--card);border-radius:18px;padding:20px;max-width:720px;width:100%;max-height:92vh;overflow:auto}
+.tools{margin-top:8px}.sm{font-size:14px;padding:4px 10px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ac);color:var(--bg);padding:10px 18px;border-radius:12px;font-weight:700;z-index:60;max-width:90%}
 button.chip{border:0;font:inherit;font-size:16px;cursor:pointer}
 .ygbtn{font-size:14px;padding:3px 10px;margin:4px 0 0}.yg{margin:8px 0}.yg .nav{margin-top:4px}.yg a{font-size:13px}
 </style></head><body>
-<header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb" style="flex:1"></span><a href="#/upload" title="Upload lists">⬆️</a><a href="#/manage" title="Manage lists">🗂️</a><a href="#/settings" title="Settings">⚙️</a></header>
+<header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb" style="flex:1"></span><a href="#/upload" title="Upload lists">⬆️</a><a href="#/settings" title="Settings">⚙️</a></header>
 <main id="app">Loading…</main>
-<script src="js/upload.js"></script>
+<script src="js/github.js"></script>
+<script src="js/manage.js"></script>
 <script>
 const app=document.getElementById('app');
 const esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -45,7 +50,7 @@ const save=()=>{try{localStorage.setItem('wordlists.v1',JSON.stringify(S))}catch
 let G={n:3,acc:'us',auto:false,where:'both'};
 try{Object.assign(G,JSON.parse(localStorage.getItem('wordlists.settings.v1')||'{}'))}catch(e){}
 const saveG=()=>{try{localStorage.setItem('wordlists.settings.v1',JSON.stringify(G))}catch(e){}};
-const cache={};let INDEX=null,SEARCH=null;
+const cache={};let INDEX=null,SEARCH=null,EDITMODE=false;
 async function J(u){const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw new Error('Cannot load '+u);return r.json()}
 async function getIndex(){return INDEX=INDEX||await J('data/index.json')}
 async function getSearch(){if(!SEARCH){try{SEARCH=await J('data/search.json')}catch(e){SEARCH=[]}}return SEARCH}
@@ -121,7 +126,7 @@ function wordCard(l,w,full){
 async function home(){
   document.getElementById('crumb').textContent='';
   const idx=await getIndex();
-  app.innerHTML='<h1>Your lists</h1><input class="ans" id="q" placeholder="Search lists and words (English or Arabic)…" style="text-align:left"><div id="hits"></div><div id="lists"></div>';
+  app.innerHTML='<h1>Your lists</h1><div><button class="btn alt" id="editmode"></button><a class="btn alt" href="#/upload">⬆️ Upload lists</a></div><input class="ans" id="q" placeholder="Search lists and words (English or Arabic)…" style="text-align:left"><div id="hits"></div><div id="lists"></div><div id="orph"></div>';
   let tok=0;
   const words=async q=>{const my=++tok,el=document.getElementById('hits');
     if(q.length<2){el.innerHTML='';return}
@@ -142,8 +147,11 @@ async function home(){
     idx.filter(e=>!q||(e.title+' '+(e.group||'')).toLowerCase().includes(q)).forEach(e=>(g[e.group||'']=g[e.group||'']||[]).push(e));
     document.getElementById('lists').innerHTML=Object.keys(g).sort((x,y)=>x.localeCompare(y,undefined,{numeric:true})).map(k=>(k?`<div class="tag">${esc(k)}</div>`:'')+
       g[k].sort((x,y)=>x.title.localeCompare(y.title,undefined,{numeric:true})).map(e=>{const mine=keys.filter(x=>x.startsWith(e.id+'::')),due=mine.filter(x=>S[x].due<=Date.now()).length,nw=Math.max(0,(e.count||0)-mine.length);
-        return `<a class="card" style="display:block;color:inherit;text-decoration:none;padding:14px 18px" href="#/l/${e.id}"><h2 style="margin:0">${esc(e.title)}</h2><div class="mut">${e.count} words${e.texts?' · '+e.texts+' text'+(e.texts>1?'s':''):''} · <span class="${due?'good':''}">${due} due</span> · ${nw} new</div></a>`}).join('')).join('')||(q?'':'<p class="mut">No lists found.</p>')};
-  document.getElementById('q').oninput=draw;draw()}
+        return `<div class="card" style="padding:14px 18px"><a style="display:block;color:inherit;text-decoration:none" href="#/l/${e.id}"><h2 style="margin:0">${esc(e.title)}</h2><div class="mut">${e.count} words${e.texts?' · '+e.texts+' text'+(e.texts>1?'s':''):''} · <span class="${due?'good':''}">${due} due</span> · ${nw} new</div></a>${EDITMODE?listTools(e.file):''}</div>`}).join('')).join('')||(q?'':'<p class="mut">No lists found.</p>')};
+  document.getElementById('q').oninput=draw;draw();
+  const em=document.getElementById('editmode'),orph=()=>{const o=document.getElementById('orph');o.innerHTML='';if(EDITMODE)orphanCards().then(h=>{if(document.getElementById('orph')===o)o.innerHTML=h})};
+  const lab=()=>em.textContent=EDITMODE?'✓ Done editing':'✏️ Edit lists';lab();orph();
+  em.onclick=()=>{EDITMODE=!EDITMODE;lab();draw();orph()}}
 function settings(){
   document.getElementById('crumb').textContent='/ Settings';
   const sel=(k,opts)=>`<select class="ans" data-k="${k}">${opts.map(([v,t])=>`<option value="${v}"${String(G[k])===String(v)?' selected':''}>${t}</option>`).join('')}</select>`;
@@ -152,7 +160,9 @@ function settings(){
   <div class="tag">Accent</div>${sel('acc',[['us','American'],['uk','British'],['aus','Australian'],['all','Any']])}
   <div class="tag">Autoplay</div>${sel('auto',[[false,'Off'],[true,'On']])}
   <div class="tag">Show video buttons for</div>${sel('where',[['both','Words and collocations'],['words','Words only'],['cols','Collocations only']])}
-  <p class="mut">Videos load only when you tap a 🎬 button. Saved automatically on this device.</p></div>`;
+  <p class="mut">Videos load only when you tap a 🎬 button. Saved automatically on this device.</p></div>
+  <div class="card"><h2>Data</h2><button class="btn alt" id="clean">Clean up progress of deleted lists</button></div>`;
+  document.getElementById('clean').onclick=cleanProgress;
   app.querySelectorAll('select').forEach(s=>s.onchange=()=>{const k=s.dataset.k;G[k]=k==='n'?+s.value:k==='auto'?s.value==='true':s.value;saveG()})}
 async function listMenu(id){
   const l=await getList(id);document.getElementById('crumb').textContent='/ '+l.title;
@@ -215,8 +225,6 @@ async function route(){
     if(!p.length)await home();
     else if(p[0]==='settings')settings();
     else if(p[0]==='upload')uploadView();
-    else if(p[0]==='manage')await manageView();
-    else if(p[0]==='edit')await editView(decodeURIComponent(p[1]||''));
     else if(p[0]==='l'&&p.length===2)await listMenu(p[1]);
     else if(p[0]==='l'&&p[2]==='study')await study(p[1],+p[3]||0);
     else if(p[0]==='l'&&p[2]==='text')await textView(p[1],+p[3]||0);
