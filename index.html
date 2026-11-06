@@ -7,6 +7,8 @@
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111827;--card:#1f2937;--tx:#e5e7eb;--mut:#9ca3af;--ac:#a5b4fc;--soft:#1e293b;--ar:#a7f3d0;--bd:#374151}}
 :root[data-theme="dark"]{--bg:#111827;--card:#1f2937;--tx:#e5e7eb;--mut:#9ca3af;--ac:#a5b4fc;--soft:#1e293b;--ar:#a7f3d0;--bd:#374151}
 .hide-ar .ar,.hide-ar .arbtn{display:none!important}
+.no-yg .ygbtn,.no-yg .yg,.no-yg .famyg,.no-yg .ygi{display:none!important}.no-yg .fam{pointer-events:none}
+.hb{background:var(--soft);color:var(--ac);border:0;border-radius:10px;padding:3px 9px;font:inherit;font-size:16px;font-weight:700;cursor:pointer}.hb.off{opacity:.4;text-decoration:line-through}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:18px/1.5 'Segoe UI',Helvetica,Arial,sans-serif}
 header{max-width:720px;margin:0 auto;padding:14px 16px;display:flex;gap:12px;align-items:center}
 header a{color:var(--ac);text-decoration:none;font-weight:700}
@@ -37,7 +39,7 @@ select.ans{font-size:18px;text-align:left}
 button.chip{border:0;font:inherit;font-size:16px;cursor:pointer}
 .ygbtn{font-size:14px;padding:3px 10px;margin:4px 0 0}.yg{margin:8px 0}.yg .nav{margin-top:4px}.yg a{font-size:13px}
 </style></head><body>
-<header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb" style="flex:1"></span><a href="#/upload" title="Upload lists">⬆️</a><a href="#/settings" title="Settings">⚙️</a></header>
+<header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span><button class="hb" id="b-theme"></button><button class="hb" id="b-ar" title="Show / hide Arabic">ع</button><button class="hb" id="b-yg" title="Show / hide videos">🎬</button><a href="#/upload" title="Upload lists">⬆️</a><a href="#/settings" title="Settings">⚙️</a></header>
 <main id="app">Loading…</main>
 <script src="js/github.js"></script>
 <script src="js/manage.js"></script>
@@ -49,10 +51,18 @@ const rnd=a=>a[Math.floor(Math.random()*a.length)];
 let S={};try{S=JSON.parse(localStorage.getItem('wordlists.v1')||'{}')}catch(e){}
 const save=()=>{try{localStorage.setItem('wordlists.v1',JSON.stringify(S))}catch(e){}};
 /* settings live under their own key so they never mix with progress */
-let G={n:3,acc:'us',auto:false,where:'both',theme:'auto',hideAr:false};
+let G={n:3,acc:'us',auto:false,where:'both',theme:'auto',hideAr:false,videos:true};
 try{Object.assign(G,JSON.parse(localStorage.getItem('wordlists.settings.v1')||'{}'))}catch(e){}
 const saveG=()=>{try{localStorage.setItem('wordlists.settings.v1',JSON.stringify(G))}catch(e){}};
-const applyUI=()=>{const r=document.documentElement;G.theme==='auto'?r.removeAttribute('data-theme'):r.setAttribute('data-theme',G.theme);document.body.classList.toggle('hide-ar',!!G.hideAr)};
+const THEMES=[['auto','🌓','Theme: match device'],['light','☀️','Theme: light'],['dark','🌙','Theme: dark']];
+const applyUI=()=>{const r=document.documentElement,b=document.body;G.theme==='auto'?r.removeAttribute('data-theme'):r.setAttribute('data-theme',G.theme);
+  b.classList.toggle('hide-ar',!!G.hideAr);b.classList.toggle('no-yg',G.videos===false);
+  const t=THEMES.find(x=>x[0]===G.theme)||THEMES[0],bt=document.getElementById('b-theme');bt.textContent=t[1];bt.title=t[2]+' (tap to change)';
+  document.getElementById('b-ar').classList.toggle('off',!!G.hideAr);document.getElementById('b-yg').classList.toggle('off',G.videos===false)};
+const quick=f=>()=>{f();saveG();applyUI();if(location.hash==='#/settings')settings()};
+document.getElementById('b-theme').onclick=quick(()=>{G.theme=THEMES[(THEMES.findIndex(x=>x[0]===G.theme)+1)%3][0]});
+document.getElementById('b-ar').onclick=quick(()=>{G.hideAr=!G.hideAr});
+document.getElementById('b-yg').onclick=quick(()=>{G.videos=G.videos===false});
 applyUI();
 const cache={};let INDEX=null,SEARCH=null,EDITMODE=false;
 async function J(u){const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw new Error('Cannot load '+u);return r.json()}
@@ -123,7 +133,7 @@ function wordCard(l,w,full){
   if((w.col||[]).length)h+='<div class="tag">Collocations</div>'+w.col.map(c=>`<div class="box"><div><b style="font-weight:700">${fm(c.p)}</b></div>${c.p_ar?`<div class="ar" style="font-size:18px">${esc(c.p_ar)}</div>`:''}${c.en?`<div class="mut" style="font-style:italic">${fm(c.en)}</div>`:''}${c.ar?`<div class="ar" style="font-size:18px">${esc(c.ar)}</div>`:''}${G.where!=='words'?`<div>${ygBtn(c.yg||c.p)}</div>`:''}</div>`).join('');
   const ts=textSentences(l,w);
   if(ts.length)h+='<div class="tag">In the texts</div>'+ts.map(s=>`<div class="box">${fm(s)}</div>`).join('');
-  if((w.family||[]).length)h+='<div class="tag">Word family</div>'+w.family.map(f=>{const q=f.replace(/\s*\(.*?\)\s*/g,' ').trim();return `<button class="chip fam" data-q="${encodeURIComponent(q)}" title="Watch videos">🎬 ${esc(f)}</button>`}).join('')+'<div class="famyg"></div>';
+  if((w.family||[]).length)h+='<div class="tag">Word family</div>'+w.family.map(f=>{const q=f.replace(/\s*\(.*?\)\s*/g,' ').trim();return `<button class="chip fam" data-q="${encodeURIComponent(q)}" title="Watch videos"><span class="ygi">🎬 </span>${esc(f)}</button>`}).join('')+'<div class="famyg"></div>';
   return h}
 
 /* ---------- views ---------- */
@@ -159,7 +169,7 @@ async function home(){
 function settings(){
   document.getElementById('crumb').textContent='/ Settings';
   const sel=(k,opts)=>`<select class="ans" data-k="${k}">${opts.map(([v,t])=>`<option value="${v}"${String(G[k])===String(v)?' selected':''}>${t}</option>`).join('')}</select>`;
-  app.innerHTML=`<h1>Settings</h1><div class="card"><h2>🎨 Appearance</h2><div class="tag">Theme</div>${sel('theme',[['auto','Match my device'],['light','Light'],['dark','Dark']])}<div class="tag">Arabic</div>${sel('hideAr',[[false,'Show Arabic'],[true,'Hide Arabic']])}</div>
+  app.innerHTML=`<h1>Settings</h1><div class="card"><h2>🎨 Appearance</h2><div class="tag">Theme</div>${sel('theme',[['auto','Match my device'],['light','Light'],['dark','Dark']])}<div class="tag">Arabic</div>${sel('hideAr',[[false,'Show Arabic'],[true,'Hide Arabic']])}<div class="tag">Videos</div>${sel('videos',[[true,'Show video buttons'],[false,'Hide all videos']])}</div>
   <div class="card"><h2>🎬 YouGlish videos</h2>
   <div class="tag">Videos per word / collocation</div>${sel('n',[[1,'1'],[3,'3'],[5,'5']])}
   <div class="tag">Accent</div>${sel('acc',[['us','American'],['uk','British'],['aus','Australian'],['all','Any']])}
@@ -168,7 +178,7 @@ function settings(){
   <p class="mut">Videos load only when you tap a 🎬 button. Saved automatically on this device.</p></div>
   <div class="card"><h2>Data</h2><button class="btn alt" id="clean">Clean up progress of deleted lists</button></div>`;
   document.getElementById('clean').onclick=cleanProgress;
-  app.querySelectorAll('select').forEach(s=>s.onchange=()=>{const k=s.dataset.k;G[k]=k==='n'?+s.value:(k==='auto'||k==='hideAr')?s.value==='true':s.value;saveG();applyUI()})}
+  app.querySelectorAll('select').forEach(s=>s.onchange=()=>{const k=s.dataset.k;G[k]=k==='n'?+s.value:(k==='auto'||k==='hideAr'||k==='videos')?s.value==='true':s.value;saveG();applyUI()})}
 async function listMenu(id){
   const l=await getList(id);document.getElementById('crumb').textContent='/ '+l.title;
   const due=l.words.filter(w=>isDue(l,w)).length,seen=l.words.filter(w=>st(l,w)).length;
