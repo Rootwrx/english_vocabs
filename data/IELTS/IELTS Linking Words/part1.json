@@ -1,0 +1,264 @@
+{
+  "words": [
+    {
+      "w": "furthermore",
+      "pos": "adv.",
+      "ipa": "/ˌfɜːðəˈmɔːr/",
+      "emoji": "➕",
+      "ar": "علاوة على ذلك",
+      "def": "Used to add more information that supports what you have already said.",
+      "note": "Furthermore is used to add another important point. It is more formal than also.",
+      "col": [
+        {
+          "p": "*furthermore*, it is important to",
+          "p_ar": "علاوة على ذلك، من المهم أن",
+          "en": "The computer is slow. *Furthermore*, it is important to check its memory."
+        },
+        {
+          "p": "*furthermore*, we need to",
+          "p_ar": "علاوة على ذلك، نحتاج إلى",
+          "en": "The software is outdated. *Furthermore*, we need to update the operating system."
+        },
+        {
+          "p": "*furthermore*, there is",
+          "p_ar": "علاوة على ذلك، هناك",
+          "en": "The job requires experience. *Furthermore*, there is a technical test."
+        }
+      ]
+    },
+    {
+      "w": "on the other hand",
+      "pos": "exp.",
+      "ipa": "/ɒn ði ˈʌðər hænd/",
+      "emoji": "⚖️",
+      "ar": "من ناحية أخرى",
+      "def": "Used to introduce a different or opposite point of view.",
+      "note": "On the other hand is commonly used to compare two different sides of a situation.",
+      "col": [
+        {
+          "p": "on the one hand ... *on the other hand*",
+          "p_ar": "من ناحية ... ومن ناحية أخرى",
+          "en": "On the one hand, working remotely saves time. *On the other hand*, it can feel lonely."
+        },
+        {
+          "p": "*on the other hand*, it can be",
+          "p_ar": "من ناحية أخرى، يمكن أن يكون",
+          "en": "This laptop is cheap. *On the other hand*, it can be difficult to upgrade."
+        },
+        {
+          "p": "*on the other hand*, some people",
+          "p_ar": "من ناحية أخرى، بعض الناس",
+          "en": "Some people prefer Windows. *On the other hand*, some people prefer Linux."
+        }
+      ]
+    },
+    {
+      "w": "consequently",
+      "pos": "adv.",
+      "ipa": "/ˈkɒnsɪkwəntli/",
+      "emoji": "➡️",
+      "ar": "وبالتالي",
+      "def": "Used to introduce a result or consequence of something.",
+      "note": "Consequently is more formal than so. It connects a cause with its result.",
+      "col": [
+        {
+          "p": "*consequently*, we had to",
+          "p_ar": "وبالتالي، اضطررنا إلى",
+          "en": "The server stopped working. *Consequently*, we had to restart it."
+        },
+        {
+          "p": "*consequently*, the company",
+          "p_ar": "وبالتالي، الشركة",
+          "en": "The company lost several customers. *Consequently*, its profits decreased."
+        },
+        {
+          "p": "*consequently*, I couldn't",
+          "p_ar": "وبالتالي، لم أستطع",
+          "en": "I forgot my password. *Consequently*, I couldn't log in."
+        }
+      ]
+    },
+    {
+      "w": "for instance",
+      "pos": "exp.",
+      "ipa": "/fər ˈɪnstəns/",
+      "emoji": "💡",
+      "ar": "على سبيل المثال",
+      "def": "Used to give a specific example of something.",
+      "note": "For instance and for example have almost the same meaning and are commonly used in everyday English.",
+      "col": [
+        {
+          "p": "*for instance*, you can",
+          "p_ar": "على سبيل المثال، يمكنك",
+          "en": "You can learn technical skills. *For instance*, you can practice using virtual machines."
+        },
+        {
+          "p": "*for instance*, some",
+          "p_ar": "على سبيل المثال، بعض",
+          "en": "Some operating systems are free. *For instance*, Linux is available without a license fee."
+        },
+        {
+          "p": "*for instance*, if you",
+          "p_ar": "على سبيل المثال، إذا",
+          "en": "You can improve your English. *For instance*, if you practice speaking every day, you will become more confident."
+        }
+      ]
+    },
+    {
+      "w": "meanwhile",
+      "pos": "adv.",
+      "ipa": "/ˈmiːnwaɪl/",
+      "emoji": "⏳",
+      "ar": "في هذه الأثناء",
+      "def": "Used to describe something happening while another thing is happening.",
+      "note": "Meanwhile connects two activities happening around the same time.",
+      "col": [
+        {
+          "p": "*meanwhile*, I'm going to",
+          "p_ar": "في هذه الأثناء، سأقوم بـ",
+          "en": "The computer is restarting. *Meanwhile*, I'm going to check the network."
+        },
+        {
+          "p": "*meanwhile*, the team",
+          "p_ar": "في هذه الأثناء، الفريق",
+          "en": "The manager is checking the issue. *Meanwhile*, the team is preparing a report."
+        },
+        {
+          "p": "*meanwhile*, you can",
+          "p_ar": "في هذه الأثناء، يمكنك",
+          "en": "Your application is downloading. *Meanwhile*, you can read the instructions."
+        }
+      ]
+    },
+    {
+      "w": "additionally",
+      "pos": "adv.",
+      "ipa": "/əˈdɪʃənəli/",
+      "emoji": "➕",
+      "ar": "بالإضافة إلى ذلك",
+      "def": "Used to add another piece of information.",
+      "note": "Additionally is commonly used in formal writing and presentations. In everyday conversation, also or plus is often more natural.",
+      "col": [
+        {
+          "p": "*additionally*, we need",
+          "p_ar": "بالإضافة إلى ذلك، نحتاج إلى",
+          "en": "We need a new computer. *Additionally*, we need a reliable internet connection."
+        },
+        {
+          "p": "*additionally*, the course",
+          "p_ar": "بالإضافة إلى ذلك، الدورة",
+          "en": "The course teaches Excel. *Additionally*, it covers Power BI."
+        },
+        {
+          "p": "*additionally*, you can",
+          "p_ar": "بالإضافة إلى ذلك، يمكنك",
+          "en": "You can save your files online. *Additionally*, you can share them with your team."
+        }
+      ]
+    },
+    {
+      "w": "at the same time",
+      "pos": "exp.",
+      "ipa": "/ət ðə seɪm taɪm/",
+      "emoji": "🔄",
+      "ar": "في الوقت نفسه",
+      "def": "Used when two or more things happen together or when two ideas are true together.",
+      "note": "At the same time can describe simultaneous actions or introduce a contrasting point.",
+      "col": [
+        {
+          "p": "do two things *at the same time*",
+          "p_ar": "يقوم بأمرين في الوقت نفسه",
+          "en": "I can listen to music and study vocabulary *at the same time*."
+        },
+        {
+          "p": "*at the same time*, I understand",
+          "p_ar": "في الوقت نفسه، أفهم",
+          "en": "I understand the problem. *At the same time*, I need more information."
+        },
+        {
+          "p": "both ... *at the same time*",
+          "p_ar": "كلاهما في الوقت نفسه",
+          "en": "You can use both applications *at the same time*."
+        }
+      ]
+    },
+    {
+      "w": "ultimately",
+      "pos": "adv.",
+      "ipa": "/ˈʌltɪmətli/",
+      "emoji": "🎯",
+      "ar": "في النهاية",
+      "def": "Used to describe the final result or the most important point after considering everything.",
+      "note": "Ultimately is often used when explaining the final outcome of a process or decision.",
+      "col": [
+        {
+          "p": "*ultimately*, it depends on",
+          "p_ar": "في النهاية، يعتمد الأمر على",
+          "en": "*Ultimately*, it depends on your budget and your needs."
+        },
+        {
+          "p": "*ultimately*, we decided to",
+          "p_ar": "في النهاية، قررنا أن",
+          "en": "*Ultimately*, we decided to replace the old computer."
+        },
+        {
+          "p": "*ultimately*, the goal is to",
+          "p_ar": "في النهاية، الهدف هو",
+          "en": "*Ultimately*, the goal is to help users solve their technical problems."
+        }
+      ]
+    },
+    {
+      "w": "as a result",
+      "pos": "exp.",
+      "ipa": "/æz ə rɪˈzʌlt/",
+      "emoji": "➡️",
+      "ar": "نتيجة لذلك",
+      "def": "Used to introduce the result of an action or situation.",
+      "note": "As a result is commonly used to explain what happened because of something else.",
+      "col": [
+        {
+          "p": "*as a result*, I had to",
+          "p_ar": "نتيجة لذلك، اضطررت إلى",
+          "en": "I missed the bus. *As a result*, I arrived late."
+        },
+        {
+          "p": "*as a result*, the system",
+          "p_ar": "نتيجة لذلك، النظام",
+          "en": "The update failed. *As a result*, the system became unstable."
+        },
+        {
+          "p": "*as a result of* something",
+          "p_ar": "نتيجة لشيء ما",
+          "en": "The computer shut down *as a result of* a power failure."
+        }
+      ]
+    },
+    {
+      "w": "as well as",
+      "pos": "exp.",
+      "ipa": "/æz wel æz/",
+      "emoji": "➕",
+      "ar": "بالإضافة إلى",
+      "def": "Used to add another person, thing, or activity to what has already been mentioned.",
+      "note": "As well as means in addition to. It is often used to connect two things in the same sentence.",
+      "col": [
+        {
+          "p": "something *as well as* something",
+          "p_ar": "شيء بالإضافة إلى شيء آخر",
+          "en": "I study English *as well as* French."
+        },
+        {
+          "p": "*as well as* doing something",
+          "p_ar": "بالإضافة إلى القيام بشيء",
+          "en": "She works full-time *as well as* studying at university."
+        },
+        {
+          "p": "*as well as* the ability to",
+          "p_ar": "بالإضافة إلى القدرة على",
+          "en": "The job requires communication skills *as well as* the ability to solve technical problems."
+        }
+      ]
+    }
+  ]
+}
