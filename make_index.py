@@ -74,7 +74,8 @@ for f in sorted(DATA.rglob("*.json")):
                        "c": [[strip(c.get("p")), c.get("p_ar", "")] for c in w.get("col", [])]})
     group, st, part, title = meta(rel, d)
     entries.append({"id": lid, "file": rel.as_posix(), "title": title,
-                    "group": group, "set": st, "part": part, "count": len(d["words"]), "texts": len(d.get("texts", []))})
+                    "group": group, "set": st, "part": part, "source": d.get("source", ""),
+                    "count": len(d["words"]), "texts": len(d.get("texts", []))})
 
 (DATA / "index.json").write_text(json.dumps(entries, ensure_ascii=False, indent=1), encoding="utf-8")
 (DATA / "search.json").write_text(json.dumps(search, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

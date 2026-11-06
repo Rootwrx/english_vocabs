@@ -1,6 +1,7 @@
 [
  {
   "group": "Business",
+  "source": "Reverso",
   "sets": [
    "Asking for Help at Work",
    "At a Networking Event",
@@ -30,6 +31,7 @@
  },
  {
   "group": "By Level",
+  "source": "Reverso",
   "sets": [
    "Advanced Vocabulary (C1C2)",
    "Basic Vocabulary (A1A2)",
@@ -38,6 +40,7 @@
  },
  {
   "group": "Daily Life",
+  "source": "Reverso",
   "sets": [
    "Academic Life",
    "Administrative Tasks",
@@ -88,6 +91,7 @@
  },
  {
   "group": "Health",
+  "source": "Reverso",
   "sets": [
    "At the Doctor’s",
    "At the Gym",
@@ -98,6 +102,7 @@
  },
  {
   "group": "IELTS",
+  "source": "Reverso",
   "sets": [
    "IELTS Business & Economics",
    "IELTS Health & Well-being",
@@ -115,6 +120,7 @@
  },
  {
   "group": "TOEFL",
+  "source": "Reverso",
   "sets": [
    "TOEFL Academic Word List",
    "TOEFL Business & Economics",
@@ -130,6 +136,7 @@
  },
  {
   "group": "Travel",
+  "source": "Reverso",
   "sets": [
    "Air Travel",
    "At the Beach",

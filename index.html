@@ -40,6 +40,7 @@ button.chip{border:0;font:inherit;font-size:16px;cursor:pointer}
 .ygbtn{font-size:14px;padding:3px 10px;margin:4px 0 0}.yg{margin:8px 0}.yg .nav{margin-top:4px}.yg a{font-size:13px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}.grid .card{margin:0}
 .gc{display:block;color:inherit;text-decoration:none}.gc .bar{margin-top:10px}
+.src{display:inline-block;margin-left:8px;padding:1px 9px;border:1px solid var(--bd);border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mut);vertical-align:middle}
 </style></head><body>
 <header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span><button class="hb" id="b-theme"></button><button class="hb" id="b-ar" title="Show / hide Arabic">ع</button><button class="hb" id="b-yg" title="Show / hide videos">🎬</button><a href="#/upload" title="Upload lists">⬆️</a><a href="#/settings" title="Settings">⚙️</a></header>
 <main id="app">Loading…</main>
@@ -75,6 +76,9 @@ async function getList(id){if(cache[id])return cache[id];const e=(await getIndex
 
 let CAT=null;
 async function getCatalog(){if(!CAT){try{CAT=await J('data/catalog.json')}catch(e){CAT=[]}}return CAT}
+/* where a group comes from (e.g. Reverso, Oxford): "source" on the group in catalog.json, else on any of its lists */
+const srcOf=g=>((CAT||[]).find(c=>c.group===g)||{}).source||((INDEX||[]).find(e=>e.group===g&&e.source)||{}).source||'';
+const srcBadge=g=>{const s=srcOf(g);return s?`<span class="src" title="Source: ${esc(s)}">${esc(s)}</span>`:''};
 /* group -> Map(topic -> [parts]); catalog order first, then anything uploaded */
 function tree(idx){
   const G=new Map(),set=(g,s)=>{g=g||'Other';if(!G.has(g))G.set(g,new Map());const m=G.get(g);if(!m.has(s))m.set(s,[]);return m.get(s)};
@@ -177,7 +181,7 @@ async function home(){
     if(q){L.innerHTML=idx.filter(e=>(e.title+' '+(e.group||'')+' '+(e.set||'')).toLowerCase().includes(q)).map(partCard).join('');return}
     L.innerHTML='<div class="grid">'+[...tree(idx)].map(([g,m])=>{
       const sets=[...m.values()],parts=sets.flat(),t=sum(parts),started=sets.filter(a=>a.length).length;
-      return `<a class="card gc" href="#/g/${encodeURIComponent(g)}"><h2>${esc(g)}</h2>
+      return `<a class="card gc" href="#/g/${encodeURIComponent(g)}"><h2>${esc(g)}${srcBadge(g)}</h2>
         <div class="mut">${started}/${sets.length} topics started · ${parts.length} part${parts.length===1?'':'s'} · ${t.count} words</div>
         <div class="${t.due?'good':'mut'}">${t.due} due</div><div class="bar"><i style="width:${t.count?t.seen/t.count*100:0}%"></i></div></a>`}).join('')+'</div>'};
   document.getElementById('q').oninput=draw;draw();
@@ -200,7 +204,7 @@ function settings(){
 async function listMenu(id){
   const l=await getList(id);document.getElementById('crumb').textContent='/ '+l.title;
   const due=l.words.filter(w=>isDue(l,w)).length,seen=l.words.filter(w=>st(l,w)).length;
-  app.innerHTML=`${l.group?`<a class="mut" href="#/g/${encodeURIComponent(l.group)}">← ${esc(l.group)}${l.set?' / '+esc(l.set):''}</a>`:''}<h1>${esc(l.title)}</h1><div class="ar" style="text-align:left;direction:ltr;margin-bottom:8px">${esc(l.title_ar||'')}</div>
+  app.innerHTML=`${l.group?`<a class="mut" href="#/g/${encodeURIComponent(l.group)}">← ${esc(l.group)}${l.set?' / '+esc(l.set):''}</a>${srcBadge(l.group)}`:''}<h1>${esc(l.title)}</h1><div class="ar" style="text-align:left;direction:ltr;margin-bottom:8px">${esc(l.title_ar||'')}</div>
   <div class="card"><h2>1 · Learn the list</h2><p class="mut">Go through every word with meaning, examples, collocations and the texts it appears in.</p><a class="btn" href="#/l/${id}/study/0">Start learning</a></div>
   ${(l.texts||[]).length?`<div class="card"><h2>2 · Read in context</h2>${l.texts.map((t,i)=>`<a class="btn alt" href="#/l/${id}/text/${i}">${esc(t.title||'Text '+(i+1))}</a>`).join('')}</div>`:''}
   <div class="card"><h2>3 · Flashcards (active recall)</h2><p class="mut">Type the missing word before you see it. Spaced repetition schedules each word. ${due} due · ${seen}/${l.words.length} started.</p><a class="btn" href="#/l/${id}/review">Review now</a></div>
@@ -256,7 +260,7 @@ async function groupView(g){
   document.getElementById('crumb').textContent='/ '+g;
   const idx=await getIndex();await getCatalog();const m=tree(idx).get(g);
   if(!m){app.innerHTML='<p class="mut">Unknown category.</p>';return}
-  app.innerHTML=`<h1>${esc(g)}</h1><div><button class="btn alt" id="editmode">${EDITMODE?'✓ Done editing':'✏️ Edit lists'}</button><a class="btn alt" href="#/upload/${encodeURIComponent(g)}">⬆️ Add part</a></div>`+
+  app.innerHTML=`<h1>${esc(g)}${srcBadge(g)}</h1><div><button class="btn alt" id="editmode">${EDITMODE?'✓ Done editing':'✏️ Edit lists'}</button><a class="btn alt" href="#/upload/${encodeURIComponent(g)}">⬆️ Add part</a></div>`+
   [...m].map(([name,parts])=>{
     const t=sum(parts),next=Math.max(0,...parts.map(p=>p.part||0))+1;
     return `<div class="card" style="padding:14px 18px"><h2 style="margin:0">${esc(name)}</h2>

@@ -30,7 +30,7 @@ function meta(file, d) {
   const title = d.title || (set && part ? `${set} – Part ${part}` : set && folders.length ? `${set} – ${stem}` : set || stem);
   return { group, set, part, title };
 }
-const idxEntry = (file, d) => ({ id: listId(file), file, ...meta(file, d),
+const idxEntry = (file, d) => ({ id: listId(file), file, ...meta(file, d), source: d.source || '',
   count: (d.words || []).length, texts: (d.texts || []).length });
 const idxSet = (file, d) => { if (!INDEX) return; const e = idxEntry(file, d), i = INDEX.findIndex(x => x.file === file); i < 0 ? INDEX.push(e) : (INDEX[i] = e); };
 const idxDel = file => { if (INDEX) INDEX = INDEX.filter(x => x.file !== file); };

@@ -1,9 +1,12 @@
 [
  {
-  "id": "oxford3000-01",
-  "file": "oxford3000-01.json",
-  "title": "Oxford 3000 – List 1 (abandon → accept)",
-  "group": "Oxford 3000",
+  "id": "by_level__Basic_Vocabulary_A1A2___part1",
+  "file": "by_level/Basic Vocabulary (A1A2)/part1.json",
+  "title": "Basic Vocabulary (A1A2) – Part 1",
+  "group": "By Level",
+  "set": "Basic Vocabulary (A1A2)",
+  "part": 1,
+  "source": "",
   "count": 10,
   "texts": 2
  }
