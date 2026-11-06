@@ -31,8 +31,9 @@ select.ans{font-size:18px;text-align:left}
 button.chip{border:0;font:inherit;font-size:16px;cursor:pointer}
 .ygbtn{font-size:14px;padding:3px 10px;margin:4px 0 0}.yg{margin:8px 0}.yg .nav{margin-top:4px}.yg a{font-size:13px}
 </style></head><body>
-<header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb" style="flex:1"></span><a href="#/settings" title="Settings">⚙️</a></header>
+<header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb" style="flex:1"></span><a href="#/upload" title="Upload lists">⬆️</a><a href="#/settings" title="Settings">⚙️</a></header>
 <main id="app">Loading…</main>
+<script src="js/upload.js"></script>
 <script>
 const app=document.getElementById('app');
 const esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -45,7 +46,7 @@ let G={n:3,acc:'us',auto:false,where:'both'};
 try{Object.assign(G,JSON.parse(localStorage.getItem('wordlists.settings.v1')||'{}'))}catch(e){}
 const saveG=()=>{try{localStorage.setItem('wordlists.settings.v1',JSON.stringify(G))}catch(e){}};
 const cache={};let INDEX=null,SEARCH=null;
-async function J(u){const r=await fetch(u);if(!r.ok)throw new Error('Cannot load '+u);return r.json()}
+async function J(u){const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw new Error('Cannot load '+u);return r.json()}
 async function getIndex(){return INDEX=INDEX||await J('data/index.json')}
 async function getSearch(){if(!SEARCH){try{SEARCH=await J('data/search.json')}catch(e){SEARCH=[]}}return SEARCH}
 async function getList(id){if(cache[id])return cache[id];const e=(await getIndex()).find(x=>x.id===id);if(!e)throw new Error('Unknown list '+id);const l=await J('data/'+e.file);l.id=id;return cache[id]=l}
@@ -213,6 +214,7 @@ async function route(){
   try{
     if(!p.length)await home();
     else if(p[0]==='settings')settings();
+    else if(p[0]==='upload')uploadView();
     else if(p[0]==='l'&&p.length===2)await listMenu(p[1]);
     else if(p[0]==='l'&&p[2]==='study')await study(p[1],+p[3]||0);
     else if(p[0]==='l'&&p[2]==='text')await textView(p[1],+p[3]||0);
