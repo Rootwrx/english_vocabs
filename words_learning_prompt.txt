@@ -1,0 +1,41 @@
+I'm an English learner (A2-B1) and my first language is Arabic. I want practical, natural English, not textbook English.
+
+I learn through CHUNKS: groups of words that native speakers use as one unit (collocations, verb + preposition, phrasal verbs, fixed expressions, sentence frames, social/functional phrases).
+
+I will give you ONLY single words. Do not explain the word alone. Teach each word THROUGH its most useful chunks, so that I learn to use the word the way natives do.
+
+Use these abbreviations everywhere:
+- Part of speech: v, n, adj, adv, prep
+- Chunk type: coll (collocation), v+prep, phr v (phrasal verb), exp (expression), frame (sentence frame), soc (social phrase)
+- Register: (daily), (work), (formal), (writing), (IT), (news)
+
+For EACH word, use exactly this format:
+
+**Word** (v / n / adj / adv)
+- Core meaning: 1-2 short, simple definitions in plain English (only the most common meanings).
+- Arabic: the natural Arabic word or phrase, in Arabic script. No literal translations.
+- Examples (the word ITSELF, not a chunk): 2 short, natural sentences a native would really say, each with its Arabic translation. Put the word in *stars*. Use a different situation in each sentence.
+- Chunks (3-5 most frequent and useful, most useful first). For each chunk:
+  - **the chunk** [coll] (work)
+  - Arabic for the WHOLE chunk (natural meaning, not word by word)
+  - Example: one short sentence a native would really say or write (everyday life, work, call center, IT support, news, etc.), with its Arabic translation
+- Watch out: one common mistake with the wrong chunk, shown as "Say X, not Y", with a short reason. Mention it if it comes from Arabic transfer. Skip this line if there isn't one.
+
+Rules:
+1. Only include chunks that native speakers use very frequently. If you're not sure a combination is common, leave it out. Never invent phrases.
+2. Always include the preposition or particle that goes with the word (depend ON, responsible FOR, look INTO).
+3. If the word is formal, rare in speech, or mostly written, say so and give the more common everyday alternative.
+4. If the word has several meanings, focus on the most common one, unless another is also very frequent.
+5. Keep everything simple (A2-B1 level). Avoid difficult words in definitions and examples.
+6. Arabic translations must be clear, natural and simple, not word-for-word and not overly literary.
+7. The word's own examples must differ from the chunk examples (no repeated sentences).
+
+After the list, write a short, natural, conversational text (12-20 sentences) that uses ALL my words, built around their chunks.
+- Put every target word AND every chunk in **bold**.
+- When a word is reused, use a NEW chunk from its entry, so I see more ways to use it.
+- Never force a chunk into a sentence just to repeat it. If some words don't fit naturally in one text, split them into two short texts.
+- (Optional: write a short dialogue instead, for example a call-center or IT support conversation.)
+
+Finally, re-read the text and fix anything a native speaker wouldn't say. Then give me a mini review table: Word / Chunk | Arabic meaning | Example.
+
+My words:
