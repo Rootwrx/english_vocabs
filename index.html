@@ -4,7 +4,9 @@
 <title>Word Lists</title>
 <style>
 :root{--bg:#f4f1ea;--card:#fff;--tx:#1f2937;--mut:#6b7280;--ac:#4f46e5;--ok:#16a34a;--no:#dc2626;--soft:#eef2ff;--ar:#065f46;--bd:#e5e7eb}
-@media(prefers-color-scheme:dark){:root{--bg:#111827;--card:#1f2937;--tx:#e5e7eb;--mut:#9ca3af;--ac:#a5b4fc;--soft:#1e293b;--ar:#a7f3d0;--bd:#374151}}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111827;--card:#1f2937;--tx:#e5e7eb;--mut:#9ca3af;--ac:#a5b4fc;--soft:#1e293b;--ar:#a7f3d0;--bd:#374151}}
+:root[data-theme="dark"]{--bg:#111827;--card:#1f2937;--tx:#e5e7eb;--mut:#9ca3af;--ac:#a5b4fc;--soft:#1e293b;--ar:#a7f3d0;--bd:#374151}
+.hide-ar .ar,.hide-ar .arbtn{display:none!important}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:18px/1.5 'Segoe UI',Helvetica,Arial,sans-serif}
 header{max-width:720px;margin:0 auto;padding:14px 16px;display:flex;gap:12px;align-items:center}
 header a{color:var(--ac);text-decoration:none;font-weight:700}
@@ -47,9 +49,11 @@ const rnd=a=>a[Math.floor(Math.random()*a.length)];
 let S={};try{S=JSON.parse(localStorage.getItem('wordlists.v1')||'{}')}catch(e){}
 const save=()=>{try{localStorage.setItem('wordlists.v1',JSON.stringify(S))}catch(e){}};
 /* settings live under their own key so they never mix with progress */
-let G={n:3,acc:'us',auto:false,where:'both'};
+let G={n:3,acc:'us',auto:false,where:'both',theme:'auto',hideAr:false};
 try{Object.assign(G,JSON.parse(localStorage.getItem('wordlists.settings.v1')||'{}'))}catch(e){}
 const saveG=()=>{try{localStorage.setItem('wordlists.settings.v1',JSON.stringify(G))}catch(e){}};
+const applyUI=()=>{const r=document.documentElement;G.theme==='auto'?r.removeAttribute('data-theme'):r.setAttribute('data-theme',G.theme);document.body.classList.toggle('hide-ar',!!G.hideAr)};
+applyUI();
 const cache={};let INDEX=null,SEARCH=null,EDITMODE=false;
 async function J(u){const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw new Error('Cannot load '+u);return r.json()}
 async function getIndex(){return INDEX=INDEX||await J('data/index.json')}
@@ -155,7 +159,8 @@ async function home(){
 function settings(){
   document.getElementById('crumb').textContent='/ Settings';
   const sel=(k,opts)=>`<select class="ans" data-k="${k}">${opts.map(([v,t])=>`<option value="${v}"${String(G[k])===String(v)?' selected':''}>${t}</option>`).join('')}</select>`;
-  app.innerHTML=`<h1>Settings</h1><div class="card"><h2>🎬 YouGlish videos</h2>
+  app.innerHTML=`<h1>Settings</h1><div class="card"><h2>🎨 Appearance</h2><div class="tag">Theme</div>${sel('theme',[['auto','Match my device'],['light','Light'],['dark','Dark']])}<div class="tag">Arabic</div>${sel('hideAr',[[false,'Show Arabic'],[true,'Hide Arabic']])}</div>
+  <div class="card"><h2>🎬 YouGlish videos</h2>
   <div class="tag">Videos per word / collocation</div>${sel('n',[[1,'1'],[3,'3'],[5,'5']])}
   <div class="tag">Accent</div>${sel('acc',[['us','American'],['uk','British'],['aus','Australian'],['all','Any']])}
   <div class="tag">Autoplay</div>${sel('auto',[[false,'Off'],[true,'On']])}
@@ -163,7 +168,7 @@ function settings(){
   <p class="mut">Videos load only when you tap a 🎬 button. Saved automatically on this device.</p></div>
   <div class="card"><h2>Data</h2><button class="btn alt" id="clean">Clean up progress of deleted lists</button></div>`;
   document.getElementById('clean').onclick=cleanProgress;
-  app.querySelectorAll('select').forEach(s=>s.onchange=()=>{const k=s.dataset.k;G[k]=k==='n'?+s.value:k==='auto'?s.value==='true':s.value;saveG()})}
+  app.querySelectorAll('select').forEach(s=>s.onchange=()=>{const k=s.dataset.k;G[k]=k==='n'?+s.value:(k==='auto'||k==='hideAr')?s.value==='true':s.value;saveG();applyUI()})}
 async function listMenu(id){
   const l=await getList(id);document.getElementById('crumb').textContent='/ '+l.title;
   const due=l.words.filter(w=>isDue(l,w)).length,seen=l.words.filter(w=>st(l,w)).length;
@@ -185,7 +190,7 @@ async function textView(id,ti){
   const para=s=>(s||'').split(/\n\s*\n/).map(p=>`<p>${esc(p).replace(/\*([^*|]+)(?:\|([^*]+))?\*/g,(m,f,h)=>`<span class="tw" data-w="${esc((h||f).toLowerCase())}">${f}</span>`)}</p>`).join('');
   app.innerHTML=`<h1>${esc(t.title||'Text '+(ti+1))}</h1>
   <div class="card text">${para(t.en)}</div>
-  ${t.ar?`<button class="btn alt" onclick="document.getElementById('tr').style.display=document.getElementById('tr').style.display==='none'?'block':'none'">Show / hide Arabic</button><div id="tr" class="card ar" style="display:none">${esc(t.ar).replace(/\n\s*\n/g,'<br><br>')}</div>`:''}
+  ${t.ar?`<button class="btn alt arbtn" onclick="document.getElementById('tr').style.display=document.getElementById('tr').style.display==='none'?'block':'none'">Show / hide Arabic</button><div id="tr" class="card ar" style="display:none">${esc(t.ar).replace(/\n\s*\n/g,'<br><br>')}</div>`:''}
   <p class="mut">Tap an underlined word to see it.</p><div id="pop"></div>
   <div class="nav">${ti?`<a class="btn alt" href="#/l/${id}/text/${ti-1}">← Previous</a>`:'<span></span>'}${ti<l.texts.length-1?`<a class="btn" href="#/l/${id}/text/${ti+1}">Next text →</a>`:`<a class="btn" href="#/l/${id}/review">Flashcards →</a>`}</div>`;
   app.querySelectorAll('.tw').forEach(el=>el.onclick=()=>{const w=l.words.find(x=>x.w.toLowerCase()===el.dataset.w);
@@ -204,7 +209,7 @@ async function review(id){
   else{target=w.w;cue=`<div class="tag">Which word?</div><div style="font-size:21px">${esc(w.def).replace(/\*[^*]+\*/g,'<span class="blank"></span>').replace(new RegExp('\\b'+w.w+'\\w*','gi'),'<span class="blank"></span>')}</div>`}
   app.innerHTML=`<div class="bar"><i style="width:${Q.done/Math.max(1,Q.total)*100}%"></i></div><div class="mut" style="margin:6px 0">${Q.q.length} left</div>
   <div class="card" style="text-align:center">${cue}<span class="pos" style="margin-top:8px">${esc(w.pos)}</span>
-  <div id="hintbox"><button class="btn alt" id="hint">Hint: Arabic</button></div>
+  <div id="hintbox"><button class="btn alt arbtn" id="hint">Hint: Arabic</button></div>
   <input class="ans" id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the word (leave empty if you don’t know)">
   <button class="btn" id="chk">Check</button><div id="back"></div></div>`;
   const inp=document.getElementById('ans');inp.focus();
