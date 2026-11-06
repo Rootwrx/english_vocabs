@@ -28,6 +28,7 @@ input.ans,select.ans{width:100%;font:inherit;font-size:22px;padding:8px 12px;bor
 select.ans{font-size:18px;text-align:left}
 .rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.rate .btn{margin:0;padding:10px 4px}
 .good{color:var(--ok);font-weight:700}.bad{color:var(--no);font-weight:700}.hl{outline:3px solid var(--ok)}
+button.chip{border:0;font:inherit;font-size:16px;cursor:pointer}
 .ygbtn{font-size:14px;padding:3px 10px;margin:4px 0 0}.yg{margin:8px 0}.yg .nav{margin-top:4px}.yg a{font-size:13px}
 </style></head><body>
 <header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb" style="flex:1"></span><a href="#/settings" title="Settings">⚙️</a></header>
@@ -75,7 +76,10 @@ async function ygOpen(btn){
   bp.onclick=()=>{if(pos>1){pos--;w.previous();upd()}};
   bn.onclick=()=>{if(pos<max()){pos++;w.next();upd()}};
 }
-document.addEventListener('click',e=>{const b=e.target.closest('.ygbtn');if(b)ygOpen(b)});
+document.addEventListener('click',e=>{const b=e.target.closest('.ygbtn');if(b)return ygOpen(b);
+  const f=e.target.closest('.fam');if(!f)return; // word-family chip: show its videos in the box under the chips
+  const box=f.parentElement.querySelector('.famyg');if(!box)return;
+  box.innerHTML='';const t=document.createElement('button');t.dataset.q=f.dataset.q;box.appendChild(t);ygOpen(t)});
 
 /* ---------- spaced repetition (SM-2 style) ---------- */
 const key=(l,w)=>l.id+'::'+w.w;
@@ -109,7 +113,7 @@ function wordCard(l,w,full){
   if((w.col||[]).length)h+='<div class="tag">Collocations</div>'+w.col.map(c=>`<div class="box"><div><b style="font-weight:700">${fm(c.p)}</b></div>${c.p_ar?`<div class="ar" style="font-size:18px">${esc(c.p_ar)}</div>`:''}${c.en?`<div class="mut" style="font-style:italic">${fm(c.en)}</div>`:''}${c.ar?`<div class="ar" style="font-size:18px">${esc(c.ar)}</div>`:''}${G.where!=='words'?`<div>${ygBtn(c.yg||c.p)}</div>`:''}</div>`).join('');
   const ts=textSentences(l,w);
   if(ts.length)h+='<div class="tag">In the texts</div>'+ts.map(s=>`<div class="box">${fm(s)}</div>`).join('');
-  if((w.family||[]).length)h+='<div class="tag">Word family</div>'+w.family.map(f=>`<span class="chip">${esc(f)}</span>`).join('');
+  if((w.family||[]).length)h+='<div class="tag">Word family</div>'+w.family.map(f=>{const q=f.replace(/\s*\(.*?\)\s*/g,' ').trim();return `<button class="chip fam" data-q="${encodeURIComponent(q)}" title="Watch videos">🎬 ${esc(f)}</button>`}).join('')+'<div class="famyg"></div>';
   return h}
 
 /* ---------- views ---------- */
