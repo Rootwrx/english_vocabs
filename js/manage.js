@@ -16,8 +16,21 @@ const dirName = s => String(s).replace(/[\\/:*?"<>|#%]+/g, '-').replace(/\s+/g, 
 const gDir = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '') || 'other';
 const listPath = (d, name) => d && d.group && d.set
   ? `${gDir(d.group)}/${dirName(d.set) || 'set'}/${d.part ? 'part' + d.part : name}.json` : name + '.json';
-const idxEntry = (file, d) => ({ id: listId(file), file, title: d.title || file.replace(/\.json$/i, ''), group: d.group || '',
-  set: d.set || '', part: d.part || 0,
+const partOf = name => { const m = /^part[-_ ]?(\d+)$/i.exec(name); return m ? +m[1] : 0; };
+/* group / set / part / title of a list — same rule as meta() in make_index.py: the FOLDER decides
+ * (data/<group>/<set>/part<N>.json), fields inside the file override it, and the title is "<set> – Part <N>" unless the file has one */
+function meta(file, d) {
+  const folders = file.replace(/\.json$/i, '').split('/'), stem = folders.pop();
+  let group = d.group || '', set = d.set || '', part = d.part || 0;
+  if (folders.length) {
+    group = group || (CAT || []).map(c => c.group).find(g => gDir(g) === folders[0]) || folders[0].replace(/_+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    set = set || folders.slice(1).join(' / ');
+    part = part || partOf(stem);
+  }
+  const title = d.title || (set && part ? `${set} – Part ${part}` : set && folders.length ? `${set} – ${stem}` : set || stem);
+  return { group, set, part, title };
+}
+const idxEntry = (file, d) => ({ id: listId(file), file, ...meta(file, d),
   count: (d.words || []).length, texts: (d.texts || []).length });
 const idxSet = (file, d) => { if (!INDEX) return; const e = idxEntry(file, d), i = INDEX.findIndex(x => x.file === file); i < 0 ? INDEX.push(e) : (INDEX[i] = e); };
 const idxDel = file => { if (INDEX) INDEX = INDEX.filter(x => x.file !== file); };
@@ -114,8 +127,8 @@ async function detailsList(f) {
     base = f.slice(dir.length).replace(/\.json$/i, ''), groups = [...new Set((INDEX || []).map(e => e.group).filter(Boolean))];
   const inp = (id, label, val, extra = '') => `<div class="tag">${label}</div><input class="ans" id="${id}" value="${esc(val)}" style="text-align:left;margin:4px 0" ${extra}>`;
   const m = modal(`<h2>Rename / details</h2>
-    ${inp('d-title', 'Title', d.title || base)}${inp('d-ar', 'Arabic title (optional)', d.title_ar || '')}
-    ${inp('d-group', 'Group (optional, lists with the same group are shown together)', d.group || '', 'list="d-groups"')}
+    ${inp('d-title', 'Title (optional, empty = “' + esc(meta(f, { ...d, title: '' }).title) + '”)', d.title || '')}${inp('d-ar', 'Arabic title (optional)', d.title_ar || '')}
+    ${inp('d-group', 'Group (optional override, normally taken from the folder)', d.group || '', 'list="d-groups"')}
     <datalist id="d-groups">${groups.map(g => `<option value="${esc(g)}">`).join('')}</datalist>
     ${inp('d-file', 'File name (changing it renames data/' + esc(f) + ')', base)}
     <p class="mut">Renaming the file keeps your learning progress on this device. The folder stays the same.</p>
@@ -125,7 +138,7 @@ async function detailsList(f) {
     const nf = slug(v('d-file')), newFile = dir + nf + '.json';
     if (!nf) return st.innerHTML = '<span class="bad">File name is empty.</span>';
     if (!dir && RESERVED.includes(nf)) return st.innerHTML = `<span class="bad">"${nf}" is reserved.</span>`;
-    d.title = v('d-title') || d.title || base;
+    v('d-title') ? d.title = v('d-title') : delete d.title;     // empty = automatic "<set> – Part N"
     v('d-ar') ? d.title_ar = v('d-ar') : delete d.title_ar;
     v('d-group') ? d.group = v('d-group') : delete d.group;
     st.textContent = 'Committing…';
@@ -152,7 +165,7 @@ async function dupList(f) {
   if (!nf || (!dir && RESERVED.includes(nf))) return;
   try {
     if ((await ghList(cfg)).some(x => x.name === dir + nf + '.json')) return alert(`data/${dir}${nf}.json already exists.`);
-    const file = await ghFile(cfg, f), d = JSON.parse(file.text); d.title = (d.title || base) + ' (copy)';
+    const file = await ghFile(cfg, f), d = JSON.parse(file.text); d.title = meta(f, d).title + ' (copy)';
     await ghCommit(cfg, `duplicate list: ${base} → ${nf}`, [{ path: `data/${dir}${nf}.json`, content: pretty(d) }]);
     idxSet(dir + nf + '.json', d); toast(DONE); route();
   } catch (e) { alert(e.message); }
@@ -213,7 +226,18 @@ function renderUp() {
     } catch (e) { ready.forEach(r => r.st = 'failed: ' + e.message); renderUp(); }
   };
 }
-function uploadView() {
+/* where each selected file goes. With a Group + Set chosen: data/<group>/<set>/part<N>.json — a file named part3.json keeps
+ * number 3, any other file name gets the next free part number. Without them: the group/set written inside the file, else flat. */
+function assignPaths() {
+  const val = id => (document.getElementById(id) || {}).value?.trim() || '', g = val('up-g'), s = val('up-s');
+  const explicit = r => partOf(r.name) || (r.data && r.data.part) || 0;
+  let next = Math.max(0, ...(INDEX || []).filter(e => e.group === g && e.set === s).map(e => e.part || 0), ...UP.map(explicit));
+  UP.forEach(r => {
+    r.path = g && s ? `${gDir(g)}/${dirName(s) || 'set'}/part${explicit(r) || ++next}.json` : listPath(r.data, r.name);
+    r.errs = r.v.concat(!r.path.includes('/') && RESERVED.includes(r.name) ? [`"${r.name}" is a reserved name; rename the file`] : []);
+  });
+}
+function uploadView(pg = '', ps = '') {
   document.getElementById('crumb').textContent = '/ Upload'; UP = [];
   const c = ghCfg();
   app.innerHTML = `<h1>Upload lists</h1>
@@ -223,9 +247,14 @@ function uploadView() {
     <input class="ans" id="gh-branch" placeholder="branch" value="${esc(c.branch)}" style="text-align:left">
     <input class="ans" id="gh-token" type="password" placeholder="GitHub token" value="${esc(c.token)}" style="text-align:left">
     <button class="btn alt" id="gh-save">Save</button> <span class="mut" id="gh-msg"></span></div>
-  <div class="card"><h2>2 · Choose list files (.json)</h2>
-    <p class="mut">Same format as <a href="data/example.json">example.json</a>. Every file is checked before upload, and all files go in one commit.
-    A list with <code>group</code> and <code>set</code> is saved to <code>data/&lt;group&gt;/&lt;set&gt;/part&lt;N&gt;.json</code>; otherwise to <code>data/&lt;file name&gt;.json</code>.</p>
+  <div class="card"><h2>2 · Category</h2>
+    <p class="mut">Lists are saved to <code>data/&lt;group&gt;/&lt;set&gt;/part&lt;N&gt;.json</code> and show up under that group and set as “Part N”.
+    A file named <code>part3.json</code> keeps number 3; any other file name gets the next free part number.
+    Leave both empty only for a list that has <code>group</code> and <code>set</code> written inside it (otherwise it is saved flat).</p>
+    <input class="ans" id="up-g" list="up-gs" placeholder="Group, e.g. By Level" value="${esc(pg)}" style="text-align:left" autocomplete="off"><datalist id="up-gs"></datalist>
+    <input class="ans" id="up-s" list="up-ss" placeholder="Set, e.g. Basic Vocabulary (A1A2)" value="${esc(ps)}" style="text-align:left" autocomplete="off"><datalist id="up-ss"></datalist></div>
+  <div class="card"><h2>3 · Choose list files (.json)</h2>
+    <p class="mut">Same format as <a href="data/example.json">example.json</a>, but title, group, set and part are not needed. Every file is checked before upload, and all files go in one commit.</p>
     <input type="file" id="up-files" accept=".json,application/json" multiple><div id="up-rows"></div><div id="up-act"></div></div>`;
   document.getElementById('gh-save').onclick = () => {
     const v = id => document.getElementById(id).value.trim();
@@ -235,12 +264,25 @@ function uploadView() {
   document.getElementById('up-files').onchange = async ev => {
     UP = [];
     for (const f of ev.target.files) {
-      const row = { name: slug(f.name) || 'list', data: null, errs: [], st: '' };
-      try { row.data = JSON.parse(await f.text()); row.errs = validateList(row.data); } catch (e) { row.errs = ['Invalid JSON: ' + e.message]; }
-      row.path = listPath(row.data, row.name);
-      if (!row.path.includes('/') && RESERVED.includes(row.name)) row.errs.push(`"${row.name}" is a reserved name; rename the file`);
+      const row = { name: slug(f.name) || 'list', data: null, v: [], errs: [], st: '', path: '' };   // v = validation errors
+      try { row.data = JSON.parse(await f.text()); row.v = validateList(row.data); } catch (e) { row.v = ['Invalid JSON: ' + e.message]; }
       UP.push(row);
     }
-    renderUp();
+    assignPaths(); renderUp();
   };
+  /* suggestions: groups and sets from catalog.json + lists already uploaded */
+  const val = id => document.getElementById(id).value.trim();
+  const fillSets = () => {
+    const g = val('up-g'), sets = new Set();
+    (CAT || []).filter(c => c.group === g).forEach(c => (c.sets || []).forEach(s => sets.add(s)));
+    (INDEX || []).filter(e => e.group === g && e.set).forEach(e => sets.add(e.set));
+    document.getElementById('up-ss').innerHTML = [...sets].map(s => `<option value="${esc(s)}">`).join('');
+  };
+  Promise.all([getIndex(), getCatalog()]).then(() => {
+    document.getElementById('up-gs').innerHTML = [...new Set([...(CAT || []).map(c => c.group), ...INDEX.map(e => e.group).filter(Boolean)])]
+      .map(g => `<option value="${esc(g)}">`).join('');
+    fillSets(); assignPaths(); renderUp();
+  }).catch(() => {});
+  document.getElementById('up-g').oninput = () => { fillSets(); assignPaths(); renderUp(); };
+  document.getElementById('up-s').oninput = () => { assignPaths(); renderUp(); };
 }

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Scans data/**/*.json and writes data/index.json and data/search.json (run locally or by the GitHub Action).
 Lists can be flat files (data/unit1.json) or live in subfolders (data/by_level/Basic Vocabulary (A1A2)/part1.json).
-The folders are only for organising: the group / set / part fields inside each file decide where it shows on the home page.
+The folders decide the category: data/<group>/<set>/part<N>.json shows under that group and set as "Part N", and its title is
+"<set> – Part N", so a list file needs no title / group / set / part fields (they are optional overrides).
 The list id is the path without .json, folders joined with "__" and unsafe characters replaced by "_"
 (keep listId() in js/manage.js identical).
 search.json = one compact entry per word: w, pos, ar, def, l (list id), i (word index), c (collocations [[phrase, arabic], ...]).
@@ -14,6 +15,24 @@ DATA = pathlib.Path(__file__).parent / "data"
 SKIP = {"index.json", "search.json", "catalog.json"}   # generated files; only skipped at the top level of data/
 strip = lambda s: (s or "").replace("*", "")
 stars = lambda s: str(s).count("*")
+gdir = lambda g: re.sub(r"[^a-z0-9]+", "_", g.lower()).strip("_") or "other"   # same rule as gDir() in js/manage.js
+try: GROUPS = [c["group"] for c in json.loads((DATA / "catalog.json").read_text(encoding="utf-8-sig"))]
+except Exception: GROUPS = []
+
+def meta(rel, d):
+    """group / set / part / title of a list. The FOLDER decides (data/<group>/<set>/part<N>.json), e.g.
+    data/by_level/Basic Vocabulary (A1A2)/part1.json -> By Level / Basic Vocabulary (A1A2) / part 1,
+    title "Basic Vocabulary (A1A2) – Part 1". Fields written inside the file override the folder.
+    Keep identical to meta() in js/manage.js."""
+    folders = list(rel.with_suffix("").parts); stem = folders.pop()
+    group, st, part = d.get("group", ""), d.get("set", ""), d.get("part", 0)
+    if folders:
+        group = group or next((g for g in GROUPS if gdir(g) == folders[0]), folders[0].replace("_", " ").title())
+        st = st or " / ".join(folders[1:])
+        m = re.fullmatch(r"part[-_ ]?(\d+)", stem, re.I)
+        part = part or (int(m.group(1)) if m else 0)
+    title = d.get("title") or (f"{st} – Part {part}" if st and part else f"{st} – {stem}" if st and folders else st or stem)
+    return group, st, part, title
 
 def check(d):
     if not isinstance(d, dict) or not isinstance(d.get("words"), list) or not d["words"]:
@@ -53,8 +72,9 @@ for f in sorted(DATA.rglob("*.json")):
     for i, w in enumerate(d["words"]):
         search.append({"w": w["w"], "pos": w["pos"], "ar": w["ar"], "def": strip(w.get("def")), "l": lid, "i": i,
                        "c": [[strip(c.get("p")), c.get("p_ar", "")] for c in w.get("col", [])]})
-    entries.append({"id": lid, "file": rel.as_posix(), "title": d.get("title") or rel.stem,
-                    "group": d.get("group", ""), "set": d.get("set", ""), "part": d.get("part", 0), "count": len(d["words"]), "texts": len(d.get("texts", []))})
+    group, st, part, title = meta(rel, d)
+    entries.append({"id": lid, "file": rel.as_posix(), "title": title,
+                    "group": group, "set": st, "part": part, "count": len(d["words"]), "texts": len(d.get("texts", []))})
 
 (DATA / "index.json").write_text(json.dumps(entries, ensure_ascii=False, indent=1), encoding="utf-8")
 (DATA / "search.json").write_text(json.dumps(search, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
