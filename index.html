@@ -24,11 +24,13 @@ h1{font-size:26px;margin:8px 0}h2{font-size:20px;margin:0 0 8px}
 .bar{height:6px;background:var(--bd);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
 .text p{margin:0 0 14px;line-height:1.8}.tw{border-bottom:2px solid var(--ac);color:var(--ac);font-weight:700;cursor:pointer}
 .blank{display:inline-block;min-width:90px;border-bottom:3px solid var(--ac)}
-input.ans{width:100%;font:inherit;font-size:22px;padding:8px 12px;border-radius:10px;border:2px solid var(--bd);background:var(--bg);color:var(--tx);text-align:center;margin:10px 0}
+input.ans,select.ans{width:100%;font:inherit;font-size:22px;padding:8px 12px;border-radius:10px;border:2px solid var(--bd);background:var(--bg);color:var(--tx);text-align:center;margin:10px 0}
+select.ans{font-size:18px;text-align:left}
 .rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.rate .btn{margin:0;padding:10px 4px}
 .good{color:var(--ok);font-weight:700}.bad{color:var(--no);font-weight:700}.hl{outline:3px solid var(--ok)}
+.ygbtn{font-size:14px;padding:3px 10px;margin:4px 0 0}.yg{margin:8px 0}.yg .nav{margin-top:4px}.yg a{font-size:13px}
 </style></head><body>
-<header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb"></span></header>
+<header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb" style="flex:1"></span><a href="#/settings" title="Settings">⚙️</a></header>
 <main id="app">Loading…</main>
 <script>
 const app=document.getElementById('app');
@@ -37,12 +39,43 @@ const fm=s=>esc(s).replace(/\*([^*]+)\*/g,'<b>$1</b>');
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
 let S={};try{S=JSON.parse(localStorage.getItem('wordlists.v1')||'{}')}catch(e){}
 const save=()=>{try{localStorage.setItem('wordlists.v1',JSON.stringify(S))}catch(e){}};
-const cache={};let INDEX=null;
+/* settings live under their own key so they never mix with progress */
+let G={n:3,acc:'us',auto:false,where:'both'};
+try{Object.assign(G,JSON.parse(localStorage.getItem('wordlists.settings.v1')||'{}'))}catch(e){}
+const saveG=()=>{try{localStorage.setItem('wordlists.settings.v1',JSON.stringify(G))}catch(e){}};
+const cache={};let INDEX=null,SEARCH=null;
 async function J(u){const r=await fetch(u);if(!r.ok)throw new Error('Cannot load '+u);return r.json()}
 async function getIndex(){return INDEX=INDEX||await J('data/index.json')}
+async function getSearch(){if(!SEARCH){try{SEARCH=await J('data/search.json')}catch(e){SEARCH=[]}}return SEARCH}
 async function getList(id){if(cache[id])return cache[id];const e=(await getIndex()).find(x=>x.id===id);if(!e)throw new Error('Unknown list '+id);const l=await J('data/'+e.file);l.id=id;return cache[id]=l}
 const speak=t=>{try{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}};
 window.speak=speak;
+
+/* ---------- YouGlish videos (lazy: nothing loads until a Videos button is tapped) ---------- */
+// "have the *ability* to do something" -> "have the ability to"; a "yg" field in the JSON overrides the auto query
+const ygq=s=>String(s||'').replace(/\*/g,'').replace(/\b(?:do\s+)?(?:something|someone|somebody)\b/gi,'').replace(/\.\.\.|[?!]/g,' ').replace(/\s+/g,' ').trim();
+const ygBtn=(q,label)=>{q=ygq(q);return q?`<button class="btn alt ygbtn" data-q="${encodeURIComponent(q)}">🎬 ${label||'Videos'}</button>`:''};
+let ygP=null,ygN=0;
+const ygLoad=()=>ygP=ygP||new Promise((ok,no)=>{if(window.YG&&YG.Widget)return ok();
+  window.onYouglishAPIReady=ok;const s=document.createElement('script');s.src='https://youglish.com/public/emb/widget.js';s.async=true;
+  s.onload=()=>{if(window.YG&&YG.Widget)ok()};s.onerror=()=>{ygP=null;no(new Error('load'))};document.body.appendChild(s)});
+const ygLink=q=>'https://youglish.com/pronounce/'+encodeURIComponent(q)+'/english'+(G.acc==='all'?'':'/'+G.acc);
+async function ygOpen(btn){
+  const q=decodeURIComponent(btn.dataset.q),id='yg'+(++ygN),box=document.createElement('div');box.className='yg';
+  box.innerHTML=`<div id="${id}"><span class="mut">Loading videos…</span></div><div class="nav"><button class="btn alt" data-d="-1">←</button><span class="mut"></span><button class="btn alt" data-d="1">→</button></div><a class="mut" target="_blank" rel="noopener" href="${ygLink(q)}">Open “${esc(q)}” on YouGlish ↗</a>`;
+  btn.replaceWith(box);
+  const lab=box.querySelector('.nav .mut'),[bp,bn]=box.querySelectorAll('.nav .btn');let pos=1,total=null,w;
+  const max=()=>Math.min(G.n,total==null?G.n:total),upd=()=>{lab.textContent=total===0?'No clips found':pos+' / '+max();bp.disabled=pos<=1;bn.disabled=pos>=max()};
+  upd();
+  try{await ygLoad();
+    w=new YG.Widget(id,{width:Math.min(box.clientWidth||320,640),autoStart:G.auto?1:0,
+      events:{onFetchDone:e=>{total=e.totalResult||0;upd()},onError:()=>{lab.textContent='Could not load clips'}}});
+    w.fetch(q,'english',G.acc==='all'?undefined:G.acc);
+  }catch(e){document.getElementById(id).innerHTML='<span class="bad">YouGlish could not be loaded.</span>';return}
+  bp.onclick=()=>{if(pos>1){pos--;w.previous();upd()}};
+  bn.onclick=()=>{if(pos<max()){pos++;w.next();upd()}};
+}
+document.addEventListener('click',e=>{const b=e.target.closest('.ygbtn');if(b)ygOpen(b)});
 
 /* ---------- spaced repetition (SM-2 style) ---------- */
 const key=(l,w)=>l.id+'::'+w.w;
@@ -71,8 +104,9 @@ function wordCard(l,w,full){
   <p>${fm(w.def)}</p>`;
   if(w.note)h+=`<div class="box note">${esc(w.note)}</div>`;
   if(!full)return h;
+  if(G.where!=='cols')h+=ygBtn(w.yg||w.w,'Videos for “'+esc(w.w)+'”');
   if((w.ex||[]).length)h+='<div class="tag">Examples</div>'+w.ex.map(x=>`<div class="box">${fm(x.en)}<div class="ar">${esc(x.ar||'')}</div></div>`).join('');
-  if((w.col||[]).length)h+='<div class="tag">Collocations</div>'+w.col.map(c=>`<div class="box"><div><b style="font-weight:700">${fm(c.p)}</b></div>${c.p_ar?`<div class="ar" style="font-size:18px">${esc(c.p_ar)}</div>`:''}${c.en?`<div class="mut" style="font-style:italic">${fm(c.en)}</div>`:''}${c.ar?`<div class="ar" style="font-size:18px">${esc(c.ar)}</div>`:''}</div>`).join('');
+  if((w.col||[]).length)h+='<div class="tag">Collocations</div>'+w.col.map(c=>`<div class="box"><div><b style="font-weight:700">${fm(c.p)}</b></div>${c.p_ar?`<div class="ar" style="font-size:18px">${esc(c.p_ar)}</div>`:''}${c.en?`<div class="mut" style="font-style:italic">${fm(c.en)}</div>`:''}${c.ar?`<div class="ar" style="font-size:18px">${esc(c.ar)}</div>`:''}${G.where!=='words'?`<div>${ygBtn(c.yg||c.p)}</div>`:''}</div>`).join('');
   const ts=textSentences(l,w);
   if(ts.length)h+='<div class="tag">In the texts</div>'+ts.map(s=>`<div class="box">${fm(s)}</div>`).join('');
   if((w.family||[]).length)h+='<div class="tag">Word family</div>'+w.family.map(f=>`<span class="chip">${esc(f)}</span>`).join('');
@@ -82,13 +116,39 @@ function wordCard(l,w,full){
 async function home(){
   document.getElementById('crumb').textContent='';
   const idx=await getIndex();
-  app.innerHTML='<h1>Your lists</h1><input class="ans" id="q" placeholder="Search lists…" style="text-align:left"><div id="lists"></div>';
-  const draw=()=>{const q=document.getElementById('q').value.trim().toLowerCase(),keys=Object.keys(S),g={};
+  app.innerHTML='<h1>Your lists</h1><input class="ans" id="q" placeholder="Search lists and words (English or Arabic)…" style="text-align:left"><div id="hits"></div><div id="lists"></div>';
+  let tok=0;
+  const words=async q=>{const my=++tok,el=document.getElementById('hits');
+    if(q.length<2){el.innerHTML='';return}
+    const data=await getSearch();if(my!==tok)return;
+    const titles=Object.fromEntries(idx.map(e=>[e.id,e.title])),g={};let exact=false;
+    for(const e of data){const wl=e.w.toLowerCase();let sc=0;
+      if(wl===q){sc=5;exact=true}else if(wl.startsWith(q))sc=3;else if(wl.includes(q))sc=2;
+      else if((e.ar||'').includes(q)||(e.def||'').toLowerCase().includes(q)||e.c.some(c=>c[0].toLowerCase().includes(q)||(c[1]||'').includes(q)))sc=1;
+      if(!sc)continue;const k=wl+'|'+e.pos,x=g[k]=g[k]||{e,sc,at:[]};x.sc=Math.max(x.sc,sc);x.at.push(e)}
+    const rows=Object.values(g).sort((a,b)=>b.sc-a.sc||a.e.w.localeCompare(b.e.w)).slice(0,20);
+    let h='';
+    if(rows.length)h+='<div class="tag">Words</div>'+rows.map(r=>`<div class="card" style="padding:12px 18px"><b>${esc(r.e.w)}</b> <span class="pos">${esc(r.e.pos)}</span> <span class="ar" style="font-size:18px">${esc(r.e.ar)}</span>
+      <div class="mut">appears in: ${r.at.map(a=>`<a class="chip" href="#/l/${a.l}/study/${a.i}">${esc(titles[a.l]||a.l)}</a>`).join('')}</div></div>`).join('');
+    if(!exact)h+=`<div class="card" style="padding:12px 18px"><span class="mut">“${esc(q)}” is not a headword in any list.</span><div>${ygBtn(q,'Watch “'+esc(q)+'” on YouGlish')}</div></div>`;
+    el.innerHTML=h};
+  const draw=()=>{const raw=document.getElementById('q').value.trim(),q=raw.toLowerCase(),keys=Object.keys(S),g={};
+    words(q);
     idx.filter(e=>!q||(e.title+' '+(e.group||'')).toLowerCase().includes(q)).forEach(e=>(g[e.group||'']=g[e.group||'']||[]).push(e));
     document.getElementById('lists').innerHTML=Object.keys(g).sort((x,y)=>x.localeCompare(y,undefined,{numeric:true})).map(k=>(k?`<div class="tag">${esc(k)}</div>`:'')+
       g[k].sort((x,y)=>x.title.localeCompare(y.title,undefined,{numeric:true})).map(e=>{const mine=keys.filter(x=>x.startsWith(e.id+'::')),due=mine.filter(x=>S[x].due<=Date.now()).length,nw=Math.max(0,(e.count||0)-mine.length);
-        return `<a class="card" style="display:block;color:inherit;text-decoration:none;padding:14px 18px" href="#/l/${e.id}"><h2 style="margin:0">${esc(e.title)}</h2><div class="mut">${e.count} words${e.texts?' · '+e.texts+' text'+(e.texts>1?'s':''):''} · <span class="${due?'good':''}">${due} due</span> · ${nw} new</div></a>`}).join('')).join('')||'<p class="mut">No lists found.</p>'};
+        return `<a class="card" style="display:block;color:inherit;text-decoration:none;padding:14px 18px" href="#/l/${e.id}"><h2 style="margin:0">${esc(e.title)}</h2><div class="mut">${e.count} words${e.texts?' · '+e.texts+' text'+(e.texts>1?'s':''):''} · <span class="${due?'good':''}">${due} due</span> · ${nw} new</div></a>`}).join('')).join('')||(q?'':'<p class="mut">No lists found.</p>')};
   document.getElementById('q').oninput=draw;draw()}
+function settings(){
+  document.getElementById('crumb').textContent='/ Settings';
+  const sel=(k,opts)=>`<select class="ans" data-k="${k}">${opts.map(([v,t])=>`<option value="${v}"${String(G[k])===String(v)?' selected':''}>${t}</option>`).join('')}</select>`;
+  app.innerHTML=`<h1>Settings</h1><div class="card"><h2>🎬 YouGlish videos</h2>
+  <div class="tag">Videos per word / collocation</div>${sel('n',[[1,'1'],[3,'3'],[5,'5']])}
+  <div class="tag">Accent</div>${sel('acc',[['us','American'],['uk','British'],['aus','Australian'],['all','Any']])}
+  <div class="tag">Autoplay</div>${sel('auto',[[false,'Off'],[true,'On']])}
+  <div class="tag">Show video buttons for</div>${sel('where',[['both','Words and collocations'],['words','Words only'],['cols','Collocations only']])}
+  <p class="mut">Videos load only when you tap a 🎬 button. Saved automatically on this device.</p></div>`;
+  app.querySelectorAll('select').forEach(s=>s.onchange=()=>{const k=s.dataset.k;G[k]=k==='n'?+s.value:k==='auto'?s.value==='true':s.value;saveG()})}
 async function listMenu(id){
   const l=await getList(id);document.getElementById('crumb').textContent='/ '+l.title;
   const due=l.words.filter(w=>isDue(l,w)).length,seen=l.words.filter(w=>st(l,w)).length;
@@ -136,7 +196,7 @@ async function review(id){
   document.getElementById('hint').onclick=()=>{document.getElementById('hintbox').innerHTML='<div class="ar" style="text-align:center">'+esc(w.ar)+'</div>'};
   const check=()=>{const ok=inp.value.trim().toLowerCase()===target.toLowerCase();inp.disabled=true;document.getElementById('chk').remove();
     const sug=ok?2:0;
-    document.getElementById('back').innerHTML=`<p class="${ok?'good':'bad'}">${ok?'✓ Correct':'✗ The answer: '+esc(target)}</p>${wordCard(l,w,true)}
+    document.getElementById('back').innerHTML=`<p class="${ok?'good':'bad'}">${ok?'✓ Correct':'✗ The answer: '+esc(target)}</p><div style="text-align:left">${wordCard(l,w,true)}</div>
     <div class="rate">${['Again','Hard','Good','Easy'].map((n,g)=>`<button class="btn ${g===sug?'':'alt'}" data-g="${g}">${n}</button>`).join('')}</div>
     <p class="mut">Be honest: hesitated or peeked = Hard/Again.</p>`;
     speak(target);
@@ -148,6 +208,7 @@ async function route(){
   const p=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean);
   try{
     if(!p.length)await home();
+    else if(p[0]==='settings')settings();
     else if(p[0]==='l'&&p.length===2)await listMenu(p[1]);
     else if(p[0]==='l'&&p[2]==='study')await study(p[1],+p[3]||0);
     else if(p[0]==='l'&&p[2]==='text')await textView(p[1],+p[3]||0);
