@@ -1,0 +1,11 @@
+asset, loss, equity, profit, revenue, break-even point, forecast, remittance, invoice, overdue
+tighten the belt, statement, balance, credit, debit, refund, discount, late fee, billing cycle, bank transfer
+wire, purchase order, vendor, payee, recipient, payment terms, due date, upfront, installment, reimbursement
+recurring, discrepancy, outstanding, reconciliation, expenditure, liability, overhead, deficit, surplus, variance
+allocation, capital, debt, audit, receipt, rebate, breakdown, shortfall, margin, markup
+outlay, contingency, bottom line, break even, cut back, turnover, net, transaction, cash flow, balance sheet
+income statement, fiscal year, quarter, year to date, trend, net income, operating expense, shareholder, stakeholder, dividend
+yield, return on investment, solvency, liquidity, transparency, consolidation, figure, benchmark, year-end, runway
+inflow, outflow, receivable, payable, reserve, interest, cash cow, red ink, rainy day fund, nest egg
+settle up, dip into, revenue stream, burn rate, revenue growth, profit margin, sales forecast, consumption, cost reduction, stock
+ledger, add up, break the bank, pay through the nose, cost an arm and a leg, cookbook

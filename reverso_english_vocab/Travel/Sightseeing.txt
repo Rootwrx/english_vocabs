@@ -1,0 +1,14 @@
+landmark, observation deck, skyline, staircase, exhibition, botanical garden, breathtaking, stunning, massive, panorama
+feature, surroundings, catch one's eye, monument, statue, memorial, historic site, heritage site, ruin, temple
+palace, castle, fortress, cathedral, basilica, mosque, shrine, tower, bridge, arch
+obelisk, dome, town square, museum, public art, viewpoint, backdrop, towering, impressive, majestic
+column, spire, balcony, terrace, courtyard, stained glass, mural, ornate, symmetrical, minimalist
+baroque, Gothic, neoclassical, Art Deco, architecture, carving, art gallery, collection, masterpiece, artwork
+painting, sculpture, artifact, guided tour, audio guide, map, hall, wing, national park, wildlife refuge
+arboretum, zoo, aquarium, hiking trail, picnic area, campground, parking lot, lake, waterfall, river
+beach, mountain, canyon, cave, windmill, lighthouse, tourist attraction, sightseeing, downtown, city center
+public transit, directions, look for, on foot, pedestrian zone, entrance, day trip, hop-on hop-off, itinerary, tour guide
+meeting point, spectacular, beautiful, picturesque, scenic, charming, peaceful, serene, dramatic, vibrant
+colorful, wide-open, vast, view, landscape, cityscape, seascape, horizon, overlook, silhouette
+take in, look out over, gaze, glance, synagogue, chapel, monastery, citadel, layout, detail
+atmosphere, crowded, lively, historic, modern, unique, check out, stand out

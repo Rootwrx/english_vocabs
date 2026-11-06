@@ -1,0 +1,12 @@
+window seat, check in, round-trip, abroad, gate, jet lag, eye mask, touchdown, departure, suitcase
+tag, tray, ATM, customs, hand luggage, layover, baggage drop, terminal, passport, security
+scan, standby, overbooked, board, aisle seat, row, armrest, headrest, tray table, seat belt
+recline, upright, stow, carry-on, legroom, long haul, travel, overseas, foreign, trip
+journey, airport terminal, beverage, snack, meal, refill, blanket, headphone, announcement, turbulence
+duty-free, emergency exit, overhead compartment, buckle up, life vest, oxygen mask, evacuate, baggage, backpack, neck pillow
+restroom, stretch, arrival, exit, get off, step out, visa, itinerary, reservation, destination
+boarding pass, seat, upgrade, last call, baggage claim, baggage carousel, baggage cart, valuables, declare, pack
+drop off, trolley, travel light, red-eye, reclaim, airline, flight, airplane, aisle, flight attendant
+captain, crew, cockpit, cabin, boarding time, connection, direct flight, one-way, delay, takeoff
+landing, runway, on time, late, canceled, waiting time, border, immigration, overstay, TSA
+tablet, pat down, prohibited, lounge, shuttle bus

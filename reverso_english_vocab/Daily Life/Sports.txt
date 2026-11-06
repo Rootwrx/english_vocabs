@@ -1,0 +1,18 @@
+marathon, jog, run, relay, baton, track, lap, pace, start, finish
+go the extra mile, warm-up, cooldown, stretch, stamina, false start, cycling, triathlon, gymnastics, swim
+dive, lifeguard, scuba, helmet, surf, kayak, canoe, row, paddle, oar
+raft, sail, sailboat, catamaran, water ski, water polo, swimming goggles, wetsuit, long jump, high jump
+skydive, parachute, bungee jump, base jump, rock climb, mountain bike, motocross, rafting, adrenaline rush, harness
+thrill, daredevil, risk taker, safety gear, ski, snowboard, ski pole, sled, snowshoe, hockey
+figure skating, curling, ski lift, wipe out, fall over, go downhill, ice skate, tackle, pass, serve
+sprint, leap, dodge, shoot, catch, throw, bounce, spin, swing, kick
+bat, glove, sneakers, shin guard, knee pad, whistle, scoreboard, basketball hoop, racket, tennis ball
+golf club, golf ball, tee, skateboard, roller skate, bike, jump rope, yoga mat, dumbbell, barbell
+punching bag, resistance band, offside, free throw, penalty kick, dribble, basket, championship, contender, defender
+formation, mile, racing, supporter, triumph, trophy, victory, winner, goalkeeper, team
+compete, train, player, score, goal, game, tournament, draw, competition, athlete
+coach, trainer, captain, medic, practice, win, lose, tie, rematch, forfeit
+cheat, defeat, conquer, rival, streak, amateur, rivalry, rebound, rookie, opponent
+taekwondo, judo, karate, grappling, sparring, circuit training, climbing wall, hit a home run, win hands down, stadium
+arena, ballpark, pitch, court, gym, fitness center, swimming pool, running track, golf course, driving range
+bowling alley, ice rink, climbing gym, dojo, ring

@@ -1,0 +1,15 @@
+mother, father, parent, daughter, son, sibling, brother, sister, grandmother, grandfather
+grandson, granddaughter, grandchild, great-grandfather, aunt, uncle, niece, nephew, cousin, first cousin
+relative, ancestor, descendant, offspring, household, belong, father-in-law, brother-in-law, stepfather, stepson
+half-brother, foster father, foster child, adoptive parent, biological father, birth parent, godfather, legal guardian, next of kin, namesake
+partner, fiancé, fiancée, bride, groom, newlyweds, soulmate, significant other, better half, steady
+flame, companion, acquaintance, peer, mentor, bond, tie, connection, rapport, intimacy
+affection, devotion, loyalty, conflict, rift, reconciliation, generation, lose touch, stepchild, twins
+only child, adopt, raise, kin, in-law, spouse, couple, boyfriend, engagement, wedding
+anniversary, honeymoon, adult, adulthood, come of age, single, engaged, married, vow, reconcile
+separated, divorced, quarrel, widow, widower, ex-husband, ex-wife, breakup, heartache, infidelity
+monogamy, polygamy, remarriage, tie the knot, pop the question, hit it off, fall for, go out, settle down, walk down the aisle
+split up, drift apart, guardian, ward, breadwinner, provider, caregiver, scold, folks, inherit
+heir, helper, dependent, orphan, foster parent, look after, bring up, take care, watch over, stand by
+support, nurture, protect, supervise, guide, attend, great-grandparent, grandpa, bereavement, retirement
+retiree, senior, retire, pass away, funeral, memorial, caretaker

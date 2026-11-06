@@ -1,0 +1,23 @@
+broken, out of order, jam, stuck, leak, clogged, backed up, short-circuit, power outage, shattered
+overheat, drain, flush, heat, cool down, flood, mold, malfunction, toolbox, drip
+blockage, overflow, smell, low-pressure, high pressure, water heater, faucet, duct, blackout, power surge
+fuse, reset, plug, flicker, dim, sparking, electric shock, bulb, charger, unplug
+turn off, shut off, hammer, screwdriver, flat head screwdriver, hex key, Allen key, wrench, socket wrench, spanner
+ratchet, pliers, tape measure, level, saw, jigsaw, hacksaw, utility knife, box cutter, chisel
+crowbar, pry bar, sander, paintbrush, roller, putty knife, angle grinder, workbench, flashlight, drill
+nail gun, staple gun, sledgehammer, chainsaw, safety goggles, glove, dust mask, ear protection, knee pad, drop cloth
+extension cord, ladder, sandpaper, putty, plaster, varnish, paint, rubble, debris, surface
+outlet, wiring, plunger, duct tape, rusty, chipped, wobbly, nail, screw, bolt
+nut, washer, staple, sealant, electrical tape, glue, plank, board, beam, pipe
+plywood, timber, brass, joint, cut, sand, file, grind, strip, unscrew
+weld, clamp, tighten, loosen, seal, patch, fix, repair, replace, renovate
+measure, mark, snap, bend, twist, insert, attach, detach, assemble, locksmith
+shatter, latch, break down, scrape, crumble, damp, dispose, hang, concrete, rot
+hinge, gutter, shut, ledge, roof, blade, intact, scrap, discard, stench
+squeak, heater, boiler, thermostat, air conditioner, radiator, air vent, fan, insulation, chilly
+stuffy, freeze up, turn up, turn down, kick on, urgent, emergency, ASAP, at once, without delay
+no time to lose, hurry up, speed up, last minute, critical, pressing, dire, imminent, SOS, panic
+under the gun, in a pinch, in an instant, mend, install, adjust, turn on, breaker, switch, crack
+hole, scratch, dent, stain, touch up, handyman, plumber, electrician, contractor, estimate
+warranty, misplace, vanish, whereabouts, search for, look for, double-check, set down, put away, leave behind
+drop, fall out, pick up, tuck away, stash, tear apart, mess up

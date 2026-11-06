@@ -1,0 +1,11 @@
+medicine, prescription, refill, over-the-counter, generic, dosage, side effect, allergy, label, warning
+expiration date, pill, tablet, capsule, syrup, liquid, ointment, cream, gel, inhaler
+nasal spray, antibiotic, painkiller, cough syrup, decongestant, fever, flu, itch, throat, needle
+wart, ache, pain, sore, headache, migraine, cramp, spasm, sprain, bruise
+dandruff, pimple, burn, inflammation, swollen, sneezing, swallow, swelling, numbness, sting
+rash, analgesic, ibuprofen, aspirin, vial, pharmacist, bandage, antiseptic, tweezers, renewal
+transfer, doctor, patient, instructions, insurance, authorization, sleep aid, eye drops, ear drops, moisturizer
+sunscreen, lip balm, hand sanitizer, rubbing alcohol, thermometer, heating pad, ice pack, tissue, cotton swab, dental floss
+razor blade, adhesive bandage, walking stick, splinter, suggest, advice, drugstore, symptom, on the mend, allergic reaction
+tolerance, withdrawal, precaution, discontinue, vomiting, diarrhea, constipation, dry mouth, blurred vision, stomachache
+heartburn, insomnia

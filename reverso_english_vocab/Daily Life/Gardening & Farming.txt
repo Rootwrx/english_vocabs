@@ -1,0 +1,14 @@
+shovel, sow, dig, watering can, sunflower, prune, plant, weed, trim, mow
+compost, harvest, graft, propagate, transplant, mulch, irrigate, shear, green thumb, spade
+rake, hoe, trowel, pitchfork, wheelbarrow, hose, sprinkler, lawnmower, pruning shears, glove
+netting, pot, planter, soil, topsoil, loam, clay, silt, gravel, pebble
+boulder, dirt, fertilizer, seed, bulb, sprout, cutting, germination, cultivation, flower
+shrub, vine, fern, moss, grass, reed, thorn, stem, leaf, bark
+root, branch, twig, tree stump, tree sap, dew, rainfall, drainage, irrigation, pond
+well, reservoir, flood, drought, rose, daisy, tulip, lavender, poppy, daffodil
+lily, violet, iris, dahlia, petunia, marigold, pansy, bloom, blossom, petal
+bud, pollen, fruit, vegetable, herb, grain, wheat, corn, rice, crop
+yield, hay bale, greenhouse, vegetable garden, allotment, bed, patch, row, furrow, plot
+terrace, trellis, fence, shed, hedge, farm, farmland, field, orchard, plantation
+meadow, prairie, pasture, barn, stable, silo, mill, earthworm, slug, aphid
+snail, reap, clover, harvesting, haystack, hull

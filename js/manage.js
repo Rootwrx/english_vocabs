@@ -9,6 +9,7 @@
 const slug = s => String(s).replace(/\.json$/i, '').toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
 const listId = file => file.replace(/\.json$/i, '').replace(/[^A-Za-z0-9_-]+/g, '_');   // same rule as make_index.py
 const idxEntry = (file, d) => ({ id: listId(file), file, title: d.title || file.replace(/\.json$/i, ''), group: d.group || '',
+  set: d.set || '', part: d.part || 0,
   count: (d.words || []).length, texts: (d.texts || []).length });
 const idxSet = (file, d) => { if (!INDEX) return; const e = idxEntry(file, d), i = INDEX.findIndex(x => x.file === file); i < 0 ? INDEX.push(e) : (INDEX[i] = e); };
 const idxDel = file => { if (INDEX) INDEX = INDEX.filter(x => x.file !== file); };
@@ -18,6 +19,7 @@ function validateList(d) {
   const errs = [], stars = s => (String(s).match(/\*/g) || []).length;
   if (!d || typeof d !== 'object' || Array.isArray(d)) return ['Top level must be an object with a "words" array'];
   if (!Array.isArray(d.words) || !d.words.length) return ['"words" is missing or empty'];
+  if ('part' in d && !(Number.isInteger(d.part) && d.part > 0)) return ['"part" must be a positive integer'];
   const seen = new Set();
   d.words.forEach((w, i) => {
     const nm = `word ${i + 1} (${w.w || '?'})`;

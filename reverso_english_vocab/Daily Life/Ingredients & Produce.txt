@@ -1,0 +1,22 @@
+plum, garlic clove, cashew, turnip, cherry, dairy, chestnut, cabbage, cilantro, lamb
+anchovy, lobster, apple, banana, orange, grape, pear, peach, strawberry, blueberry
+raspberry, blackberry, pineapple, papaya, kiwi, lemon, lime, watermelon, cantaloupe, honeydew
+apricot, fig, date, pomegranate, coconut, avocado, grapefruit, tangerine, nectarine, fresh
+organic, seasonal, ripe, root vegetable, leafy greens, almond, peanut, walnut, pecan, raisin
+hazelnut, pistachio, macadamia, kernel, raw, roasted, salted, unsalted, chopped, crushed
+creamy, snack, allergy, dry, oily, brittle, stale, protein, rice, oats
+vinegar, honey, mustard, carrot, potato, onion, garlic, tomato, lettuce, broccoli
+cauliflower, spinach, pepper, cucumber, zucchini, celery, corn, pea, beans, beet
+radish, pumpkin, squash, kale, leek, artichoke, pickles, pea pod, spring onion, shallot
+eggplant, olive, chickpea, flour, sugar, egg, salt, yeast, vanilla, cocoa
+milk, cream, butter, cheese, yogurt, ghee, lard, margarine, oil, fat
+curd, whey, buttermilk, ricotta, mozzarella, cheddar, skim, pasteurized, low-fat, spread
+grease, whipped cream, sour cream, herb, spice, basil, coriander, mint, rosemary, thyme
+oregano, sage, dill, chives, cumin, paprika, turmeric, ginger, nutmeg, clove
+chili, saffron, lemongrass, allspice, fennel, parsnip, cardamom, bay leaf, crab, oyster
+mussel, clam, squid, octopus, scallop, prawn, roe, caviar, eel, tilapia
+swordfish, beef, pork, chicken, turkey, veal, duck, bacon, sausage, ham
+steak, chop, rib, breast, thigh, drumstick, fillet, mince, lean, fatty
+frozen, bone, skin, tender, slice, patty, fish, seafood, salmon, tuna
+cod, trout, sardine, mackerel, snapper, sole, halibut, bass, carp, catfish
+scale, shrimp, parsley, cinnamon, custard, mushroom, asparagus, crunchy, shell, mango

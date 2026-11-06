@@ -1,0 +1,8 @@
+pick-up point, cab, fare, traffic, rush hour, detour, drop off, flat rate, destination, address
+shortcut, passenger, vehicle, backseat, availability, driver, hail, trunk, seat belt, carpool
+route, air conditioning, heater, step out, pull over, settle up, ride, U-turn, roundabout, intersection
+block, lane, bridge, street sign, gas station, highway, pull up, slow down, speed up, keep going
+hazard lights, license plate, arrival time, taxi stand, insurance, coverage, automatic, manual, pickup truck, convertible
+electric car, hybrid car, fill up, pump, mileage, blinker, headlight, GPS, toll, direction
+steering wheel, tire, flat tire, jump-start, stall, overheat, lockout, accident, breakdown, scratch
+dent

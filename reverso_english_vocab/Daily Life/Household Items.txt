@@ -1,0 +1,12 @@
+bunk bed, tablecloth, nightstand, coat rack, chair, bathtub, sideboard, dryer, buffet, hutch
+cabinet, console table, coaster, centerpiece, napkin ring, placard, armchair, stool, appliance, clock
+furniture, dining table, bed, mattress, cradle, dresser, wardrobe, closet, drawer, vanity
+mirror, lamp, alarm clock, sheet, bookshelf, hamper, laundry basket, storage bin, ottoman, rug
+curtains, blind, blanket, bedsheet, headboard, doorknob, sofa, couch, recliner, pillow
+candlestick, footstool, frame, cupboard, carpet, cushion, fireplace, ceiling fan, cutlery, rocking chair
+welcome mat, picnic table, pergola, washing machine, iron, vacuum cleaner, space heater, fan, fabric, upholstery
+leather, linen, memory foam, wicker, ceramic, stone, marble, granite, broken, damaged
+repaired, fixable, second-hand, shabby, tacky, toilet, shower, vase, picture frame, wall clock
+houseplant, incense, landline, sink, shower curtain, sectional, beanbag, filing cabinet, pantry, floor lamp
+lawnmower, grill, barbecue, pillowcase, duvet, comforter, curtain rod, bedding, desk, chest of drawers
+side table, office chair, bench, folding chair

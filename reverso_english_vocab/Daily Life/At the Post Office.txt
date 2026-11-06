@@ -1,0 +1,5 @@
+letter, postcard, pick up, send out, envelope, mail, package, parcel, box, document
+bill, greeting card, catalog, magazine, newspaper, cash on delivery, PO box, retrieve, collect, post office
+stamp, postage, address, return address, ZIP code, mailbox, counter, weigh, courier, postmark
+tracking number, signature, drop off, forward, return, fragile, customs form, international, domestic, label
+delivery, fill out

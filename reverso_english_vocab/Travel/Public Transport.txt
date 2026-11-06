@@ -1,0 +1,8 @@
+bus, hop off, subway, overcrowded, streetcar, delay, rush hour, fare, park and ride, hop on
+traffic jam, metro, ticket, transfer, pass, one-way, round-trip, reload, top up, ticket machine
+penalty, ferry, train, power outage, destination, line, station, stop, platform, gate
+exit, stairs, escalator, elevator, track, tunnel, crossing, hub, interchange, layover
+detour, get on, pull over, drop-off, pickup, board, enter, take a seat, sit down, let through
+validate, step off, schedule, timetable, departure, arrival, cancellation, disruption, on time, early
+late, reschedule, reroute, connection, interval, frequency, off-peak, terminus, gridlock, break down
+shutdown, strike, refund, pickpocket, catch the bus, run late, drop off, pick up

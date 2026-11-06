@@ -1,0 +1,9 @@
+wage, paycheck, allowance, incentive, paid leave, work from home, stock option, probation, part-time, overtime
+salary, pay, compensation, earnings, bonus, commission, stipend, retainer, honorarium, tip
+gratuity, royalty, severance, raise, premium, equity, shares, options, per diem, draw
+advance, gross salary, minimum wage, salary range, notice period, shift, employee, payroll, payslip, sign-on bonus
+profit share, grant, payout, upside, cap, floor, multiplier, accelerator, quota, target
+payday, benefits, perk, pension, match, insurance, healthcare, PTO, vacation, sick leave
+parental leave, sabbatical, telecommute, hybrid, relocation, reimbursement, mentorship, coaching, certification, promotion
+full-time, permanent, temporary, contract, at will, intern, trainee, apprentice, freelancer, consultant
+self-employed, seasonal, on-call, remote, in office, hourly, salaried, vested, transfer

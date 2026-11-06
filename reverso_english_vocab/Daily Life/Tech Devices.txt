@@ -1,0 +1,17 @@
+smartphone, laptop, keyboard, password, resolution, fingerprint, speaker, browser, malware, online
+hard drive, touchscreen, software, update, screenshot, wallpaper, swipe, scroll, cellphone, tablet
+desktop computer, smartwatch, e-reader, headphones, powerbank, charger, adapter, HDMI cable, router, modem
+Wi-Fi, Bluetooth, hotspot, webcam, microphone, mouse, memory card, game console, remote control, screen protector
+screen, display, camera, lens, flash, button, headphone jack, cable, battery, SIM card
+case, cover, card reader, cloud storage, backup, restore, folder, file, zip file, extension cord
+dock, hub, dongle, tripod, remote, console, headset, monitor, projector, printer
+scanner, brightness, zoom, autofocus, GPS, vibration, ringtone, airplane mode, do not disturb, dark mode
+notification, widget, waterproof, water-resistant, thumbnail, screen time, hardware, cold start, cutting-edge, latency
+dial, download, install, uninstall, upgrade, log in, log out, sign up, sign in, profile
+setting, privacy, permission, subscribe, unsubscribe, crash, bug, glitch, share, upload
+save, delete, block, report, mute, follow, chat, message, sign out, recover
+verification code, 2FA, biometric, lock screen, unlock, lockout, hacker, scam, internet, offline
+search engine, website, webpage, link, hyperlink, URL, email, attachment, inbox, spam
+pop-up, cookie, cache, bookmark, account, virus, video chat, restart, factory reset, freeze
+frozen, lag, slow down, speed up, unresponsive, set up, plug in, unplug, hard reset, connect
+disconnect, lock out

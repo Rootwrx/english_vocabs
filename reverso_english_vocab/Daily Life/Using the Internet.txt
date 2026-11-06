@@ -1,0 +1,15 @@
+browse, download, stream, username, feed, inbox, search engine, upload, lag, subscribe
+ad blocker, password, log in, log out, sign up, sign in, click, tap, swipe, scroll
+search, refresh, install, uninstall, update, save, send, forward, reply, post
+share, like, comment, follow, unsubscribe, bookmark, delete, block, report, mute
+unmute, website, platform, app, homepage, webpage, link, URL, web address, browser
+account, profile, setting, notification, chat, livestream, forum, online store, history, hotspot
+look up, hover, passcode, pin, sign out, register, verification, authenticate, reset, recover
+unlock, lockout, access, permission, privacy, subscription, renew, cancel, upgrade, downgrade
+deactivate, CAPTCHA, emoji, meme, hashtag, spam, handle, tag, text, video chat
+webcam, log on, social media, bio, caption, mention, message, timeline, story, reel
+filter, selfie, viral, influencer, troll, lock, scam, phishing, malware, virus
+firewall, antivirus, breach, anonymous, incognito, consent, track, suspicious, secure, backup
+patch, time it out, disconnect, freeze, crash, glitch, bug, phish, hack, pop-up
+paywall, suspension, restore, reboot, server, router, modem, delay, slowdown, restart
+signal, coverage, overload, thumbnail, screen time, at your fingertips, parse, friend request, lifehack, latency

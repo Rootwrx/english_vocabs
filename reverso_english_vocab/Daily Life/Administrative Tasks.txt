@@ -1,0 +1,12 @@
+form, application, insurance, submit, lease, driver's license, invoice, receipt, fill out, bill
+statement, contract, apply for, request, agreement, deed, certificate, permit, license, authorization
+waiver, signature, date, copy, attachment, file, folder, envelope, stamp, sign
+renew, update, verify, birth certificate, tax return, appointment, schedule, cancel, reminder, availability
+time slot, book, check in, paperwork, initial, print, scan, upload, download, fee
+payment, refund, consent, policy, procedure, follow-up, deadline, fine, allocate, appoint
+fall due, serve notice, hand in, compile, proofread, expense report, property, required, fill, tenant
+estate, admission, requirement, prerequisite, insurer, policyholder, deductible, copay, coverage, claim
+payout, settlement, denial, appeal, renewal, cancellation, lapse, beneficiary, out-of-pocket, liability
+sender, address, reference, enclosure, template, complaint, confirmation, acknowledgment, extension, seal
+postmark, notify, ask for, follow up, inquire, clarify, sign off, approve, authorize, grant
+deny, decline, review, finalize, withdraw, escalate, due date

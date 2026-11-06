@@ -1,0 +1,7 @@
+assembly line, raw materials, quality control, shop floor, lead time, bottleneck, inventory, supply chain, warehouse, ramp up
+mass production, batch, prototype, waste, downtime, throughput, maintenance, surplus, defect, plant
+lean manufacturing, procurement, efficiency, workflow, shift, logistics, goods, storage, supply, pallet
+crate, bubble wrap, fragile, storage bin, shelf life, bulk, shipment, freight, package, label
+barcode, tape dispenser, padding, Styrofoam, breakable, vessel, container, wastage, outsource, ship
+cargo, carrier, dispatcher, last mile, parcel, proof of delivery, tracking number, just in time, shortage, technical glitch
+miss the deadline, blue-collar, outsourcing

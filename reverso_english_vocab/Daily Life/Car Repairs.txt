@@ -1,0 +1,12 @@
+engine, car battery, garage, flat tire, alternator, run out, steering wheel, rim, refill, hood
+headlight, starter, odometer, coolant, air filter, brake, tire, jack, taillight, turn signal
+fuse, hose, clutch, exhaust pipe, gas tank, trunk, overheat, stall, spare tire, misfire
+sputter, knock, ping, backfire, seize, flood, smoke, leak, vibrate, run hot
+run cold, crank, die, lurch, break down, skid, bumper, collide, rear, overhaul
+jolt, rusty, salvage, bent, honk, gear, maintenance, service, checkup, inspect
+diagnose, quote, warranty, recall, appointment, mileage, dashboard, warning light, gauge, dipstick
+fluid, antifreeze, oil, filter, jump-start, drain, replace, tighten, loosen, inflate
+deflate, pressure, puncture, tread, alignment, balance, beyond repair, take the wheel, repair, fix
+swap out, take apart, put back, hook up, reconnect, recharge, tow, seal, flush, top off
+fill up, mechanic, walk-in, service record, diagnostic test, inspection, oil change, brake pad, lug wrench, windshield wiper
+pick up, drop off, top up, tow truck

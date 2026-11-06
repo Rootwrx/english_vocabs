@@ -1,0 +1,146 @@
+[
+ {
+  "group": "Business",
+  "sets": [
+   "Asking for Help at Work",
+   "At a Networking Event",
+   "Business Law & Contracts",
+   "Customer Service",
+   "Describing Graphs & Trends",
+   "Finance & Accounting",
+   "Giving Feedback",
+   "In a Meeting",
+   "Instant Messaging",
+   "Job Interview",
+   "Logistics & Manufacturing",
+   "Making a Presentation",
+   "Managing Video Calls",
+   "Marketing",
+   "Must-Know Business Expressions",
+   "Office Spaces",
+   "Office Supplies",
+   "Pay & Working Conditions",
+   "Performance & Evaluation",
+   "Professions & Job Titles",
+   "Project Management",
+   "Sales & Negotiation",
+   "Small Talk at Work",
+   "Writing Professional Emails"
+  ]
+ },
+ {
+  "group": "By Level",
+  "sets": [
+   "Advanced Vocabulary (C1C2)",
+   "Basic Vocabulary (A1A2)",
+   "Intermediate Vocabulary (B1B2)"
+  ]
+ },
+ {
+  "group": "Daily Life",
+  "sets": [
+   "Academic Life",
+   "Administrative Tasks",
+   "Animals",
+   "Asking for Help",
+   "At the Post Office",
+   "At the Supermarket",
+   "Baby Care",
+   "Budgeting & Banking",
+   "Car Repairs",
+   "Change, Cause & Consequence",
+   "Clothes Shopping",
+   "Common English Slangs",
+   "Communication",
+   "Conflict & Disagreement",
+   "Crime & Justice",
+   "Decisions & Choices",
+   "Describing Appearance",
+   "Difficulty & Struggle",
+   "Discussing Movies & TV Shows",
+   "Emergencies",
+   "Emotions & Feelings",
+   "Environment",
+   "Family Relations",
+   "Figurative Compounds",
+   "Gardening & Farming",
+   "Hobbies",
+   "Home Repair",
+   "Home Spaces",
+   "Household Chores",
+   "Household Items",
+   "In the Kitchen",
+   "Ingredients & Produce",
+   "Must-Know Everyday Expressions",
+   "Nature & Landscape",
+   "Payments & Refunds",
+   "Personality & Character",
+   "Relationships & Social Interactions",
+   "Risk & Uncertainty",
+   "Sports",
+   "Success & Performance",
+   "Tech Devices",
+   "Types of Stores",
+   "Using the Internet",
+   "Video Calls (personal)",
+   "Weather Talk"
+  ]
+ },
+ {
+  "group": "Health",
+  "sets": [
+   "At the Doctor’s",
+   "At the Gym",
+   "At the Pharmacy",
+   "Body Parts",
+   "Mental Health"
+  ]
+ },
+ {
+  "group": "IELTS",
+  "sets": [
+   "IELTS Business & Economics",
+   "IELTS Health & Well-being",
+   "IELTS High Frequency Words",
+   "IELTS Law & Politics",
+   "IELTS Linking Words",
+   "IELTS Media & Arts",
+   "IELTS Nature & Environment",
+   "IELTS Phrasal Verbs & Collocations",
+   "IELTS Science & Technology",
+   "IELTS Society & Culture",
+   "IELTS Speaking Impactful Vocabulary",
+   "IELTS Writing Describe Trends and Graphs"
+  ]
+ },
+ {
+  "group": "TOEFL",
+  "sets": [
+   "TOEFL Academic Word List",
+   "TOEFL Business & Economics",
+   "TOEFL Health & Well-being",
+   "TOEFL Law & Politics",
+   "TOEFL Linking Words",
+   "TOEFL Media & Arts",
+   "TOEFL Nature & Environment",
+   "TOEFL Phrasal Verbs & Academic Collocations",
+   "TOEFL Science & Technology",
+   "TOEFL Society & Culture"
+  ]
+ },
+ {
+  "group": "Travel",
+  "sets": [
+   "Air Travel",
+   "At the Beach",
+   "At the Restaurant",
+   "Camping & Hiking",
+   "Getting Around by Car",
+   "Hotel & Accommodation",
+   "In a Train",
+   "Places in the City",
+   "Public Transport",
+   "Sightseeing"
+  ]
+ }
+]

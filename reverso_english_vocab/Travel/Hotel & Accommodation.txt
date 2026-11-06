@@ -1,0 +1,11 @@
+booking, check-in time, vacancy, unpack, lobby, front desk, settle the bill, bellhop, dry-cleaning, rollaway bed
+bathrobe, room number, overnight, settle, studio, hostel, pool, reservation, availability, occupied
+receptionist, confirmation, luggage, suitcase, porter, shuttle, parking, cancellation, refund, check in
+rental, resort, housekeeping, all-inclusive, bed and breakfast, inn, room service, laundry, valet, concierge
+gym, sauna, spa, swimming pool, car rental, shoeshine, massage, wake-up call, cot, getaway
+lavish, put up, vicinity, amenities, sheet, maid, stay, butler, departure, incidentals
+check out, pack up, move out, hand over, settle up, pay off, call for, head out, clear out, minibar
+safe, air conditioner, heater, balcony, view, soap, shampoo, lotion, towel, slipper
+pillow, blanket, duvet, desk, chair, mirror, closet, hanger, coffeemaker, kettle
+iron, ironing board, apartment, loft, villa, cabin, cottage, bungalow, deposit, host
+pay upfront, furnished, patio, smoke-free, address, neighborhood, outskirts

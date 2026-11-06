@@ -1,0 +1,6 @@
+living room, kitchen, dining room, bedroom, guest room, nursery, bathroom, laundry room, mudroom, entryway
+foyer, hallway, closet, pantry, basement, attic, garage, den, sunroom, playroom
+walk-in closet, utility room, storage room, window, windowsill, door, downstairs, upstairs, apartment, ceiling
+room, stairs, front yard, yard, backyard, garden, patio, porch, deck, balcony
+terrace, driveway, carport, walkway, gate, fence, mailbox, shed, lawn, flower bed
+pool, hot tub, grill, fire pit, sprinkler, trash bin, recycling bin, clothesline, stoop

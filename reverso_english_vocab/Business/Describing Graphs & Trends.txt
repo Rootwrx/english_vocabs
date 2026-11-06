@@ -1,0 +1,14 @@
+metric, level off, forecast, bottom out, findings, result, chart, increase, update, status
+progress, recap, overview, summary, highlight, takeaway, key point, roadmap, timeline, milestone
+deadline, deliverable, scope, objective, estimate, risk, issue, blocker, dependency, trade-off
+adjust, pivot, align, clarify, confirm, wrap up, follow up, check in, touch base, walk through
+outcome, crunch the numbers, hit the mark, pinpoint, agenda, facilitator, moderator, outline, quantify, benchmark
+stakeholder, alignment, consensus, escalate, delegate, derail, wrap-up, circle back, speak up, hold the floor
+Q&A, trend, decrease, rise, drop, climb, fall, dip, peak, plateau
+fluctuate, spike, stable, steady, volatile, overall, roughly, approximately, significant, negligible
+exceed, outlier, average, median, range, gap, margin, proportion, percentage, share
+distribution, correlation, projection, figure, data point, graph, bar chart, pie chart, scatter plot, histogram
+scale, legend, revenue, profit, growth, decline, trough, target, quota, baseline
+variance, segment, breakdown, year-over-year, present, summarize, report, disclose, compare, demonstrate
+validate, miss, achieve, deliver, underperform, outperform, delta, goal, ratio, snapshot
+insight, conclusion, recommendation, next steps

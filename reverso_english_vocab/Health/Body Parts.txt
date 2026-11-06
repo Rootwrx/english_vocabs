@@ -1,0 +1,10 @@
+ear, scalp, cheek, eyelid, pupil, throat, eyebrow, kneecap, skull, hip
+head, forehead, face, skin, cheekbone, chin, jaw, lip, mouth, tongue
+tooth, nose, nostril, earlobe, neck, eye, eyelash, iris, scar, dimple
+wrinkle, nail, arm, shoulder, collarbone, scapula, abdomen, navel, belly, chest
+back, spine, elbow, armpit, forearm, wrist, hand, palm, thumb, finger
+pinky finger, knuckle, fingernail, cuticle, gum, joint, flesh, limb, leg, thigh
+knee, shin, calf, ankle, heel, foot, toe, toenail, waist, brain
+heart, lung, stomach, liver, kidney, intestine, colon, pancreas, spleen, bladder
+esophagus, trachea, diaphragm, artery, rib, muscle, bone, gut, skeleton, freckles
+mole, birthmark

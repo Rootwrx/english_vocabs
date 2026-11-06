@@ -1,0 +1,23 @@
+beaver, guinea pig, flock, sparrow, cat, nest, rabbit, deer, hamster, dog
+fish, goldfish, parrot, canary, turtle, lizard, snake, gerbil, ferret, leash
+collar, harness, crate, kennel, litter box, aquarium, terrarium, flea, tick, treat
+chew toy, groom, feed, vet, spay, neuter, pet, puppy, kitten, shed
+whiskers, cow, calf, bull, goat, sheep, lamb, ram, pig, piglet
+chicken, boar, sow, horse, foal, pony, donkey, mule, rooster, duck
+goose, turkey, bee, mouse, hedgehog, bat, weasel, chick, herd, pack
+school, swarm, colony, hive, pod, pride, troop, paw, gaggle, litter
+brood, clutch, den, burrow, roost, covey, bevy, shoal, stable, coral reef
+anthill, spiderweb, muzzle, claw, breed, tame, stray, cattle, bark, feather
+species, wild, tail, fur, grunt, howl, mammal, reptile, amphibian, insect
+pollinator, crow, toad, hoof, fin, scales, horn, antler, tusk, snout
+quack, oink, purr, ant, wasp, hornet, termite, mosquito, fly, bedbug
+cockroach, moth, butterfly, caterpillar, ladybug, beetle, firefly, dragonfly, grasshopper, cricket
+praying mantis, spider, scorpion, earthworm, slug, snail, worm, roach, bird, blue jay
+cardinal, raven, pigeon, dove, seagull, hawk, eagle, owl, falcon, vulture
+swan, heron, pelican, woodpecker, hummingbird, flamingo, peacock, crane, stork, quail
+loon, ostrich, penguin, shark, dolphin, whale, seal, sea lion, squid, jellyfish
+sea turtle, stingray, seahorse, starfish, sea urchin, crab, lobster, shrimp, clam, oyster
+mussel, coral, eel, seaweed, plankton, otter, sea anemone, walrus, orca, swordfish
+polar bear, lion, tiger, leopard, cheetah, monkey, elephant, rhinoceros, hippopotamus, giraffe
+sloth, zebra, buffalo, bison, moose, elk, bear, wolf, fox, coyote
+raccoon, skunk, squirrel, crocodile, octopus, alligator, frog, grizzly bear

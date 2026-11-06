@@ -1,0 +1,10 @@
+skyscraper, house, bridge, clock tower, roundabout, outskirts, suburb, downtown, neighborhood, playground
+street, road, sidewalk, traffic light, apartment building, townhouse, villa, mansion, warehouse, factory
+shopping mall, supermarket, department store, pharmacy, hospital, clinic, school, university, library, museum
+gallery, theater, cinema, stadium, gym, hotel, hostel, restaurant, pub, train station
+bus station, gas station, garage, parking lot, police station, fire station, post office, city hall, courthouse, prison
+park, office building, bank, tower, fountain, statue, monument, square, plaza, cathedral
+palace, castle, amphitheater, waterfront, botanical garden, memorial, opera house, arena, landmark, district
+old town, pedestrian zone, intersection, bus stop, platform, taxi stand, avenue, boulevard, lane, alley
+highway, tunnel, uptown, grocery store, boardwalk, bike lane, crossroads, cul-de-sac, dead end, driveway
+expressway, junction, main street, subway station, airport, ticket office, art gallery, observation deck, crosswalk, viewpoint

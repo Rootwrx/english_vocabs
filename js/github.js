@@ -3,7 +3,7 @@
  * (add/replace/delete/rename any number of files). A rename is therefore a single commit, and the
  * build-index Action runs once and rebuilds index.json + search.json from whatever is in data/. */
 const GH_KEY = 'wordlists.gh.v1';
-const RESERVED = ['index', 'search'];            // generated files, never edited by the app
+const RESERVED = ['index', 'search', 'catalog'];            // generated files, never edited by the app
 
 function ghCfg() {
   let c = { repo: '', branch: 'main', token: '' };

@@ -1,0 +1,23 @@
+scarf, raincoat, wardrobe, changing room, sleeveless, narrow, mismatched, slim, fit like a glove, shirt
+pants, jeans, jacket, coat, sweater, hoodie, cardigan, blouse, skirt, dress
+suit, blazer, tie, belt, sock, shoes, boots, sneakers, glove, hat
+beanie, cap, pajamas, underwear, swimsuit, tracksuit, discount, try on, take off, put on
+zip up, button up, dress up, fit, match, size, style, fabric, cotton, wool
+leather, denim, silk, bargain, purse, outfit, hanger, zipper, button, collar
+sleeve, jumpsuit, overalls, heel, flats, slipper, turtleneck, one-size-fits-all, second-hand, casual
+formal, vintage, oversized, tight, baggy, loose, patterned, plain, striped, floral
+checkered, long-sleeved, V-neck, flared, trendy, stylish, old-fashioned, dressy, scruffy, tailored
+waterproof, zip, buckle, cuff, hem, lace, velvet, synthetic, dress down, go with
+look good, stand out, pay for, return, exchange, price tag, rack, shelf, mannequin, shop assistant
+waist, length, seam, label, sales assistant, item, refund, size up, size down, bring back
+itchy, wide, fitting room, makeover, waistline, posh, fancy, shabby, tacky, appealing
+flattering, bespoke, flimsy, worn, torn, ripped, spotted, black-tie, attire, garment
+fringe, ribbon, veil, trim, cloak, weave, cleavage, fur, dye, wear
+rip, fitting, chic, fitted, sleek, sporty, classic, retro, edgy, preppy
+modest, bold, flashy, sophisticated, rugged, urban, eclectic, feminine, masculine, fashion
+linen, suede, flannel, fleece, cashmere, stretchy, woven, knitted, sunglasses, watch
+necklace, bracelet, earring, ring, bow tie, cufflinks, suspenders, handbag, clutch, tote
+backpack, briefcase, umbrella, hair band, headband, hairpin, brooch, choker, anklet, bandana
+earmuffs, shawl, stocking, tights, locket, stud, handkerchief, hair claw, clothes hanger, shoehorn
+shoelace, jewelry, pocket, petite, tall, plus-size, snug, form-fitting, skinny, full-length
+cropped, short-sleeved, shrink

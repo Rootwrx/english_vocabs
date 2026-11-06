@@ -1,0 +1,8 @@
+aisle, shopping cart, item, canned goods, bulk, shelf, slice, bundle, bargain, express lane
+half-price, deli, dairy, queue, bakery, frozen food, dry goods, grocery, seafood, perishable
+organic, amount, quantity, unit, piece, package, bag, bottle, jar, can
+roll, loaf, half-dozen, pair, set, wrapper, foil, label, barcode, twist tie
+seal, discount, price cut, sale, deal, promo code, rebate, point, loyalty card, clearance
+cashier, scanner, scale, receipt, price, shopping list, brand, checkout, cash register, basket
+produce, meat, out of stock, run out, put back, expiry date, stock up on, fresh, frozen, chilled
+refrigerated, shelf life, best-by date, use-by date

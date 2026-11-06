@@ -38,6 +38,8 @@ select.ans{font-size:18px;text-align:left}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ac);color:var(--bg);padding:10px 18px;border-radius:12px;font-weight:700;z-index:60;max-width:90%}
 button.chip{border:0;font:inherit;font-size:16px;cursor:pointer}
 .ygbtn{font-size:14px;padding:3px 10px;margin:4px 0 0}.yg{margin:8px 0}.yg .nav{margin-top:4px}.yg a{font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}.grid .card{margin:0}
+.gc{display:block;color:inherit;text-decoration:none}.gc .bar{margin-top:10px}
 </style></head><body>
 <header><a href="#/">📚 Word Lists</a><span class="mut" id="crumb" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span><button class="hb" id="b-theme"></button><button class="hb" id="b-ar" title="Show / hide Arabic">ع</button><button class="hb" id="b-yg" title="Show / hide videos">🎬</button><a href="#/upload" title="Upload lists">⬆️</a><a href="#/settings" title="Settings">⚙️</a></header>
 <main id="app">Loading…</main>
@@ -69,6 +71,19 @@ async function J(u){const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw new
 async function getIndex(){return INDEX=INDEX||await J('data/index.json')}
 async function getSearch(){if(!SEARCH){try{SEARCH=await J('data/search.json')}catch(e){SEARCH=[]}}return SEARCH}
 async function getList(id){if(cache[id])return cache[id];const e=(await getIndex()).find(x=>x.id===id);if(!e)throw new Error('Unknown list '+id);const l=await J('data/'+e.file);l.id=id;return cache[id]=l}
+
+let CAT=null;
+async function getCatalog(){if(!CAT){try{CAT=await J('data/catalog.json')}catch(e){CAT=[]}}return CAT}
+/* group -> Map(topic -> [parts]); catalog order first, then anything uploaded */
+function tree(idx){
+  const G=new Map(),set=(g,s)=>{g=g||'Other';if(!G.has(g))G.set(g,new Map());const m=G.get(g);if(!m.has(s))m.set(s,[]);return m.get(s)};
+  (CAT||[]).forEach(c=>{if(!(c.sets||[]).length)set(c.group,'\0');(c.sets||[]).forEach(s=>set(c.group,s))});
+  idx.forEach(e=>set(e.group,e.set||e.title).push(e));
+  G.forEach(m=>{m.delete('\0');m.forEach(a=>a.sort((x,y)=>(x.part||0)-(y.part||0)||x.title.localeCompare(y.title,undefined,{numeric:true})))});
+  return G}
+const stat=e=>{const k=Object.keys(S).filter(x=>x.startsWith(e.id+'::'));return{due:k.filter(x=>S[x].due<=Date.now()).length,seen:k.length,count:e.count||0}};
+const sum=es=>es.reduce((a,e)=>{const s=stat(e);a.due+=s.due;a.seen+=s.seen;a.count+=s.count;return a},{due:0,seen:0,count:0});
+const partCard=e=>{const s=stat(e);return `<div class="card" style="padding:14px 18px"><a style="display:block;color:inherit;text-decoration:none" href="#/l/${e.id}"><h2 style="margin:0">${esc(e.title)}</h2><div class="mut">${esc([e.group,e.set].filter(Boolean).join(' / '))} · ${e.count} words · <span class="${s.due?'good':''}">${s.due} due</span></div></a>${EDITMODE?listTools(e.file):''}</div>`};
 const speak=t=>{try{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}};
 window.speak=speak;
 
@@ -139,7 +154,7 @@ function wordCard(l,w,full){
 /* ---------- views ---------- */
 async function home(){
   document.getElementById('crumb').textContent='';
-  const idx=await getIndex();
+  const idx=await getIndex();await getCatalog();
   app.innerHTML='<h1>Your lists</h1><div><button class="btn alt" id="editmode"></button><a class="btn alt" href="#/upload">⬆️ Upload lists</a></div><input class="ans" id="q" placeholder="Search lists and words (English or Arabic)…" style="text-align:left"><div id="hits"></div><div id="lists"></div><div id="orph"></div>';
   let tok=0;
   const words=async q=>{const my=++tok,el=document.getElementById('hits');
@@ -156,12 +171,14 @@ async function home(){
       <div class="mut">appears in: ${r.at.map(a=>`<a class="chip" href="#/l/${a.l}/study/${a.i}">${esc(titles[a.l]||a.l)}</a>`).join('')}</div></div>`).join('');
     if(!exact)h+=`<div class="card" style="padding:12px 18px"><span class="mut">“${esc(q)}” is not a headword in any list.</span><div>${ygBtn(q,'Watch “'+esc(q)+'” on YouGlish')}</div></div>`;
     el.innerHTML=h};
-  const draw=()=>{const raw=document.getElementById('q').value.trim(),q=raw.toLowerCase(),keys=Object.keys(S),g={};
-    words(q);
-    idx.filter(e=>!q||(e.title+' '+(e.group||'')).toLowerCase().includes(q)).forEach(e=>(g[e.group||'']=g[e.group||'']||[]).push(e));
-    document.getElementById('lists').innerHTML=Object.keys(g).sort((x,y)=>x.localeCompare(y,undefined,{numeric:true})).map(k=>(k?`<div class="tag">${esc(k)}</div>`:'')+
-      g[k].sort((x,y)=>x.title.localeCompare(y.title,undefined,{numeric:true})).map(e=>{const mine=keys.filter(x=>x.startsWith(e.id+'::')),due=mine.filter(x=>S[x].due<=Date.now()).length,nw=Math.max(0,(e.count||0)-mine.length);
-        return `<div class="card" style="padding:14px 18px"><a style="display:block;color:inherit;text-decoration:none" href="#/l/${e.id}"><h2 style="margin:0">${esc(e.title)}</h2><div class="mut">${e.count} words${e.texts?' · '+e.texts+' text'+(e.texts>1?'s':''):''} · <span class="${due?'good':''}">${due} due</span> · ${nw} new</div></a>${EDITMODE?listTools(e.file):''}</div>`}).join('')).join('')||(q?'':'<p class="mut">No lists found.</p>')};
+  const draw=()=>{const q=document.getElementById('q').value.trim().toLowerCase();words(q);
+    const L=document.getElementById('lists');
+    if(q){L.innerHTML=idx.filter(e=>(e.title+' '+(e.group||'')+' '+(e.set||'')).toLowerCase().includes(q)).map(partCard).join('');return}
+    L.innerHTML='<div class="grid">'+[...tree(idx)].map(([g,m])=>{
+      const sets=[...m.values()],parts=sets.flat(),t=sum(parts),started=sets.filter(a=>a.length).length;
+      return `<a class="card gc" href="#/g/${encodeURIComponent(g)}"><h2>${esc(g)}</h2>
+        <div class="mut">${started}/${sets.length} topics started · ${parts.length} part${parts.length===1?'':'s'} · ${t.count} words</div>
+        <div class="${t.due?'good':'mut'}">${t.due} due</div><div class="bar"><i style="width:${t.count?t.seen/t.count*100:0}%"></i></div></a>`}).join('')+'</div>'};
   document.getElementById('q').oninput=draw;draw();
   const em=document.getElementById('editmode'),orph=()=>{const o=document.getElementById('orph');o.innerHTML='';if(EDITMODE)orphanCards().then(h=>{if(document.getElementById('orph')===o)o.innerHTML=h})};
   const lab=()=>em.textContent=EDITMODE?'✓ Done editing':'✏️ Edit lists';lab();orph();
@@ -182,7 +199,7 @@ function settings(){
 async function listMenu(id){
   const l=await getList(id);document.getElementById('crumb').textContent='/ '+l.title;
   const due=l.words.filter(w=>isDue(l,w)).length,seen=l.words.filter(w=>st(l,w)).length;
-  app.innerHTML=`<h1>${esc(l.title)}</h1><div class="ar" style="text-align:left;direction:ltr;margin-bottom:8px">${esc(l.title_ar||'')}</div>
+  app.innerHTML=`${l.group?`<a class="mut" href="#/g/${encodeURIComponent(l.group)}">← ${esc(l.group)}${l.set?' / '+esc(l.set):''}</a>`:''}<h1>${esc(l.title)}</h1><div class="ar" style="text-align:left;direction:ltr;margin-bottom:8px">${esc(l.title_ar||'')}</div>
   <div class="card"><h2>1 · Learn the list</h2><p class="mut">Go through every word with meaning, examples, collocations and the texts it appears in.</p><a class="btn" href="#/l/${id}/study/0">Start learning</a></div>
   ${(l.texts||[]).length?`<div class="card"><h2>2 · Read in context</h2>${l.texts.map((t,i)=>`<a class="btn alt" href="#/l/${id}/text/${i}">${esc(t.title||'Text '+(i+1))}</a>`).join('')}</div>`:''}
   <div class="card"><h2>3 · Flashcards (active recall)</h2><p class="mut">Type the missing word before you see it. Spaced repetition schedules each word. ${due} due · ${seen}/${l.words.length} started.</p><a class="btn" href="#/l/${id}/review">Review now</a></div>
@@ -233,6 +250,21 @@ async function review(id){
     document.querySelectorAll('.rate .btn').forEach(b=>b.onclick=()=>{const g=+b.dataset.g;grade(l,w,g);Q.q.shift();if(g===0)Q.q.push(w);else Q.done++;review(id)})};
   document.getElementById('chk').onclick=check;inp.onkeydown=e=>{if(e.key==='Enter')check()}}
 
+/* ---------- category page: topics -> parts ---------- */
+async function groupView(g){
+  document.getElementById('crumb').textContent='/ '+g;
+  const idx=await getIndex();await getCatalog();const m=tree(idx).get(g);
+  if(!m){app.innerHTML='<p class="mut">Unknown category.</p>';return}
+  app.innerHTML=`<h1>${esc(g)}</h1><div><button class="btn alt" id="editmode">${EDITMODE?'✓ Done editing':'✏️ Edit lists'}</button><a class="btn alt" href="#/upload">⬆️ Add part</a></div>`+
+  [...m].map(([name,parts])=>{
+    const t=sum(parts),next=Math.max(0,...parts.map(p=>p.part||0))+1;
+    return `<div class="card" style="padding:14px 18px"><h2 style="margin:0">${esc(name)}</h2>
+      <div class="mut">${parts.length?`${parts.length} part${parts.length>1?'s':''} · ${t.count} words · <span class="${t.due?'good':''}">${t.due} due</span>`:'Not started'}</div>
+      <div>${parts.map(p=>{const s=stat(p);return `<a class="chip" href="#/l/${p.id}">${p.part?'Part '+p.part:esc(p.title)}${s.due?' · '+s.due+' due':''}${s.count&&s.seen>=s.count&&!s.due?' ✓':''}</a>`}).join('')}
+      <a class="chip" href="#/upload" style="opacity:.5">+ Part ${next}</a></div>
+      ${EDITMODE?parts.map(p=>`<div class="mut" style="margin-top:6px">${esc(p.file)}</div>`+listTools(p.file)).join(''):''}</div>`}).join('');
+  document.getElementById('editmode').onclick=()=>{EDITMODE=!EDITMODE;groupView(g)}}
+
 /* ---------- router ---------- */
 async function route(){
   const p=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean);
@@ -240,6 +272,7 @@ async function route(){
     if(!p.length)await home();
     else if(p[0]==='settings')settings();
     else if(p[0]==='upload')uploadView();
+    else if(p[0]==='g')await groupView(decodeURIComponent(p[1]||''));
     else if(p[0]==='l'&&p.length===2)await listMenu(p[1]);
     else if(p[0]==='l'&&p[2]==='study')await study(p[1],+p[3]||0);
     else if(p[0]==='l'&&p[2]==='text')await textView(p[1],+p[3]||0);

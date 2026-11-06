@@ -8,13 +8,15 @@ Invalid files are SKIPPED (the other lists still get indexed) and reported as Gi
 Keep check() in sync with validateList() in js/upload.js."""
 import json, re, sys, pathlib
 DATA = pathlib.Path(__file__).parent / "data"
-SKIP = {"index.json", "search.json"}
+SKIP = {"index.json", "search.json", "catalog.json"}
 strip = lambda s: (s or "").replace("*", "")
 stars = lambda s: str(s).count("*")
 
 def check(d):
     if not isinstance(d, dict) or not isinstance(d.get("words"), list) or not d["words"]:
         return ['needs an object with a non-empty "words" list']
+    if "part" in d and not (isinstance(d["part"], int) and not isinstance(d["part"], bool) and d["part"] > 0):
+        return ['"part" must be a positive integer']
     errs, seen = [], set()
     for i, w in enumerate(d["words"]):
         if not isinstance(w, dict): errs.append(f"word {i+1}: must be an object"); continue
@@ -49,7 +51,7 @@ for f in sorted(DATA.glob("*.json")):
         search.append({"w": w["w"], "pos": w["pos"], "ar": w["ar"], "def": strip(w.get("def")), "l": lid, "i": i,
                        "c": [[strip(c.get("p")), c.get("p_ar", "")] for c in w.get("col", [])]})
     entries.append({"id": lid, "file": rel.as_posix(), "title": d.get("title") or rel.stem,
-                    "group": d.get("group", ""), "count": len(d["words"]), "texts": len(d.get("texts", []))})
+                    "group": d.get("group", ""), "set": d.get("set", ""), "part": d.get("part", 0), "count": len(d["words"]), "texts": len(d.get("texts", []))})
 
 (DATA / "index.json").write_text(json.dumps(entries, ensure_ascii=False, indent=1), encoding="utf-8")
 (DATA / "search.json").write_text(json.dumps(search, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

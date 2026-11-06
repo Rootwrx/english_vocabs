@@ -1,0 +1,10 @@
+sunny, cloudy, clear, bright, hazy, misty, windy, breezy, humid, muggy
+dry, arid, chilly, cold, freezing, icy, frosty, warm, hot, scorching
+cool, balmy, rain, stormy, rainstorm, heat wave, drought, forecast, weather report, peak season
+outlook, flood, prediction, foggy, temperature, humidity, heat index, wind, gust, breeze
+calm, overcast, fog, haze, drizzle, shower, downpour, thunderstorm, lightning, thunder
+snow, flurry, sleet, hail, ice, freeze, frost, cold front, warm front, storm warning
+advisory, season, spring, summer, fall, winter, rainy season, year-round, seasonal, brisk
+lukewarm, tepid, boiling, sweltering, stifling, crisp, nippy, sub-zero, thermometer, degree
+Fahrenheit, Celsius, storm, blizzard, mist, cloud, squall, tornado, hurricane, rainbow
+flash flood, dust storm, clear up, cloud over

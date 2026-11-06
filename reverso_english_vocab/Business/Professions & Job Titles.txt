@@ -1,0 +1,10 @@
+accountant, author, architect, baker, barber, bartender, butcher, carpenter, cashier, chef
+civil servant, clerk, dentist, detective, doctor, driver, editor, electrician, engineer, farmer
+firefighter, flight attendant, graphic designer, hairstylist, interpreter, janitor, journalist, lawyer, librarian, manager
+mechanic, nurse, pharmacist, photographer, pilot, plumber, police officer, programmer, receptionist, reporter
+salesperson, scientist, secretary, soldier, surgeon, teacher, technician, translator, veterinarian, waiter
+writer, administrator, ambassador, businessman, chairman, chief, commander, commissioner, economist, educator
+entrepreneur, filmmaker, founder, historian, inspector, instructor, investigator, merchant, miner, model
+musician, novelist, painter, policeman, CEO, Chief Executive Officer, CFO, chief financial officer, chief operating officer, president
+vice president, general manager, director, board member, department head, project manager, supervisor, coordinator, specialist, analyst
+consultant, associate, assistant, intern, sales representative, executive assistant

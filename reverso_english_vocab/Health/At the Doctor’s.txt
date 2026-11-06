@@ -1,0 +1,24 @@
+ache, over-the-counter, ease the pain, flu, run a temperature, checkup, health, illness, acute, painful
+diagnosis, breathless, runny nose, chest tightness, short of breath, upset stomach, blurry vision, numbness, cramp, fever
+cough, headache, medicine, soreness, stiffness, needle, crutch, stitch, rash, appointment
+schedule, availability, slot, clinic, consultation, insurance, coverage, confirmation, check in, hotline
+bruise, dizziness, nausea, examination, screening, scan, X-ray, ultrasound, MRI, blood work
+lab work, swab, sample, biopsy, pressure, pulse, reflex, follow-up, referral, assessment
+fatigue, plaster, disability, medical record, waiting room, vital signs, bed rest, prescription, refill, dosage
+antibiotic, painkiller, cream, syrup, injection, inhaler, instructions, tablet, capsule, generic
+expiration, allergy, tolerance, wounded, injured, ill, sick, impaired, confined, deaf
+blindness, contagious, benign, stroke, tooth decay, pregnancy, excruciating, lingering, slight, prone
+lumpy, examine, swallow, heal, cure, suffer, undergo, undergo surgery, detect, relieve
+intervention, onset, intake, suffocate, chronic, condition, symptom, treatment, surgery, infection
+injury, recovery, relapse, family history, emergency, vaccine, pass out, goose bumps, panting, twitch
+vomit, throw up, stiff, itch, puffy, swollen, shiver, pale, limp, drowsy
+squint, wince, quiver, wobbly, woozy, groan, frail, choke, gasp, collapse
+blister, lump, smother, break out, seasickness, sunburn, temperature, blood pressure, stethoscope, thermometer
+sore throat, sneeze, harmless, metabolism, advise, guidance, precaution, warning, cut back, avoid
+comply, relief, monitor, adjust, prevent, temporary, persistent, intermittent, constant, prolonged
+recurrent, immediate, episodic, continuous, lasting, syndrome, deficiency, infect, immune, circulation
+clinical, detection, specimen, prescribe, dose, inject, shot, drug, therapist, bleed
+breathing, sensation, severely, suffering, weak, fatal, diet, moderate, serious, critical
+extreme, intense, minor, urgent, alarming, manageable, tolerable, unbearable, stable, unstable
+under the weather, clean bill of health, on the mend, back on one's feet, fit as a fiddle, severe, mild, spasm, strain, sprain
+tenderness, migraine, irritation, inflammation, pinch, twinge, alleviate

@@ -1,0 +1,4 @@
+supermarket, grocery store, mall, convenience store, corner store, deli, bakery, butcher shop, fishmonger, boutique
+department store, fashion house, chain store, discount store, thrift store, consignment shop, shoe store, jewelry store, pharmacy, drugstore
+beauty salon, hair salon, nail salon, barbershop, spa, bookstore, craft store, gift shop, florist, antique shop
+hardware store, bric-a-brac, opening hours, flagship store

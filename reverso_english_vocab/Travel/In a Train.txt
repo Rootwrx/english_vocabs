@@ -1,0 +1,6 @@
+one-way, car, platform, hop on, aisle, seat, coach, delayed, connection, platform edge
+armrest, luggage rack, ticket, fare, round-trip, pass, reservation, first class, transfer, refund
+rail, safety line, footbridge, ramp, elevator, escalator, stairway, waiting area, board, last call
+express train, local train, dining car, get on, embark, ride, make way, get off, announcement, schedule
+departure, arrival, stop, late, on time, early, canceled, detour, disruption, toilet
+lavatory, vending machine, snack bar, restaurant car, headrest, baggage

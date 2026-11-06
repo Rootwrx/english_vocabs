@@ -1,0 +1,5 @@
+fluctuate, decline, peak, gradual, significant, surge, plummet, stabilize, moderate, spike
+plateau, dip, escalate, decrease, soar, level off, drop, rise, rapid, noticeable
+hockey stick growth, proportion, percentage, ratio, fraction, estimate, average, median, mode, range
+sample, dataset, graph, chart, diagram, trend, fluctuation, increase, growth, projection
+correlation, probability, frequency, analysis, benchmark, variable

@@ -1,0 +1,10 @@
+log in, decline, mute, kick off, freeze, follow up, webcam, resume, join, enter
+connect, sign in, dial in, call, start, invite, accept, answer, pick up, ignore
+miss, ring, drop, call back, redial, wrap up, leave, disconnect, hang up, unmute
+speaker, microphone, mic, camera, headphones, headset, volume, turn up, turn down, audio
+video, zoom in, zoom out, full screen, caption, subtitle, record, troubleshoot, interview, consultation
+panel, roundtable, workshop, webinar, demo, presentation, pitch, conference call, summit, committee meeting
+focus group, lag, delay, glitch, crash, cut out, break up, echo, feedback, static
+background noise, choppy, blurry, pixelated, low battery, moderator, attendee, agenda, punctual, courtesy
+respect, interrupt, talk over, clarify, confirm, recap, summarize, touch base, circle back, check in
+sign off, sidebar, chat, consent, confidentiality

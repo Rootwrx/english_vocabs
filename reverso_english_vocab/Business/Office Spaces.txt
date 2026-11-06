@@ -1,0 +1,4 @@
+meeting room, workstation, front desk, corridor, break room, stairwell, headquarters, phone booth, conference room, boardroom
+training room, quiet zone, reception desk, cubicle, kitchenette, copy room, print room, mailroom, supply closet, reception
+lobby, hallway, elevator, locker, storage area, bulletin board, layout, floor plan, exterior, entrance
+escalator, atrium, mezzanine, coat closet, loading dock, parking garage, rooftop terrace, fire exit

@@ -1,0 +1,17 @@
+accident, injury, firefighter, cut, hazard, ASAP, bruise, watch out, burn, fracture
+sprain, concussion, bleeding, shock, unconscious, faint, allergic reaction, asthma attack, heart attack, seizure
+choking, overdose, wound, poisoning, fever, infection, emergency room, ambulance, paramedic, first aid
+CPR, bandage, tourniquet, stretcher, fire, smoke, power outage, gas leak, flood, earthquake
+evacuation, shelter, help, emergency, crisis, police, hospital, defibrillator, splint, report
+evacuate, rescue, assist, treat, transport, secure, block off, lock down, take cover, stay put
+hang up, pull over, close call, fire extinguisher, emergency exit, siren, urgent, serious, critical, dangerous
+life-threatening, minor, stable, conscious, hurt, broken, panic, pain, dizzy, nauseous
+out of breath, trapped, stuck, missing, lost, safe, unsafe, under control, get worse, pass out
+black out, come to, wake up, warning, alert, caution, danger, immediate, right away, at once
+without delay, time-sensitive, last chance, look out, heads-up, be careful, stay back, keep away, wreck, threat
+harm, unscathed, flee, burst, blast, struck, hazardous, stranded, ordeal, escape
+beware, drown, distress, disaster, put out, go off, shield, threatened, blaze, survive
+victim, mishap, casualty, in a flash, in a split second, lightning fast, recover, rest, follow up, aftermath
+check on, medication, prescription, discharge, release, paperwork, file a claim, insurance, deductible, copay
+reimbursement, statement, witness, press charges, notify, landlord, repair, replace, smoke alarm, fire escape
+power cut

@@ -1,0 +1,9 @@
+set up, schedule, time zone, availability, RSVP, link, log in, postpone, waiting room, URL
+passcode, pin, code, dial in, sign out, join, host, attendee, mute, unmute
+hang up, reschedule, invite, calendar, confirm, turn up, turn on, turn off, plug in, unplug
+microphone, webcam, camera, speaker, volume, echo, lag, freeze, cut out, restart
+refresh, update, setting, permission, screen share, full screen, enter, leave, drop off, speak up
+chime in, jump in, cut in, take turns, yield, interrupt, clarify, restate, elaborate, brief
+follow up, check in, respond, acknowledge, raise a hand, chat, pay attention, wrap up, sign off, close out
+adjourn, circle back, touch base, recap, decide, align, takeaway, minutes, timeline, deliverable
+message, email, reach out, ping, follow-through, confirmation, loop in, keep posted, take it offline

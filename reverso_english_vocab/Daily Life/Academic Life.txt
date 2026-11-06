@@ -1,0 +1,11 @@
+chalkboard, dean, campus, scholarship, syllabus, midterm, flunk, teacher, essay, tuition
+tutor, enroll, detention, expel, recess, curriculum, textbook, lecture, professor, grade
+assignment, major, minor, registration, coursework, thesis, dissertation, exam, quiz, study group
+classroom, principal, counselor, extracurricular, club, graduation, diploma, attendance, degree, undergraduate
+graduate student, peer, faculty, roommate, classmate, proctor, valedictorian, library, auditorium, study hall
+internship, gap year, study abroad, grant, loan, orientation, homework, semester, practice, course
+workshop, tutorial, rehearse, attempt, jot down, hand out, comprehension, suspend, accomplishment, distract
+strict, facility, entitled, knowledge, study, fail, cram, college, distracted, literacy
+term, suspended, bachelor, pursuing, submission, completion, bully, alumnus, applicant, draft
+revise, submit, pass, retake, collaborate, seminar, debate, memorize, take notes, outline
+research, elective, transfer, drop out

@@ -1,0 +1,656 @@
+[
+  {
+    "category": "By Level",
+    "title": "Basic Vocabulary (A1/A2)",
+    "href": "/vocabulary/english-definition/407736-basic-vocabulary-a1a2",
+    "expected": 1141
+  },
+  {
+    "category": "By Level",
+    "title": "Intermediate Vocabulary (B1/B2)",
+    "href": "/vocabulary/english-definition/407739-intermediate-vocabulary-b1b2",
+    "expected": 1576
+  },
+  {
+    "category": "By Level",
+    "title": "Advanced Vocabulary (C1/C2)",
+    "href": "/vocabulary/english-definition/407743-advanced-vocabulary-c1c2",
+    "expected": 1166
+  },
+  {
+    "category": "Business",
+    "title": "In a Meeting",
+    "href": "/vocabulary/english-definition/261313-in-a-meeting",
+    "expected": 214
+  },
+  {
+    "category": "Business",
+    "title": "Project Management",
+    "href": "/vocabulary/english-definition/261348-project-management",
+    "expected": 213
+  },
+  {
+    "category": "Business",
+    "title": "Making a Presentation",
+    "href": "/vocabulary/english-definition/261280-making-a-presentation",
+    "expected": 135
+  },
+  {
+    "category": "Business",
+    "title": "Must-Know Business Expressions",
+    "href": "/vocabulary/english-definition/278652-must-know-business-expressions",
+    "expected": 82
+  },
+  {
+    "category": "Business",
+    "title": "Managing Video Calls",
+    "href": "/vocabulary/english-definition/261330-managing-video-calls",
+    "expected": 89
+  },
+  {
+    "category": "Business",
+    "title": "Office Supplies",
+    "href": "/vocabulary/english-definition/261334-office-supplies",
+    "expected": 69
+  },
+  {
+    "category": "Business",
+    "title": "Small Talk at Work",
+    "href": "/vocabulary/english-definition/261297-small-talk-at-work",
+    "expected": 125
+  },
+  {
+    "category": "Business",
+    "title": "Describing Graphs & Trends",
+    "href": "/vocabulary/english-definition/261288-describing-graphs-trends",
+    "expected": 134
+  },
+  {
+    "category": "Business",
+    "title": "Writing Professional Emails",
+    "href": "/vocabulary/english-definition/261321-writing-professional-emails",
+    "expected": 117
+  },
+  {
+    "category": "Business",
+    "title": "Job Interview",
+    "href": "/vocabulary/english-definition/261339-job-interview",
+    "expected": 191
+  },
+  {
+    "category": "Business",
+    "title": "At a Networking Event",
+    "href": "/vocabulary/english-definition/261272-at-a-networking-event",
+    "expected": 132
+  },
+  {
+    "category": "Business",
+    "title": "Sales & Negotiation",
+    "href": "/vocabulary/english-definition/261309-sales-negotiation",
+    "expected": 151
+  },
+  {
+    "category": "Business",
+    "title": "Instant Messaging",
+    "href": "/vocabulary/english-definition/261300-instant-messaging",
+    "expected": 95
+  },
+  {
+    "category": "Business",
+    "title": "Giving Feedback",
+    "href": "/vocabulary/english-definition/261381-giving-feedback",
+    "expected": 118
+  },
+  {
+    "category": "Business",
+    "title": "Business Law & Contracts",
+    "href": "/vocabulary/english-definition/261351-business-law-contracts",
+    "expected": 123
+  },
+  {
+    "category": "Business",
+    "title": "Marketing",
+    "href": "/vocabulary/english-definition/261388-marketing",
+    "expected": 135
+  },
+  {
+    "category": "Business",
+    "title": "Performance & Evaluation",
+    "href": "/vocabulary/english-definition/261395-performance-evaluation",
+    "expected": 118
+  },
+  {
+    "category": "Business",
+    "title": "Professions & Job Titles",
+    "href": "/vocabulary/english-definition/262343-professions-job-titles",
+    "expected": 96
+  },
+  {
+    "category": "Business",
+    "title": "Customer Service",
+    "href": "/vocabulary/english-definition/262371-customer-service",
+    "expected": 119
+  },
+  {
+    "category": "Business",
+    "title": "Office Spaces",
+    "href": "/vocabulary/english-definition/262375-office-spaces",
+    "expected": 38
+  },
+  {
+    "category": "Business",
+    "title": "Finance & Accounting",
+    "href": "/vocabulary/english-definition/262365-finance-accounting",
+    "expected": 106
+  },
+  {
+    "category": "Business",
+    "title": "Logistics & Manufacturing",
+    "href": "/vocabulary/english-definition/262354-logistics-manufacturing",
+    "expected": 63
+  },
+  {
+    "category": "Business",
+    "title": "Asking for Help at Work",
+    "href": "/vocabulary/english-definition/262358-asking-for-help-at-work",
+    "expected": 89
+  },
+  {
+    "category": "Business",
+    "title": "Pay & Working Conditions",
+    "href": "/vocabulary/english-definition/262337-pay-working-conditions",
+    "expected": 89
+  },
+  {
+    "category": "TOEFL",
+    "title": "TOEFL: Academic Word List",
+    "href": "/vocabulary/english-definition/278000-toefl-academic-word-list",
+    "expected": 507
+  },
+  {
+    "category": "TOEFL",
+    "title": "TOEFL: Linking Words",
+    "href": "/vocabulary/english-definition/277910-toefl-linking-words",
+    "expected": 250
+  },
+  {
+    "category": "TOEFL",
+    "title": "TOEFL: Phrasal Verbs & Academic Collocations",
+    "href": "/vocabulary/english-definition/278198-toefl-phrasal-verbs-academic-collocations",
+    "expected": 140
+  },
+  {
+    "category": "TOEFL",
+    "title": "TOEFL: Science & Technology",
+    "href": "/vocabulary/english-definition/277916-toefl-science-technology",
+    "expected": 89
+  },
+  {
+    "category": "TOEFL",
+    "title": "TOEFL: Nature & Environment",
+    "href": "/vocabulary/english-definition/277979-toefl-nature-environment",
+    "expected": 83
+  },
+  {
+    "category": "TOEFL",
+    "title": "TOEFL: Health & Well-being",
+    "href": "/vocabulary/english-definition/278109-toefl-health-well-being",
+    "expected": 44
+  },
+  {
+    "category": "TOEFL",
+    "title": "TOEFL: Society & Culture",
+    "href": "/vocabulary/english-definition/277961-toefl-society-culture",
+    "expected": 136
+  },
+  {
+    "category": "TOEFL",
+    "title": "TOEFL: Law & Politics",
+    "href": "/vocabulary/english-definition/278055-toefl-law-politics",
+    "expected": 96
+  },
+  {
+    "category": "TOEFL",
+    "title": "TOEFL: Business & Economics",
+    "href": "/vocabulary/english-definition/278119-toefl-business-economics",
+    "expected": 73
+  },
+  {
+    "category": "TOEFL",
+    "title": "TOEFL: Media & Arts",
+    "href": "/vocabulary/english-definition/278151-toefl-media-arts",
+    "expected": 87
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS: High Frequency Words",
+    "href": "/vocabulary/english-definition/278091-ielts-high-frequency-words",
+    "expected": 386
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS Writing: Describe Trends and Graphs",
+    "href": "/vocabulary/english-definition/278075-ielts-writing-describe-trends-and-graphs",
+    "expected": 46
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS Speaking: Impactful Vocabulary",
+    "href": "/vocabulary/english-definition/278043-ielts-speaking-impactful-vocabulary",
+    "expected": 72
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS: Phrasal Verbs & Collocations",
+    "href": "/vocabulary/english-definition/278021-ielts-phrasal-verbs-collocations",
+    "expected": 140
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS: Linking Words",
+    "href": "/vocabulary/english-definition/277993-ielts-linking-words",
+    "expected": 250
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS: Science & Technology",
+    "href": "/vocabulary/english-definition/277948-ielts-science-technology",
+    "expected": 89
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS: Nature & Environment",
+    "href": "/vocabulary/english-definition/278181-ielts-nature-environment",
+    "expected": 83
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS: Health & Well-being",
+    "href": "/vocabulary/english-definition/277929-ielts-health-well-being",
+    "expected": 44
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS: Society & Culture",
+    "href": "/vocabulary/english-definition/278153-ielts-society-culture",
+    "expected": 136
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS: Law & Politics",
+    "href": "/vocabulary/english-definition/278172-ielts-law-politics",
+    "expected": 96
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS: Business & Economics",
+    "href": "/vocabulary/english-definition/278068-ielts-business-economics",
+    "expected": 73
+  },
+  {
+    "category": "IELTS",
+    "title": "IELTS: Media & Arts",
+    "href": "/vocabulary/english-definition/278139-ielts-media-arts",
+    "expected": 87
+  },
+  {
+    "category": "Daily Life",
+    "title": "In the Kitchen",
+    "href": "/vocabulary/english-definition/260925-in-the-kitchen",
+    "expected": 211
+  },
+  {
+    "category": "Daily Life",
+    "title": "At the Supermarket",
+    "href": "/vocabulary/english-definition/260933-at-the-supermarket",
+    "expected": 74
+  },
+  {
+    "category": "Daily Life",
+    "title": "Emotions & Feelings",
+    "href": "/vocabulary/english-definition/260945-emotions-feelings",
+    "expected": 223
+  },
+  {
+    "category": "Daily Life",
+    "title": "Must-Know Everyday Expressions",
+    "href": "/vocabulary/english-definition/278642-must-know-everyday-expressions",
+    "expected": 145
+  },
+  {
+    "category": "Daily Life",
+    "title": "Relationships & Social Interactions",
+    "href": "/vocabulary/english-definition/293842-relationships-social-interactions",
+    "expected": 280
+  },
+  {
+    "category": "Daily Life",
+    "title": "Household Items",
+    "href": "/vocabulary/english-definition/261010-household-items",
+    "expected": 114
+  },
+  {
+    "category": "Daily Life",
+    "title": "Common English Slangs",
+    "href": "/vocabulary/english-definition/293856-common-english-slangs",
+    "expected": 118
+  },
+  {
+    "category": "Daily Life",
+    "title": "Ingredients & Produce",
+    "href": "/vocabulary/english-definition/261017-ingredients-produce",
+    "expected": 220
+  },
+  {
+    "category": "Daily Life",
+    "title": "Clothes Shopping",
+    "href": "/vocabulary/english-definition/261027-clothes-shopping",
+    "expected": 223
+  },
+  {
+    "category": "Daily Life",
+    "title": "Weather Talk",
+    "href": "/vocabulary/english-definition/261035-weather-talk",
+    "expected": 94
+  },
+  {
+    "category": "Daily Life",
+    "title": "Animals",
+    "href": "/vocabulary/english-definition/261042-animals",
+    "expected": 228
+  },
+  {
+    "category": "Daily Life",
+    "title": "Using the Internet",
+    "href": "/vocabulary/english-definition/261050-using-the-internet",
+    "expected": 150
+  },
+  {
+    "category": "Daily Life",
+    "title": "Sports",
+    "href": "/vocabulary/english-definition/261055-sports",
+    "expected": 175
+  },
+  {
+    "category": "Daily Life",
+    "title": "Payments & Refunds",
+    "href": "/vocabulary/english-definition/261065-payments-refunds",
+    "expected": 89
+  },
+  {
+    "category": "Daily Life",
+    "title": "Types of Stores",
+    "href": "/vocabulary/english-definition/261071-types-of-stores",
+    "expected": 34
+  },
+  {
+    "category": "Daily Life",
+    "title": "Budgeting & Banking",
+    "href": "/vocabulary/english-definition/261380-budgeting-banking",
+    "expected": 138
+  },
+  {
+    "category": "Daily Life",
+    "title": "Emergencies",
+    "href": "/vocabulary/english-definition/261364-emergencies",
+    "expected": 161
+  },
+  {
+    "category": "Daily Life",
+    "title": "At the Post Office",
+    "href": "/vocabulary/english-definition/261369-at-the-post-office",
+    "expected": 42
+  },
+  {
+    "category": "Daily Life",
+    "title": "Car Repairs",
+    "href": "/vocabulary/english-definition/261356-car-repairs",
+    "expected": 114
+  },
+  {
+    "category": "Daily Life",
+    "title": "Administrative Tasks",
+    "href": "/vocabulary/english-definition/262502-administrative-tasks",
+    "expected": 117
+  },
+  {
+    "category": "Daily Life",
+    "title": "Asking for Help",
+    "href": "/vocabulary/english-definition/262450-asking-for-help",
+    "expected": 76
+  },
+  {
+    "category": "Daily Life",
+    "title": "Family Relations",
+    "href": "/vocabulary/english-definition/262442-family-relations",
+    "expected": 147
+  },
+  {
+    "category": "Daily Life",
+    "title": "Personality & Character",
+    "href": "/vocabulary/english-definition/262485-personality-character",
+    "expected": 285
+  },
+  {
+    "category": "Daily Life",
+    "title": "Describing Appearance",
+    "href": "/vocabulary/english-definition/285219-describing-appearance",
+    "expected": 145
+  },
+  {
+    "category": "Daily Life",
+    "title": "Baby Care",
+    "href": "/vocabulary/english-definition/262509-baby-care",
+    "expected": 110
+  },
+  {
+    "category": "Daily Life",
+    "title": "Academic Life",
+    "href": "/vocabulary/english-definition/293865-academic-life",
+    "expected": 104
+  },
+  {
+    "category": "Daily Life",
+    "title": "Environment",
+    "href": "/vocabulary/english-definition/262500-environment",
+    "expected": 79
+  },
+  {
+    "category": "Daily Life",
+    "title": "Nature & Landscape",
+    "href": "/vocabulary/english-definition/285225-nature-landscape",
+    "expected": 156
+  },
+  {
+    "category": "Daily Life",
+    "title": "Gardening & Farming",
+    "href": "/vocabulary/english-definition/285231-gardening-farming",
+    "expected": 136
+  },
+  {
+    "category": "Daily Life",
+    "title": "Video Calls (personal)",
+    "href": "/vocabulary/english-definition/262519-video-calls-personal",
+    "expected": 95
+  },
+  {
+    "category": "Daily Life",
+    "title": "Tech Devices",
+    "href": "/vocabulary/english-definition/262494-tech-devices",
+    "expected": 162
+  },
+  {
+    "category": "Daily Life",
+    "title": "Hobbies",
+    "href": "/vocabulary/english-definition/262463-hobbies",
+    "expected": 87
+  },
+  {
+    "category": "Daily Life",
+    "title": "Home Spaces",
+    "href": "/vocabulary/english-definition/262455-home-spaces",
+    "expected": 59
+  },
+  {
+    "category": "Daily Life",
+    "title": "Household Chores",
+    "href": "/vocabulary/english-definition/262424-household-chores",
+    "expected": 98
+  },
+  {
+    "category": "Daily Life",
+    "title": "Home Repair",
+    "href": "/vocabulary/english-definition/262482-home-repair",
+    "expected": 227
+  },
+  {
+    "category": "Daily Life",
+    "title": "Discussing Movies & TV Shows",
+    "href": "/vocabulary/english-definition/262474-discussing-movies-tv-shows",
+    "expected": 207
+  },
+  {
+    "category": "Daily Life",
+    "title": "Crime & Justice",
+    "href": "/vocabulary/english-definition/293875-crime-justice",
+    "expected": 204
+  },
+  {
+    "category": "Daily Life",
+    "title": "Figurative Compounds",
+    "href": "/vocabulary/english-definition/281648-figurative-compounds",
+    "expected": 55
+  },
+  {
+    "category": "Daily Life",
+    "title": "Change, Cause & Consequence",
+    "href": "/vocabulary/english-definition/314004-change-cause-consequence",
+    "expected": 102
+  },
+  {
+    "category": "Daily Life",
+    "title": "Communication",
+    "href": "/vocabulary/english-definition/261082-communication",
+    "expected": 199
+  },
+  {
+    "category": "Daily Life",
+    "title": "Decisions & Choices",
+    "href": "/vocabulary/english-definition/261113-decisions-choices",
+    "expected": 193
+  },
+  {
+    "category": "Daily Life",
+    "title": "Conflict & Disagreement",
+    "href": "/vocabulary/english-definition/261098-conflict-disagreement",
+    "expected": 186
+  },
+  {
+    "category": "Daily Life",
+    "title": "Difficulty & Struggle",
+    "href": "/vocabulary/english-definition/261121-difficulty-struggle",
+    "expected": 156
+  },
+  {
+    "category": "Daily Life",
+    "title": "Risk & Uncertainty",
+    "href": "/vocabulary/english-definition/261152-risk-uncertainty",
+    "expected": 132
+  },
+  {
+    "category": "Daily Life",
+    "title": "Success & Performance",
+    "href": "/vocabulary/english-definition/261176-success-performance",
+    "expected": 100
+  },
+  {
+    "category": "Health",
+    "title": "Body Parts",
+    "href": "/vocabulary/english-definition/285128-body-parts",
+    "expected": 92
+  },
+  {
+    "category": "Health",
+    "title": "At the Doctor’s",
+    "href": "/vocabulary/english-definition/261266-at-the-doctors",
+    "expected": 237
+  },
+  {
+    "category": "Health",
+    "title": "At the Gym",
+    "href": "/vocabulary/english-definition/261248-at-the-gym",
+    "expected": 126
+  },
+  {
+    "category": "Health",
+    "title": "At the Pharmacy",
+    "href": "/vocabulary/english-definition/261256-at-the-pharmacy",
+    "expected": 102
+  },
+  {
+    "category": "Health",
+    "title": "Mental Health",
+    "href": "/vocabulary/english-definition/261260-mental-health",
+    "expected": 135
+  },
+  {
+    "category": "Travel",
+    "title": "Air Travel",
+    "href": "/vocabulary/english-definition/261195-air-travel",
+    "expected": 115
+  },
+  {
+    "category": "Travel",
+    "title": "Hotel & Accommodation",
+    "href": "/vocabulary/english-definition/261189-hotel-accommodation",
+    "expected": 107
+  },
+  {
+    "category": "Travel",
+    "title": "At the Restaurant",
+    "href": "/vocabulary/english-definition/261207-at-the-restaurant",
+    "expected": 164
+  },
+  {
+    "category": "Travel",
+    "title": "Public Transport",
+    "href": "/vocabulary/english-definition/261215-public-transport",
+    "expected": 78
+  },
+  {
+    "category": "Travel",
+    "title": "Places in the City",
+    "href": "/vocabulary/english-definition/261245-places-in-the-city",
+    "expected": 100
+  },
+  {
+    "category": "Travel",
+    "title": "Getting Around by Car",
+    "href": "/vocabulary/english-definition/261205-getting-around-by-car",
+    "expected": 71
+  },
+  {
+    "category": "Travel",
+    "title": "In a Train",
+    "href": "/vocabulary/english-definition/261237-in-a-train",
+    "expected": 56
+  },
+  {
+    "category": "Travel",
+    "title": "Sightseeing",
+    "href": "/vocabulary/english-definition/261233-sightseeing",
+    "expected": 138
+  },
+  {
+    "category": "Travel",
+    "title": "Camping & Hiking",
+    "href": "/vocabulary/english-definition/314040-camping-hiking",
+    "expected": 48
+  },
+  {
+    "category": "Travel",
+    "title": "At the Beach",
+    "href": "/vocabulary/english-definition/314129-at-the-beach",
+    "expected": 56
+  }
+]
