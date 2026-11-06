@@ -11,12 +11,21 @@ concurrency:
   cancel-in-progress: false
 jobs:
   index:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - run: python make_index.py
-      - run: |
+      - uses: actions/checkout@v5
+      - name: Build index.json and search.json
+        id: build
+        run: python make_index.py
+        continue-on-error: true       # invalid lists are skipped; the others are still indexed
+      - name: Commit indexes
+        run: |
           git config user.name github-actions
           git config user.email actions@users.noreply.github.com
-          git add data/index.json data/search.json
+          git add -A data
           git diff --cached --quiet || (git commit -m "update list index" && git pull --rebase && git push)
+      - name: Fail if a list file is invalid
+        if: steps.build.outcome == 'failure'
+        run: |
+          echo "One or more list files are invalid; see the error annotations above. Valid lists were still indexed."
+          exit 1
